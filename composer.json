@@ -1,0 +1,10 @@
+{
+    "name": "loos-project/plugin",
+    "description": "",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Ponhiro_Blocks\\": "class/"
+        }
+    }
+}

@@ -1,0 +1,161 @@
+/************************************
+** 比較表
+************************************/
+:root {
+	--headColor: #6fc7e1;
+}
+
+
+/* 比較表全体 */
+.pb-compare-box {
+	z-index: 0;
+	max-width: 600px;
+	margin: 0 auto 2rem;
+	overflow: hidden;
+	// background: #fef9ed; /* 背景色 */
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* 影 */
+}
+
+
+.pb-compare-box__head {
+	display: flex;
+	align-items: stretch;
+	margin: 0 !important;
+	padding: 0 !important;
+
+}
+
+.pb-compare-box__head__l,
+.pb-compare-box__head__r {
+	display: flex;
+	flex-basis: 50%;
+	align-items: center;
+	justify-content: center;
+	min-height: 3.5em;
+	margin: 0 !important;
+	padding: 0.75em 1em !important;
+	color: #fff; /* 文字色 */
+	font-weight: bold;
+	font-size: 1em;
+	line-height: 1.5;
+	text-align: center;
+	vertical-align: middle;
+
+	@media screen and (max-width: 480px) {
+		height: 50px;
+		font-size: 12px;/* 文字大きさ */
+	}
+
+}
+
+.pb-compare-box__body {
+	display: flex;
+	align-items: stretch;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.pb-compare-box__body__l,
+.pb-compare-box__body__r {
+	display: flex;
+	flex-basis: 50%;
+	flex-direction: column;
+	margin: 0 !important;
+	padding: 1.5em !important;
+	font-size: 1em;
+	// line-height: 2;
+	text-align: justify;
+	text-justify: inter-ideograph;
+
+	@media screen and (max-width: 480px) {
+		padding: 1.2em !important;
+		font-size: 12px;
+	}
+
+}
+
+/*
+ * カラー
+ */
+.pb-compare-box[data-colset="1"] {
+
+	.pb-compare-box__head {
+		background-color: #fdc44f;
+	}
+
+	.pb-list li::before {
+		color: #fdc44f;
+		background-color: #fdc44f;
+	}
+
+	.pb-compare-box__body {
+		background-color: #fef9ed;
+	}
+
+}
+
+.pb-compare-box[data-colset="2"] {
+
+	.pb-compare-box__head {
+		background-color: #f7bcbc;
+	}
+
+	.pb-list li::before {
+		color: #f7bcbc;
+		background-color: #f7bcbc;
+	}
+
+	.pb-compare-box__body {
+		background-color: #fdf1f1;
+	}
+
+}
+
+.pb-compare-box[data-colset="3"] {
+
+	.pb-compare-box__head {
+		background-color: #2fcdb4;
+	}
+
+	.pb-list li::before {
+		color: #2fcdb4;
+		background-color: #2fcdb4;
+	}
+
+	.pb-compare-box__body {
+		background-color: #eafaf7;
+	}
+
+}
+
+.pb-compare-box[data-colset="4"] {
+
+	.pb-compare-box__head {
+		background-color: #6fc7e1;
+	}
+
+	.pb-compare-box__body__l .pb-list li::before {
+		color: #6fc7e1;
+		background-color: #6fc7e1;
+	}
+
+	.pb-compare-box__body {
+		background-color: #f0f9fc;
+	}
+
+	.pb-compare-box__head__r {
+		background-color: #ffa883;
+	}
+
+	.pb-compare-box__body__r .pb-list li::before {
+		color: #ffa883;
+		background-color: #ffa883;
+	}
+
+	.pb-compare-box__body__r {
+		background-color: #fff6f2;
+	}
+
+
+}

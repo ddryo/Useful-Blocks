@@ -1,0 +1,20 @@
+// サイドバー
+.edit-post-sidebar {
+
+	// .pb-cv-box__noteブロックの時のプレビュー画面だけ
+	.pb-cv-box__note.-preview {
+		margin: 0 !important;
+		padding: 0.75em !important;
+		font-size: 12px;
+
+		&[data-style="bg"] {
+			background-color: #f5f5f5;
+			background-color: #fff;
+		}
+
+		&[data-style="border"] {
+			border: solid 1px #4f524b;
+		}
+	}
+
+}
