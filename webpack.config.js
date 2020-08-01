@@ -12,7 +12,7 @@ glob.sync('**/index.js', {
 	entries['blocks/' + key] = path.resolve(srcDir, key);
 });
 
-// entries[ 'js/main.js' ] = './src/main.js';
+entries['js/admin_menu.js'] = './src/js/admin_menu.js';
 // console.log( entries );
 
 module.exports = {

@@ -34,14 +34,14 @@ define( 'USFL_BLKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'USFL_BLKS_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
- * 翻訳ファイルを登録
+ * 翻訳ファイルを登録 ( 自前の翻訳ファイルを読み込む )
  */
-load_plugin_textdomain( USFL_BLKS_DOMAIN, false, basename( USFL_BLKS_PATH ) .'/languages' );
+load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-ja.mo');
 
 /**
  * Autoload
  */
-require_once( __DIR__ .'/vendor/autoload.php' );
+require_once( __DIR__ . '/vendor/autoload.php' );
 
 /**
  * プラグイン Init

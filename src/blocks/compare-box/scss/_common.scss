@@ -1,11 +1,3 @@
-/************************************
-** 比較表
-************************************/
-:root {
-	--headColor: #6fc7e1;
-}
-
-
 /* 比較表全体 */
 .pb-compare-box {
 	z-index: 0;
@@ -85,61 +77,51 @@
  */
 .pb-compare-box[data-colset="y"] {
 
-	$yellow: #fdc44f;
-	$yellow_bg: #fef9ed;
-
 	.pb-compare-box__head {
-		background-color: $yellow;
+		background-color: var(--pb_colset_yellow);
 	}
 
 	.pb-list li::before {
-		color: $yellow;
-		background-color: $yellow;
+		color: var(--pb_colset_yellow);
+		background-color: var(--pb_colset_yellow);
 	}
 
 	.pb-compare-box__body {
-		background-color: $yellow_bg;
+		background-color: var(--pb_colset_yellow_thin);
 	}
 
 }
 
 .pb-compare-box[data-colset="p"] {
 
-	$pink: #fd9392;
-	$pink_bg: #ffefef;
-
 	.pb-compare-box__head {
-		background-color: $pink;
+		background-color: var(--pb_colset_pink);
 	}
 
 	.pb-list li::before {
-		color: $pink;
-		background-color: $pink;
+		color: var(--pb_colset_pink);
+		background-color: var(--pb_colset_pink);
 	}
 
 	.pb-compare-box__body {
-		background-color: $pink_bg;
+		background-color: var(--pb_colset_pink_thin);
 	}
 
 }
 
 .pb-compare-box[data-colset="g"] {
 
-	$green: #91c13e;
-	$green_bg: #f2f8e8;
-
-
 	.pb-compare-box__head {
-		background-color: $green;
+		background-color: var(--pb_colset_green);
 	}
 
 	.pb-list li::before {
-		color: $green;
-		background-color: $green;
+		color: var(--pb_colset_green);
+		background-color: var(--pb_colset_green);
 	}
 
 	.pb-compare-box__body {
-		background-color: $green_bg;
+		background-color: var(--pb_colset_green_thin);
 	}
 
 }
@@ -147,21 +129,17 @@
 // ブルー
 .pb-compare-box[data-colset="b"] {
 
-	$green: #6fc7e1;
-	$green_bg: #f0f9fc;
-
-
 	.pb-compare-box__head {
-		background-color: $green;
+		background-color: var(--pb_colset_blue);
 	}
 
 	.pb-list li::before {
-		color: $green;
-		background-color: $green;
+		color: var(--pb_colset_blue);
+		background-color: var(--pb_colset_blue);
 	}
 
 	.pb-compare-box__body {
-		background-color: $green_bg;
+		background-color: var(--pb_colset_blue_thin);
 	}
 
 }
@@ -169,30 +147,28 @@
 .pb-compare-box[data-colset="1"] {
 
 	.pb-compare-box__head {
-		background-color: #6fc7e1;
+		background-color: var(--pb_colset_compare_01_l);
 	}
 
 	.pb-compare-box__body__l .pb-list li::before {
-		color: #6fc7e1;
-		background-color: #6fc7e1;
+		color: var(--pb_colset_compare_01_l);
+		background-color: var(--pb_colset_compare_01_l);
 	}
 
 	.pb-compare-box__body {
-		background-color: #f0f9fc;
+		background-color: var(--pb_colset_compare_01_l_bg);
 	}
 
 	.pb-compare-box__head__r {
-		background-color: #ffa883;
+		background-color: var(--pb_colset_compare_01_r);
 	}
 
 	.pb-compare-box__body__r .pb-list li::before {
-		color: #ffa883;
-		background-color: #ffa883;
+		color: var(--pb_colset_compare_01_r);
+		background-color: var(--pb_colset_compare_01_r);
 	}
 
 	.pb-compare-box__body__r {
-		background-color: #fff6f2;
+		background-color: var(--pb_colset_compare_01_r_bg);
 	}
-
-
 }

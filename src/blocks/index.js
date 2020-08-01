@@ -1,9 +1,4 @@
 /**
- * 特定のブロックに関するスクリプトではなく、ブロックエディター上で読み込むスクリプト
+ * ブロックエディター全体に関するスクリプト。
+ * 翻訳ファイルもここに紐付ける
  */
-import { addFilter } from '@wordpress/hooks';
-
-const setPro = (isPro) => {
-	return true;
-};
-// addFilter('pb-hook.isPro', 'pb-blocks-pro', setPro);

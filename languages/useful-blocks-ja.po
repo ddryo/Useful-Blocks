@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
-"POT-Creation-Date: 2020-07-31 19:50+0900\n"
-"PO-Revision-Date: 2020-07-31 19:50+0900\n"
+"POT-Creation-Date: 2020-08-01 20:24+0900\n"
+"PO-Revision-Date: 2020-08-01 22:42+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -25,86 +25,90 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: inc/update\n"
 "X-Poedit-SearchPathExcluded-4: src/blocks/icon.js\n"
 
-#: src/blocks/button/_controls.js:138
+#: src/blocks/button/_controls.js:139
 msgid "URL"
 msgstr ""
 
-#: src/blocks/button/_controls.js:151
+#: src/blocks/button/_controls.js:152
 msgid "Open in new tab"
 msgstr ""
 
-#: src/blocks/button/_controls.js:183
+#: src/blocks/button/_controls.js:184
 msgid "Link rel"
 msgstr ""
 
-#: src/blocks/button/_controls.js:205
+#: src/blocks/button/_controls.js:196
+msgid "Img tag for measurement"
+msgstr ""
+
+#: src/blocks/button/_controls.js:215
 msgid "Link"
 msgstr ""
 
-#: src/blocks/button/_controls.js:228
+#: src/blocks/button/_controls.js:238
 msgid "Link settings"
 msgstr "リンク設定"
 
-#: src/blocks/button/_controls.js:234
+#: src/blocks/button/_controls.js:244
 msgid "Button settings"
 msgstr "ボタン設定"
 
-#: src/blocks/button/_controls.js:240
+#: src/blocks/button/_controls.js:250
 msgid "Left side of button"
 msgstr "ボタンの左側"
 
-#: src/blocks/button/_controls.js:249
+#: src/blocks/button/_controls.js:259
 msgid "Text"
 msgstr "テキスト"
 
-#: src/blocks/button/_controls.js:259
+#: src/blocks/button/_controls.js:269
 msgid "Icon"
 msgstr "アイコン"
 
-#: src/blocks/button/_controls.js:280 src/blocks/button/_controls.js:310
+#: src/blocks/button/_controls.js:290 src/blocks/button/_controls.js:320
 #: src/blocks/compare-box/_controls.js:42
 #: src/blocks/cv-box-note/_controls.js:127 src/blocks/list/_controls.js:165
 msgid "With additional add-ons,"
 msgstr "追加アドオンを使えば、"
 
-#: src/blocks/button/_controls.js:285 src/blocks/button/_controls.js:313
+#: src/blocks/button/_controls.js:295 src/blocks/button/_controls.js:323
 #: src/blocks/cv-box-note/_controls.js:130 src/blocks/list/_controls.js:168
 msgid "you can choose from several types of icons."
 msgstr "アイコンを数種類の中から選択できます。"
 
-#: src/blocks/button/_controls.js:303
+#: src/blocks/button/_controls.js:313
 msgid "Icon displayed on the right edge of the button"
 msgstr "ボタンの右端に表示するアイコン"
 
-#: src/blocks/button/_controls.js:325
+#: src/blocks/button/_controls.js:335
 msgid "Round button"
 msgstr "ボタンを丸くする"
 
-#: src/blocks/button/_controls.js:334
+#: src/blocks/button/_controls.js:344
 msgid "Display text link below button"
 msgstr "ボタン下にテキストリンクを表示"
 
-#: src/blocks/button/_controls.js:342 src/blocks/button/index.js:72
+#: src/blocks/button/_controls.js:352 src/blocks/button/index.js:73
 msgid "Link to : "
 msgstr "リンク先 : "
 
-#: src/blocks/button/_controls.js:352
+#: src/blocks/button/_controls.js:362
 msgid "Text link settings"
 msgstr "テキストリンク設定"
 
-#: src/blocks/button/_controls.js:357
+#: src/blocks/button/_controls.js:367
 msgid "Text before URL"
 msgstr "URL前のテキスト"
 
-#: src/blocks/button/_controls.js:365
+#: src/blocks/button/_controls.js:375
 msgid "URL text to display"
 msgstr "表示するURLテキスト"
 
-#: src/blocks/button/index.js:31
+#: src/blocks/button/index.js:32
 msgid "CV Botton"
 msgstr "CV ボタン"
 
-#: src/blocks/button/index.js:159
+#: src/blocks/button/index.js:166
 msgid "Button text…"
 msgstr "ボタンテキスト…"
 
@@ -121,6 +125,7 @@ msgid "Allow blocks to be placed freely."
 msgstr "ブロックを自由に配置できるようにする。"
 
 #: src/blocks/compare-box/_controls.js:81 src/blocks/cv-box/_controls.js:80
+#: inc/admin_menu.php:6
 msgid "Color set"
 msgstr "カラーセット"
 
@@ -164,7 +169,8 @@ msgstr "テキスト…"
 msgid "Background style"
 msgstr "背景のスタイル"
 
-#: src/blocks/cv-box/index.js:30
+#: src/blocks/cv-box/index.js:30 class/Menu/Tab_Colors.php:129
+#: class/Menu/Tab_Colors.php:219
 msgid "CV Box"
 msgstr "CV ボックス"
 
@@ -212,14 +218,105 @@ msgstr "リストの下に点線をつける"
 msgid "Useful List"
 msgstr "Usefulリスト"
 
-#: class/Init.php:35
+#: src/js/admin_menu.js:32 class/Init.php:192
+msgid "Failed."
+msgstr "失敗しました。"
+
+#: src/js/admin_menu.js:67
+msgid "Do you really want to reset it?"
+msgstr "本当にリセットしますか？"
+
+#. Plugin Name of the plugin/theme
+#: class/Admin_Menu.php:49 class/Admin_Menu.php:50 class/Init.php:57
+msgid "Useful Blocks"
+msgstr "Useful Blocks"
+
+#: class/Init.php:44
 msgid "Go Pro"
 msgstr "プロ版へ"
 
-#. Plugin Name of the plugin/theme
-#: class/Init.php:48
-msgid "Useful Blocks"
-msgstr "Useful Blocks"
+#: class/Init.php:188
+msgid "Succeeded."
+msgstr "成功しました。"
+
+#: class/Menu/Tab_Colors.php:19
+msgid "Common color set"
+msgstr "共通カラーセット"
+
+#: class/Menu/Tab_Colors.php:21
+msgid "Color set common to each block."
+msgstr "各ブロックに共通したカラーセットです。"
+
+#: class/Menu/Tab_Colors.php:35
+msgid "Yellow"
+msgstr "イエロー"
+
+#: class/Menu/Tab_Colors.php:36
+msgid "Pink"
+msgstr "ピンク"
+
+#: class/Menu/Tab_Colors.php:37
+msgid "Green"
+msgstr "グリーン"
+
+#: class/Menu/Tab_Colors.php:38
+msgid "Blue"
+msgstr "ブルー"
+
+#: class/Menu/Tab_Colors.php:65
+msgctxt "color"
+msgid "Base"
+msgstr "基本"
+
+#: class/Menu/Tab_Colors.php:76 class/Menu/Tab_Colors.php:169
+msgctxt "color"
+msgid "Background"
+msgstr "背景"
+
+#: class/Menu/Tab_Colors.php:87 class/Menu/Tab_Colors.php:172
+msgctxt "color"
+msgid "Shadow"
+msgstr "影"
+
+#: class/Menu/Tab_Colors.php:170
+msgctxt "color"
+msgid "Icons"
+msgstr "アイコン"
+
+#: class/Menu/Tab_Colors.php:171
+msgctxt "color"
+msgid "Button"
+msgstr "ボタン"
+
+#: class/Menu/Tab_Colors.php:173
+msgctxt "color"
+msgid "Border"
+msgstr "線"
+
+#: class/Menu/Tab_Colors.php:259
+msgid "Left"
+msgstr "左"
+
+#: class/Menu/Tab_Colors.php:261
+msgid "Right"
+msgstr "右"
+
+#: inc/admin_menu.php:7 inc/admin_menu/reset.php:6
+msgid "Reset"
+msgstr "リセット"
+
+#: inc/admin_menu.php:14
+msgid "Your settings have been saved."
+msgstr "設定を保存しました。"
+
+#: inc/admin_menu.php:18
+msgctxt "lang_slug"
+msgid "en"
+msgstr "ja"
+
+#: inc/admin_menu/reset.php:3
+msgid "Reset settings"
+msgstr "設定をリセットする"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
@@ -233,6 +330,18 @@ msgstr "痒いところに手がとどく、便利なブロックを集めたプ
 #. Author of the plugin/theme
 msgid "Ponhiro, Ryo"
 msgstr "ぽんひろ & 了"
+
+#~ msgctxt "color"
+#~ msgid "Basic"
+#~ msgstr "ベース色"
+
+#~ msgctxt "color"
+#~ msgid "Thin"
+#~ msgstr "薄い色"
+
+#~ msgctxt "color"
+#~ msgid "Dark"
+#~ msgstr "濃い色"
 
 #~ msgid "了"
 #~ msgstr "了"

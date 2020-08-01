@@ -11,6 +11,9 @@ class Init {
 		// データをセット
 		Data::init();
 
+		// 設定ページ
+		Admin_Menu::init();
+
 		// フック処理
 		add_action( 'init', [ $this, '_init' ] );
 		add_filter( 'block_categories', [ $this, 'hook__block_categories' ] );
@@ -18,6 +21,7 @@ class Init {
 		add_action( 'wp_enqueue_scripts', [ $this, 'hook__wp_enqueue_scripts' ], 12 );
 		add_action( 'admin_enqueue_scripts', [$this, 'hook__admin_enqueue_scripts'] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'hook__enqueue_block_editor_assets' ] );
+		add_action( 'wp_ajax_pb_reset_settings', [$this, 'pb_reset_settings'] );
 		if ( ! USFL_BLKS_IS_PRO ) {
 			add_filter( 'plugin_action_links_'. USFL_BLKS_BASENAME, [$this, 'hook__plugin_action_links'] );
 		}
@@ -77,8 +81,7 @@ class Init {
 		);
 		
 		// PHPで生成するスタイル
-		$inline_style = \Ponhiro_Blocks\Style::output( 'front' );
-		wp_add_inline_style( 'ponhiro-blocks-front', $inline_style );
+		wp_add_inline_style( 'ponhiro-blocks-front', \Ponhiro_Blocks\Style::output( 'front' ) );
 	}
 
 	/**
@@ -88,9 +91,10 @@ class Init {
 
 		// 編集画面かどうか
 		$is_editor_page = 'post.php' === $hook_suffix || 'post-new.php' === $hook_suffix;
+		$is_menu_page = false !== strpos( $hook_suffix, 'useful_blocks' );
 
 		// 編集画面 or Useful Blocks 設定ページでのみ読み込む
-		if ( $is_editor_page || strpos( $hook_suffix, 'swell_settings' ) !== false ) {
+		if ( $is_editor_page || $is_menu_page ) {
 
 			wp_enqueue_style(
 				'ponhiro-blocks-admin',
@@ -99,8 +103,59 @@ class Init {
 				USFL_BLKS_VERSION
 			);
 
-			$inline_style = \Ponhiro_Blocks\Style::output( 'editor' );
-			wp_add_inline_style( 'ponhiro-blocks-admin', $inline_style );
+			wp_add_inline_style( 'ponhiro-blocks-admin', \Ponhiro_Blocks\Style::output( 'editor' ) );
+		}
+
+		// 設定ページにだけ読み込むファイル
+		if ( $is_menu_page ) {
+
+			// カラーピッカー
+			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_script( 'wp-color-picker' );
+		
+			// CSS
+			wp_enqueue_style(
+				'ponhiro-blocks-menu',
+				USFL_BLKS_URL .'dist/css/admin_menu.css',
+				[],
+				USFL_BLKS_VERSION
+			);
+
+			// JS
+			wp_enqueue_script(
+				'ponhiro-blocks-menu',
+				USFL_BLKS_URL .'dist/js/admin_menu.js',
+				['wp-color-picker', 'jquery'],
+				USFL_BLKS_VERSION,
+				true
+			);
+
+			// インラインで出力するグローバル変数
+			wp_localize_script( 'ponhiro-blocks-menu', 'pbVars', [
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'ajaxNonce' => wp_create_nonce( 'pb-ajax-nonce' ),
+			] );
+
+			// JS用翻訳ファイルの読み込み
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+
+				// 翻訳用に空のスクリプトを登録
+				wp_enqueue_script(
+					'ponhiro-blocks-script',
+					USFL_BLKS_URL .'assets/js/empty.js',
+					[],
+					USFL_BLKS_VERSION,
+					true
+				);
+				
+				wp_set_script_translations(
+					'ponhiro-blocks-script',
+					USFL_BLKS_DOMAIN,
+					USFL_BLKS_PATH . 'languages'
+				);
+			}
+
+
 		}
 	}
 
@@ -136,6 +191,25 @@ class Init {
 				USFL_BLKS_PATH . 'languages'
 			);
 		}
+	}
+
+
+	/**
+	 * 設定のリセット
+	 */
+	public function pb_reset_settings() {
+
+		if ( !isset( $_POST['nonce'] ) ) return false;
+		$nonce = $_POST['nonce'];
+		if ( wp_verify_nonce( $nonce, 'pb-ajax-nonce' ) ) {
+			
+			delete_option( \Ponhiro_Blocks\Data::DB_NAME['settings'] );
+
+			wp_die( __( 'Succeeded.', USFL_BLKS_DOMAIN ) );
+
+		}
+
+		wp_die( __( 'Failed.', USFL_BLKS_DOMAIN ) );
 	}
 
 }

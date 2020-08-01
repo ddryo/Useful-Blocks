@@ -69,44 +69,38 @@
 // 色
 .pb-cv-box[data-colset="1"] {
 
-	$box_bg: #f5f5f5;
-	$color: #91c13e;
-	$color_shadow: #628328;
-	$note_bg: #fff;
-
 	&[data-bg="on"] {
-		background-color: $box_bg;
+		background-color: var(--pb_colset_cvbox_01_bg);
 	}
 
 	.pb-list li::before {
-		color: #3190b7;
-		background-color: #3190b7;
+		color: var(--pb_colset_cvbox_01_list);
+		background-color: var(--pb_colset_cvbox_01_list);
 	}
 
 	.pb-button__btn {
-		background: $color;
-		box-shadow: 0 4px 0 $color_shadow;
+		background: var(--pb_colset_cvbox_01_btn);
+		box-shadow: 0 4px 0 var(--pb_colset_cvbox_01_shadow);
 	}
 
 	.pb-button__em {
-		color: $color;
+		color: var(--pb_colset_cvbox_01_btn);
 	}
 
 	.pb-cv-box__note {
 
 		&[data-style="border"] {
-			border: 1px solid #fdc44f;
+			border: 1px solid var(--pb_colset_cvbox_01_note);
 
 			.__icon {
-				background-color: #fdc44f;
+				background-color: var(--pb_colset_cvbox_01_note);
 			}
 		}
 
 		&[data-style="bg"] {
-			// background: $note_bg;
 
 			.__icon {
-				color: #fdc44f;
+				color: var(--pb_colset_cvbox_01_note);
 			}
 		}
 	}

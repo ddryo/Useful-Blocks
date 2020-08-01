@@ -22,11 +22,6 @@ class Style {
 	];
 
 	/**
-	 * 
-	 */
-	public static $modules = [];
-
-	/**
 	 * 外部からのインタンス呼び出し無効
 	 */
 	private function __construct() {}
@@ -65,26 +60,12 @@ class Style {
 	}
 
 
-
-	/**
-	 * パーツ化したCSSファイルの読み込み
-	 */
-	public static function add_module( $filename = '' ) {
-
-		self::$modules[] = $filename;
-
-	}
-
-
 	/**
 	 * カスタムスタイルの生成（フロント用）
 	 * @return void
 	 */
-	public static function custom_style() {
-		$SETTING = Data::get_settings();
-
-		// カラーのセット
-		// Style\Color::front( $SETTING );
+	public static function front_style() {
+		// $settings = Data::get_settings();
 	}
 
 
@@ -96,18 +77,35 @@ class Style {
 
 		$settings = Data::get_settings();
 
-		self::add_root( '--pb_colset_yellow', $settings['colset_yellow'] );
-		self::add_root( '--pb_colset_yellow_thin', $settings['colset_yellow_thin'] );
-		self::add_root( '--pb_colset_yellow_dark', $settings['colset_yellow_dark'] );
-		self::add_root( '--pb_colset_pink', $settings['colset_pink'] );
-		self::add_root( '--pb_colset_pink_thin', $settings['colset_pink_thin'] );
-		self::add_root( '--pb_colset_pink_dark', $settings['colset_pink_dark'] );
-		self::add_root( '--pb_colset_green', $settings['colset_green'] );
-		self::add_root( '--pb_colset_green_thin', $settings['colset_green_thin'] );
-		self::add_root( '--pb_colset_green_dark', $settings['colset_green_dark'] );
-		self::add_root( '--pb_colset_blue', $settings['colset_blue'] );
-		self::add_root( '--pb_colset_blue_thin', $settings['colset_blue_thin'] );
-		self::add_root( '--pb_colset_blue_dark', $settings['colset_blue_dark'] );
+		$root_colors = [
+			'colset_yellow',
+			'colset_yellow_thin',
+			'colset_yellow_dark',
+			'colset_pink',
+			'colset_pink_thin',
+			'colset_pink_dark',
+			'colset_green',
+			'colset_green_thin',
+			'colset_green_dark',
+			'colset_blue',
+			'colset_blue_thin',
+			'colset_blue_dark',
+
+			'colset_cvbox_01_bg',
+			'colset_cvbox_01_list',
+			'colset_cvbox_01_btn',
+			'colset_cvbox_01_shadow',
+			'colset_cvbox_01_note',
+
+			'colset_compare_01_l',
+			'colset_compare_01_l_bg',
+			'colset_compare_01_r',
+			'colset_compare_01_r_bg',
+		];
+
+		foreach ( $root_colors as $key ) {
+			self::add_root( '--pb_' . $key, $settings[$key] );
+		}
 
 	}
 
@@ -118,11 +116,15 @@ class Style {
 	public static function output( $type = 'front' ) {
 
 		// スタイルを生成
-		if ( $type === 'front' ) {
+		if ( 'front' === $type ) {
+
 			self::post_style();
-			self::custom_style();
-		} elseif ( $type === 'editor' ) {
+			// self::front_style(); // 今は特にない
+
+		} elseif ( 'editor' === $type ) {
+
 			self::post_style();
+
 		}
 		
 

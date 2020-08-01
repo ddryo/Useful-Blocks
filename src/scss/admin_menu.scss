@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+/*
+ * 設定画面で読み込むCSS
+ */
+@import "mixin/**";
+
+// アイコン
+@import "inc/icomoon";
+
+// ブロックのスタイル
+@import "../blocks/**/_common.scss";
+
+
+@keyframes pbFadeIn {
+
+	100% {
+		opacity: 1;
+	}
+}
+
+#wpbody {
+	min-height: 100vh;
+}
+
+#wpcontent {
+	padding-left: 0;
+}
+
+#wpwrap {
+	background: #f7f7f7;
+}
+
+
+.usfl_blks_page {
+	opacity: 0;
+	animation: pbFadeIn 0s ease 0.2s 1 normal both;
+}
+
+.usfl_blks_page__inner {
+	max-width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.usfl_blks_page__head {
+	padding: 24px 24px 0;
+	background: #ffd22d;
+}
+
+.usfl_blks_page__title {
+
+	display: flex;
+	margin: 16px 0 32px;
+
+	a {
+		display: block;
+	}
+
+	img {
+		display: block;
+		width: 240px;
+	}
+}
+
+.usfl_blks_page__tabs {
+
+	.nav-tab-wrapper {
+		margin: 0;
+		padding: 0;
+		border-bottom: none;
+	}
+
+	.nav-tab {
+		margin: 0;
+		padding: 0.5em 1.5em;
+		color: #fff;
+		background: none;
+		border: none !important;
+		border-radius: 5px 5px 0 0;
+		box-shadow: none !important;
+		transition: 0.25s;
+
+		&:focus {
+			outline: none;
+		}
+
+		&.act_ {
+			color: #333;
+			background: #f7f7f7;
+		}
+	}
+
+}
+
+.usfl_blks_page__body {
+	height: 100%;
+	padding: 24px;
+	overflow-y: auto;
+
+	.tab-contents {
+		display: none;
+	}
+
+	.tab-contents.act_ {
+		display: block;
+	}
+
+	.form-table {
+		position: relative;
+		display: block;
+		margin-top: 24px;
+		margin-bottom: 64px;
+		padding: 16px;
+		background: #fdfdfd;
+		border-radius: 4px;
+		box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+		tbody,
+		tr,
+		td {
+			display: block;
+		}
+
+		th {
+			display: none;
+		}
+	}
+
+	.__field_title {
+		margin-bottom: 24px;
+		font-weight: bold;
+		font-size: 16px;
+
+		.__field + & {
+			margin-top: 40px;
+		}
+	}
+
+	.__preview {
+		font-size: 14px;
+	}
+
+	.__preview_label {
+		margin-top: 1em;
+		font-size: 11px;
+		text-align: center;
+		opacity: 0.75;
+	}
+
+}
+
+
+// 設定項目とプレビューを横並びにするフィールド
+.__field.-flex {
+
+	@include pc {
+		display: flex;
+
+		.__items {
+			flex-basis: 280px;
+		}
+
+		.__label {
+			margin-right: 8px;
+		}
+
+		.__preview {
+			flex-basis: calc(100% - 280px);
+		}
+	}
+
+	@include sp {
+
+		.__preview {
+			margin-top: 16px;
+		}
+	}
+
+}
+
+// カラー設定に関するフィールド
+.__field.-color {
+
+	.__item {
+		display: flex;
+	}
+
+	.__item + .__item {
+		margin-top: 16px;
+	}
+
+	.__label {
+		display: block;
+		margin-top: 4px;
+	}
+}
+
+
+// カラーセットに関するフィールド
+.-pb-color-set {
+
+	// .pb-compare-box{}
+
+	// ちょっと左寄せに
+	.__preview {
+		margin-right: 40px;
+	}
+
+
+	[data-lang="en"] & {
+
+		.__label {
+			min-width: 6em;
+		}
+	}
+
+	[data-lang="ja"] & {
+
+		.__label {
+			min-width: 4em;
+		}
+	}
+
+	.__preview > .pb-compare-box,
+	.__preview > .pb-cv-box {
+		max-width: 400px;
+		margin-bottom: 0 !important;
+	}
+
+	.pb-compare-box__head {
+		min-height: 3em;
+	}
+
+	.pb-compare-box__head__l,
+	.pb-compare-box__head__r {
+		min-height: 2em;
+	}
+
+	.pb-cv-box {
+		margin-bottom: 0 !important;
+	}
+
+	.pb-button__text {
+		margin: 0 !important;
+	}
+
+	.pb-list {
+		font-size: 1em;
+	}
+
+	// .pb-button {
+	// 	margin-top: 1em;
+	// }
+
+	.pb-cv-box__note {
+		margin-top: 1.25em !important;
+	}
+}

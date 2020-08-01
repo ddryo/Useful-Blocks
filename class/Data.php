@@ -86,6 +86,21 @@ class Data {
 			'colset_blue' => '#6fc7e1',
 			'colset_blue_thin' => '#f0f9fc',
 			'colset_blue_dark' => '#419eb9',
+
+
+			// CVボックス
+			'colset_cvbox_01_bg' => '#f5f5f5',
+			'colset_cvbox_01_list' => '#3190b7',
+			'colset_cvbox_01_btn' => '#91c13e',
+			'colset_cvbox_01_shadow' => '#628328',
+			'colset_cvbox_01_note' => '#fdc44f',
+
+			// 比較小
+			'colset_compare_01_l' => '#6fc7e1',
+			'colset_compare_01_l_bg' => '#f0f9fc',
+			'colset_compare_01_r' => '#ffa883',
+			'colset_compare_01_r_bg' => '#fff6f2',
+			
 		];
 	}
 
@@ -96,6 +111,18 @@ class Data {
 	public function set_settings() {
 		$settings = get_option( self::DB_NAME['settings'] ) ?: [];
 		self::$settings = array_merge( self::$default_settings, $settings );
+	}
+
+	/**
+	 * デフォルト値を取得
+	 */
+	public static function get_default_settings( $key = null ) {
+
+		if ( null !== $key ) {
+			return self::$default_settings[$key];
+		}
+		return self::$default_settings;
+
 	}
 
 	/**
