@@ -1,7 +1,5 @@
 const { __ } = wp.i18n;
 
-console.log(wp.i18n);
-
 (function ($) {
 	// ajax処理
 	const ajaxToClearData = (actionName) => {
