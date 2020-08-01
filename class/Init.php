@@ -125,7 +125,7 @@ class Init {
 			wp_enqueue_script(
 				'ponhiro-blocks-menu',
 				USFL_BLKS_URL .'dist/js/admin_menu.js',
-				['wp-color-picker', 'jquery'],
+				['jquery', 'wp-color-picker', 'wp-i18n'],
 				USFL_BLKS_VERSION,
 				true
 			);
