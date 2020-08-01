@@ -24,7 +24,7 @@ export default function (props) {
 	const { colSet, bgStyle } = attributes;
 
 	// カラーセット
-	const colorSets = ['1', '2', '3', '4', '5'];
+	const colorSets = ['1', 'y', 'p', 'g', 'b'];
 
 	// 背景スタイル
 	const bgStyles = ['on', 'shadow', 'none'];
@@ -111,8 +111,8 @@ export default function (props) {
 											data-bg={bgStyle}
 										>
 											<span className='pb-cv-box__inner'>
-												<span className='pb-list__li icon-check'></span>
-												<span className='pb-list__li icon-check'></span>
+												<span className='pb-list__li pb-icon-check'></span>
+												<span className='pb-list__li pb-icon-check'></span>
 												<span className='pb-button'>
 													<span className='pb-button__btn'>
 														<span className='pb-button__em'></span>

@@ -35,9 +35,14 @@
 		}
 
 		.wp-block {
-			margin-top: 16px;
-			margin-bottom: 16px;
+			margin: 0;
+			// margin-top: 16px;
+			// margin-bottom: 16px;
 			pointer-events: auto;
+		}
+
+		.wp-block + .wp-block {
+			margin-top: 1em;
 		}
 
 		p {

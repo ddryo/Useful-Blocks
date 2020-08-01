@@ -22,7 +22,7 @@ import {
 	Button,
 	ButtonGroup,
 	// Tooltip,
-	// Toolbar,
+	TextareaControl,
 	ToolbarButton,
 	ToolbarGroup,
 	Popover,
@@ -48,6 +48,7 @@ export default function (props) {
 		isRound,
 		isNewTab,
 		rel,
+		imgTag,
 	} = attributes;
 	const { updateBlockAttributes } = useDispatch('core/block-editor');
 
@@ -189,6 +190,15 @@ export default function (props) {
 					if (siblingsImageId) {
 						updateBlockAttributes(siblingsImageId, { rel: value });
 					}
+				}}
+			/>
+			<TextareaControl
+				label={__('Img tag for measurement', textDomain)}
+				// help=''
+				value={imgTag}
+				rows='4'
+				onChange={(html) => {
+					setAttributes({ imgTag: html });
 				}}
 			/>
 		</>

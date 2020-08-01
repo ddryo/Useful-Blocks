@@ -1,7 +1,4 @@
-/************************************
-** CVボタン
-************************************/
-
+// CVボックス
 .pb-cv-box {
 	// * {
 	// 	box-sizing: border-box;
@@ -21,13 +18,10 @@
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 	}
 
-	// .pb-list {
 
-	// 	li {
-	// 		font-size: 0.9em;
-	// 	}
-	// }
-
+	.pb-list {
+		font-size: 0.9em;
+	}
 }
 
 .pb-cv-box__inner {
@@ -101,10 +95,10 @@
 	.pb-cv-box__note {
 
 		&[data-style="border"] {
-			border: 1px solid #f0c24d;
+			border: 1px solid #fdc44f;
 
 			.__icon {
-				background-color: #f0c24d;
+				background-color: #fdc44f;
 			}
 		}
 
@@ -112,192 +106,188 @@
 			// background: $note_bg;
 
 			.__icon {
-				color: #f0c24d;
+				color: #fdc44f;
 			}
 		}
 	}
 }
 
-.pb-cv-box[data-colset="2"] {
 
-	$box_bg: #f2f8e8;
-	$color: #91c13e;
-	$color_shadow: #61841f;
-	$note_bg: #fff;
+// イエロー
+.pb-cv-box[data-colset="y"] {
+
+	// $box_bg: #fef9ed;
+	// $color: #fdc44f;
+	// $color_shadow: #b4923a;
 
 	&[data-bg="on"] {
-		background-color: $box_bg;
+		background-color: var(--pb_colset_yellow_thin);
 	}
 
 	.pb-list li::before {
-		color: $color;
-		background-color: $color;
+		color: var(--pb_colset_yellow);
+		background-color: var(--pb_colset_yellow);
 	}
 
 	.pb-button__btn {
-		background: $color;
-		box-shadow: 0 4px 0 $color_shadow;
-	}
-
-	.pb-button__em {
-		color: $color;
-	}
-
-	.pb-cv-box__note {
-
-		&[data-style="border"] {
-			border: 1px solid $color;
-
-			.__icon {
-				background-color: $color;
-			}
-		}
-
-		&[data-style="bg"] {
-			// background: $note_bg;
-
-			.__icon {
-				color: $color;
-			}
-		}
-	}
-}
-
-.pb-cv-box[data-colset="3"] {
-
-	$box_bg: #fdf8ea;
-	$color: #f0c24d;
-	$color_shadow: #b4923a;
-	$note_bg: #fff;
-
-	&[data-bg="on"] {
-		background-color: $box_bg;
-	}
-
-	.pb-list li::before {
-		color: $color;
-		background-color: $color;
-	}
-
-	.pb-button__btn {
-		background: $color;
-		box-shadow: 0 4px 0 $color_shadow;
+		background: var(--pb_colset_yellow);
+		box-shadow: 0 4px 0 var(--pb_colset_yellow_dark);
 	}
 
 	// .pb-button__text {
 	// 	color: #333;
 	// }
 
-
 	.pb-button__em {
-		color: $color;
+		color: var(--pb_colset_yellow);
 	}
 
 	.pb-cv-box__note {
 
 		&[data-style="border"] {
-			border: 1px solid $color;
+			border: 1px solid var(--pb_colset_yellow);
 
 			.__icon {
-				background-color: $color;
+				background-color: var(--pb_colset_yellow);
 			}
 		}
 
 		&[data-style="bg"] {
-			// background: $note_bg;
 
 			.__icon {
-				color: $color;
+				color: var(--pb_colset_yellow);
 			}
 		}
 	}
 }
 
-.pb-cv-box[data-colset="4"] {
+// ピンク
+.pb-cv-box[data-colset="p"] {
 
-	$box_bg: #e0f4fa;
-	$color: #00a7d7;
-	$color_shadow: #007da1;
-	$note_bg: #fff;
+	// $box_bg: #ffefef;
+	// $color: #fd9392;
+	// $color_shadow: #d07373;
 
 	&[data-bg="on"] {
-		background-color: $box_bg;
+		background-color: var(--pb_colset_pink_thin);
 	}
 
 	.pb-list li::before {
-		color: $color;
-		background-color: $color;
+		color: var(--pb_colset_pink);
+		background-color: var(--pb_colset_pink);
 	}
 
 	.pb-button__btn {
-		background: $color;
-		box-shadow: 0 4px 0 $color_shadow;
+		background: var(--pb_colset_pink);
+		box-shadow: 0 4px 0 var(--pb_colset_pink_dark);
 	}
 
 	.pb-button__em {
-		color: $color;
+		color: var(--pb_colset_pink);
 	}
 
 	.pb-cv-box__note {
 
 		&[data-style="border"] {
-			border: 1px solid $color;
+			border: 1px solid var(--pb_colset_pink);
 
 			.__icon {
-				background-color: $color;
+				background-color: var(--pb_colset_pink);
 			}
 		}
 
 		&[data-style="bg"] {
-			// background: $note_bg;
 
 			.__icon {
-				color: $color;
+				color: var(--pb_colset_pink);
 			}
 		}
 	}
 }
 
-.pb-cv-box[data-colset="5"] {
+// グリーン
+.pb-cv-box[data-colset="g"] {
 
-	$box_bg: #ffefef;
-	$color: #ff7978;
-	$color_shadow: #bf5b5a;
-	$note_bg: #fff;
+	// $box_bg: #f2f8e8;
+	// $color: #91c13e;
+	// $color_shadow: #61841f;
 
 	&[data-bg="on"] {
-		background-color: $box_bg;
+		background-color: var(--pb_colset_green_thin);
 	}
 
 	.pb-list li::before {
-		color: $color;
-		background-color: $color;
+		color: var(--pb_colset_green);
+		background-color: var(--pb_colset_green);
 	}
 
 	.pb-button__btn {
-		background: $color;
-		box-shadow: 0 4px 0 $color_shadow;
+		background: var(--pb_colset_green);
+		box-shadow: 0 4px 0 var(--pb_colset_green_dark);
 	}
 
 	.pb-button__em {
-		color: $color;
+		color: var(--pb_colset_green);
 	}
 
 	.pb-cv-box__note {
 
 		&[data-style="border"] {
-			border: 1px solid $color;
+			border: 1px solid var(--pb_colset_green);
 
 			.__icon {
-				background-color: $color;
+				background-color: var(--pb_colset_green);
 			}
 		}
 
 		&[data-style="bg"] {
-			// background: $note_bg;
 
 			.__icon {
-				color: $color;
+				color: var(--pb_colset_green);
+			}
+		}
+	}
+}
+
+// ブルー
+.pb-cv-box[data-colset="b"] {
+
+	// $box_bg: #f0f9fc;
+	// $color: #6fc7e1;
+	// $color_shadow: #419eb9;
+
+	&[data-bg="on"] {
+		background-color: var(--pb_colset_blue_thin);
+	}
+
+	.pb-list li::before {
+		color: var(--pb_colset_blue);
+		background-color: var(--pb_colset_blue);
+	}
+
+	.pb-button__btn {
+		background: var(--pb_colset_blue);
+		box-shadow: 0 4px 0 var(--pb_colset_blue_dark);
+	}
+
+	.pb-button__em {
+		color: var(--pb_colset_blue);
+	}
+
+	.pb-cv-box__note {
+
+		&[data-style="border"] {
+			border: 1px solid var(--pb_colset_blue);
+
+			.__icon {
+				background-color: var(--pb_colset_blue);
+			}
+		}
+
+		&[data-style="bg"] {
+
+			.__icon {
+				color: var(--pb_colset_blue);
 			}
 		}
 	}

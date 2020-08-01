@@ -8,6 +8,7 @@ import {
 	RichText,
 	// InnerBlocks,
 } from '@wordpress/block-editor';
+import { RawHTML } from '@wordpress/element';
 
 /**
  * External dependencies
@@ -93,6 +94,12 @@ registerBlockType('ponhiro-blocks/button', {
 		isShowLink: {
 			type: 'boolean',
 			default: true,
+		},
+		imgTag: {
+			type: 'string',
+			// source: 'html',
+			// selector: '',
+			default: '',
 		},
 	},
 
@@ -193,6 +200,7 @@ registerBlockType('ponhiro-blocks/button', {
 			rel,
 			isShowLink,
 			linkUrl,
+			imgTag,
 		} = attributes;
 
 		let blockClass = blockName;
@@ -228,6 +236,10 @@ registerBlockType('ponhiro-blocks/button', {
 						/>
 						{arrowIcon && <i className={arrowIcon}></i>}
 					</a>
+					{!!imgTag && (
+						// 計測用HTMLタグ
+						<RawHTML>{imgTag}</RawHTML>
+					)}
 				</div>
 				{isShowLink && (
 					<div className={`pb-text-link`}>

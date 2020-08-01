@@ -29,7 +29,7 @@ export default function (props) {
 	);
 
 	// カラーセット
-	const colorSets = ['1', '2', '3', '4'];
+	const colorSets = ['y', 'p', 'g', 'b', '1'];
 
 	const limitSettings = (
 		<PanelBody
