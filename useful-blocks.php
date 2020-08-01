@@ -3,7 +3,7 @@
  * Plugin Name: Useful Blocks
  * Plugin URI: https://ponhiro.com/useful-blocks/
  * Description: It is a plugin that collects very convenient blocks.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Ponhiro, Ryo
  * Author URI: https://ponhiro.com/useful-blocks/
  * License: GPL2 or later
