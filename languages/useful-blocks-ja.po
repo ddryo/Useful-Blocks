@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
-"POT-Creation-Date: 2020-08-01 20:24+0900\n"
-"PO-Revision-Date: 2020-08-01 22:42+0900\n"
+"POT-Creation-Date: 2020-08-02 12:27+0900\n"
+"PO-Revision-Date: 2020-08-02 12:27+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -129,7 +129,7 @@ msgstr "ブロックを自由に配置できるようにする。"
 msgid "Color set"
 msgstr "カラーセット"
 
-#: src/blocks/compare-box/index.js:27
+#: src/blocks/compare-box/index.js:27 class/Menu/Tab_Colors.php:221
 msgid "Comparison box"
 msgstr "比較ボックス"
 
@@ -169,8 +169,7 @@ msgstr "テキスト…"
 msgid "Background style"
 msgstr "背景のスタイル"
 
-#: src/blocks/cv-box/index.js:30 class/Menu/Tab_Colors.php:129
-#: class/Menu/Tab_Colors.php:219
+#: src/blocks/cv-box/index.js:30 class/Menu/Tab_Colors.php:130
 msgid "CV Box"
 msgstr "CV ボックス"
 
@@ -218,11 +217,11 @@ msgstr "リストの下に点線をつける"
 msgid "Useful List"
 msgstr "Usefulリスト"
 
-#: src/js/admin_menu.js:32 class/Init.php:192
+#: src/js/admin_menu.js:33 class/Init.php:212
 msgid "Failed."
 msgstr "失敗しました。"
 
-#: src/js/admin_menu.js:67
+#: src/js/admin_menu.js:68
 msgid "Do you really want to reset it?"
 msgstr "本当にリセットしますか？"
 
@@ -235,7 +234,7 @@ msgstr "Useful Blocks"
 msgid "Go Pro"
 msgstr "プロ版へ"
 
-#: class/Init.php:188
+#: class/Init.php:208
 msgid "Succeeded."
 msgstr "成功しました。"
 
@@ -268,36 +267,36 @@ msgctxt "color"
 msgid "Base"
 msgstr "基本"
 
-#: class/Menu/Tab_Colors.php:76 class/Menu/Tab_Colors.php:169
+#: class/Menu/Tab_Colors.php:76 class/Menu/Tab_Colors.php:170
 msgctxt "color"
 msgid "Background"
 msgstr "背景"
 
-#: class/Menu/Tab_Colors.php:87 class/Menu/Tab_Colors.php:172
+#: class/Menu/Tab_Colors.php:87 class/Menu/Tab_Colors.php:173
 msgctxt "color"
 msgid "Shadow"
 msgstr "影"
 
-#: class/Menu/Tab_Colors.php:170
+#: class/Menu/Tab_Colors.php:171
 msgctxt "color"
 msgid "Icons"
 msgstr "アイコン"
 
-#: class/Menu/Tab_Colors.php:171
+#: class/Menu/Tab_Colors.php:172
 msgctxt "color"
 msgid "Button"
 msgstr "ボタン"
 
-#: class/Menu/Tab_Colors.php:173
+#: class/Menu/Tab_Colors.php:174
 msgctxt "color"
 msgid "Border"
 msgstr "線"
 
-#: class/Menu/Tab_Colors.php:259
+#: class/Menu/Tab_Colors.php:261
 msgid "Left"
 msgstr "左"
 
-#: class/Menu/Tab_Colors.php:261
+#: class/Menu/Tab_Colors.php:263
 msgid "Right"
 msgstr "右"
 
@@ -305,14 +304,27 @@ msgstr "右"
 msgid "Reset"
 msgstr "リセット"
 
-#: inc/admin_menu.php:14
+#: inc/admin_menu.php:11
 msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
-#: inc/admin_menu.php:18
+#: inc/admin_menu.php:14
 msgctxt "lang_slug"
 msgid "en"
 msgstr "ja"
+
+#: inc/admin_menu.php:45
+#, php-format
+msgid "Only the %s can actually save the settings."
+msgstr "実際に設定が保存できるのは%sのみです。"
+
+#: inc/admin_menu.php:46
+msgid "Pro version"
+msgstr "Pro版"
+
+#: inc/admin_menu.php:49
+msgid "In the free version, you can check the usability of the setting page."
+msgstr "無料版では、設定ページの使い勝手を確認できます。"
 
 #: inc/admin_menu/reset.php:3
 msgid "Reset settings"
@@ -351,9 +363,6 @@ msgstr "ぽんひろ & 了"
 
 #~ msgid "https://swell-theme.com/"
 #~ msgstr "https://swell-theme.com/"
-
-#~ msgid "In the pro version, you can choose from several types of icons."
-#~ msgstr "プロ版では、アイコンを数種類の中から選択できます。"
 
 #~ msgid "With PRO features,"
 #~ msgstr "プロ版の機能を使うと、"

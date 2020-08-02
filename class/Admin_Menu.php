@@ -56,7 +56,12 @@ class Admin_Menu {
 					echo '<div style="padding:2em;font-size:2em;">※ IE以外のブラウザをお使いください。</div>';
 					return;
 				}
-				require_once USFL_BLKS_PATH . 'inc/admin_menu.php';
+
+				if ( USFL_BLKS_IS_PRO ) {
+					do_action( 'usefl_blks_admin_menu' );
+				} else {
+					require_once USFL_BLKS_PATH . 'inc/admin_menu.php';
+				}
 			},
 			'dashicons-screenoptions', // アイコン
 			30 // 管理画面での表示位置

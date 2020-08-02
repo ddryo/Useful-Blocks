@@ -24,7 +24,7 @@
 }
 
 #wpcontent {
-	padding-left: 0;
+	padding-left: 0 !important;
 }
 
 #wpwrap {
@@ -35,7 +35,85 @@
 .usfl_blks_page {
 	opacity: 0;
 	animation: pbFadeIn 0s ease 0.2s 1 normal both;
+
+	&.-is-free {
+
+		.usfl_blks_page__body {
+
+			@include tab {
+				margin-right: 240px;
+			}
+
+		}
+	}
 }
+
+.usfl_blks_page__adarea {
+
+
+
+	// @include tab {
+	position: fixed;
+	right: 16px;
+	bottom: 40px;
+	width: 240px;
+	text-align: center;
+	// bottom: 40%;
+	// transform: translateY(50%);
+	// }
+
+	@include mobile {
+		bottom: 16px;
+		width: 120px;
+		margin: 0 auto;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.__ad_item {
+		padding: 16px;
+		background-color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+		@include mobile {
+			padding: 8px;
+		}
+	}
+
+	.__ad_item + .__ad_item {
+		margin-top: 24px;
+
+		@include mobile {
+			margin-top: 16px;
+		}
+	}
+
+	// .-ponhiro {
+	// 	img {
+	// 		border: solid 1px #ffd22d;
+	// 	}
+	// }
+
+	// .-swell{}
+
+	span {
+		display: block;
+		margin-top: 8px;
+		line-height: 1;
+		text-align: center;
+
+		@include mobile {
+			// margin-top: 4px;
+			// font-size: 10px;
+			display: none;
+		}
+	}
+}
+
 
 .usfl_blks_page__inner {
 	max-width: 1000px;
@@ -51,6 +129,7 @@
 .usfl_blks_page__title {
 
 	display: flex;
+	align-items: center;
 	margin: 16px 0 32px;
 
 	a {
@@ -59,7 +138,39 @@
 
 	img {
 		display: block;
-		width: 240px;
+		max-width: 280px;
+
+		@include mobile {
+			width: 50vw;
+		}
+	}
+}
+
+.usfl_blks_page__gopro {
+	display: flex !important;
+	align-items: center;
+	margin-top: 2px;
+	margin-left: 16px;
+	padding: 0.4em 0.6em;
+	color: #ffd22d;
+	font-size: 16px;
+	text-decoration: none;
+	background-color: #fff;
+	border-radius: 5px;
+	transition: 0.25s;
+
+	i {
+		margin-right: 6px;
+		margin-left: -2px;
+	}
+
+	span {
+		transition: transform 0.25s;
+	}
+
+	&:hover {
+		color: #00babd;
+		transform: scale(1.05);
 	}
 }
 
@@ -81,6 +192,11 @@
 		box-shadow: none !important;
 		transition: 0.25s;
 
+		span {
+			font-size: 0.85em;
+			opacity: 0.8;
+		}
+
 		&:focus {
 			outline: none;
 		}
@@ -91,6 +207,30 @@
 		}
 	}
 
+}
+
+.usfl_blks_page__free_message {
+
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	padding: 2em 2em 2em 4.5em;
+	line-height: 1.6;
+	background: #fff;
+	border: solid 1px #ffd22d;
+
+	i {
+		position: absolute;
+		top: 50%;
+		left: 1em;
+		display: block;
+		padding: 6px;
+		color: #fff;
+		font-size: 1.25em;
+		background: #ffd22d;
+		border-radius: 40px;
+		transform: translateY(-50%);
+	}
 }
 
 .usfl_blks_page__body {
@@ -204,7 +344,11 @@
 
 	// ちょっと左寄せに
 	.__preview {
-		margin-right: 40px;
+
+		@include pc {
+			margin-right: 40px;
+		}
+
 	}
 
 
