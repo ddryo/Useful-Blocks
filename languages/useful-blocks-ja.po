@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
 "POT-Creation-Date: 2020-08-02 12:27+0900\n"
-"PO-Revision-Date: 2020-08-02 12:27+0900\n"
+"PO-Revision-Date: 2020-08-02 13:46+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: src/blocks/button/_controls.js:196
 msgid "Img tag for measurement"
-msgstr ""
+msgstr "計測用imgタグ"
 
 #: src/blocks/button/_controls.js:215
 msgid "Link"
