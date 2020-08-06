@@ -24,6 +24,7 @@
 		height: 1em;
 		margin: 0 0.75em 0 0 !important;
 		padding: 8px !important;
+		color: #fff;
 		font-size: 1em;
 		line-height: 1;
 		text-align: center;
@@ -39,16 +40,15 @@
 	}
 }
 
-.pb-cv-box__note[data-style="border"] .__icon {
-	color: #fff;
-}
+// .pb-cv-box__note[data-style="border"] .__icon {
+// 	color: #fff;
+// }
 
 .pb-cv-box__note[data-style="bg"] {
 	background-color: #fff;
 
-	.__icon {
-		// background-color: #fff;
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-	}
+	// .__icon {
+	// 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+	// }
 
 }

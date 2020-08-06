@@ -104,12 +104,14 @@ export default function (props) {
 										className='__label'
 										data-selected={isSelected || null}
 									>
+										<div className='pb-cv-box__notewrap'>
 										<span
 											className='pb-cv-box__note -preview'
 											data-style={style}
 										>
-											Text...
+											{'border' === style ? 'Border' : 'White'}
 										</span>
+										</div>
 									</label>
 								</div>
 							);
