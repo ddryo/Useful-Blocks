@@ -34,11 +34,6 @@ define( 'USFL_BLKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'USFL_BLKS_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
- * 翻訳ファイルを登録 ( 自前の翻訳ファイルを読み込む )
- */
-load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-ja.mo');
-
-/**
  * Autoload
  */
 require_once( __DIR__ . '/vendor/autoload.php' );
@@ -47,6 +42,11 @@ require_once( __DIR__ . '/vendor/autoload.php' );
  * プラグイン Init
  */
 add_action( 'plugins_loaded', function() {
+	// 翻訳
+	$locale = apply_filters( 'plugin_locale', determine_locale(), USFL_BLKS_DOMAIN );
+	load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-' . $locale . '.mo' );
+
+
 	if ( ! defined('USFL_BLKS_IS_PRO') ) define( 'USFL_BLKS_IS_PRO', false );
 	new Ponhiro_Blocks\Init();
 });
