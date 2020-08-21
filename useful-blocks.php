@@ -36,7 +36,16 @@ define( 'USFL_BLKS_BASENAME', plugin_basename( __FILE__ ) );
 /**
  * Autoload
  */
-require_once( __DIR__ . '/vendor/autoload.php' );
+spl_autoload_register( function( $classname ) {
+
+	if ( false === strpos( $classname, 'Ponhiro_Blocks' ) ) return;
+
+	$file_name = str_replace( 'Ponhiro_Blocks\\', '', $classname );
+	$file_name = str_replace( '\\', '/', $file_name );
+	$file = USFL_BLKS_PATH . 'class/' . $file_name . '.php';
+
+	if ( file_exists( $file ) ) require $file;
+});
 
 /**
  * プラグイン Init
@@ -46,7 +55,6 @@ add_action( 'plugins_loaded', function() {
 	$locale = apply_filters( 'plugin_locale', determine_locale(), USFL_BLKS_DOMAIN );
 	load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-' . $locale . '.mo' );
 
-
-	if ( ! defined('USFL_BLKS_IS_PRO') ) define( 'USFL_BLKS_IS_PRO', false );
+	if ( ! defined( 'USFL_BLKS_IS_PRO' ) ) define( 'USFL_BLKS_IS_PRO', false );
 	new Ponhiro_Blocks\Init();
 });

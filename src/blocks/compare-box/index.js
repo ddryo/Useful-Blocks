@@ -16,7 +16,6 @@ import { textDomain, blockCategory, isPro } from '@blocks/config';
  * Internal dependencies
  */
 import MyControls from './_controls';
-import './scss/_inline.scss';
 
 /**
  * Block
@@ -38,10 +37,10 @@ registerBlockType('ponhiro-blocks/compare-box', {
 			type: 'boolean',
 			default: true,
 		},
-		listTag: {
-			type: 'string',
-			default: 'ul',
-		},
+		// listTag: {
+		// 	type: 'string',
+		// 	default: 'ul',
+		// },
 		headLeft: {
 			type: 'array',
 			source: 'children',
@@ -60,7 +59,7 @@ registerBlockType('ponhiro-blocks/compare-box', {
 
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
-		const { listTag, headLeft, headRight, colSet } = attributes;
+		const { headLeft, headRight, colSet } = attributes;
 		const blockClass = classnames(blockName, className, '-ponhiro-blocks');
 
 		return (
@@ -102,7 +101,7 @@ registerBlockType('ponhiro-blocks/compare-box', {
 	},
 
 	save: ({ attributes }) => {
-		const { listTag, headLeft, headRight, colSet } = attributes;
+		const { headLeft, headRight, colSet } = attributes;
 		const blockClass = classnames(blockName);
 		// const blockClass = blockName;
 		return (

@@ -20,8 +20,12 @@ class Admin_Menu {
 	const PAGE_NAMES = [
 		// basic
 		'colors'  => 'usfl_blks_colors',
+		'icons'  => 'usfl_blks_iconss',
 		'reset'   => 'usfl_blks_reset',
 	];
+
+	// メニューのタブ
+	public static  $menu_tabs = [];
 
 	// 外部からインスタンス化させない
 	private function __construct() {}
@@ -34,6 +38,12 @@ class Admin_Menu {
 
 		if ( isset( self::$instance ) ) return;
 		self::$instance = new Admin_Menu();
+
+		self::$menu_tabs = [
+			'colors' => __( 'Color set', 'useful-blocks' ),
+			'icons' => __( 'Icon image', 'useful-blocks' ),
+			'reset'  => __( 'Reset', 'useful-blocks' ),
+		];
 
 		add_action( 'admin_menu', [ self::$instance, 'hook__admin_menu' ] );
 		add_action( 'admin_init', [ self::$instance, 'hook__admin_init' ] );
@@ -80,7 +90,28 @@ class Admin_Menu {
 		Menu\Tab_Colors::color_set( self::PAGE_NAMES['colors'] );
 		Menu\Tab_Colors::cv_box( self::PAGE_NAMES['colors'] );
 		Menu\Tab_Colors::compare( self::PAGE_NAMES['colors'] );
+		Menu\Tab_Colors::iconbox( self::PAGE_NAMES['colors'] );
+		Menu\Tab_Icons::iconbox( self::PAGE_NAMES['icons'] );
 
+	}
+
+	/**
+	 * メディアアップローダー
+	 */
+	public static function mediabtn( $id = '', $src = '', $db = '' ) {
+		$name = $db ? $db . '['. $id . ']' : $id;
+	?>
+		<input type="hidden" id="src_<?=$id?>" name="<?=$name?>" value="<?=esc_attr( $src )?>" />
+		<div id="preview_<?=$id?>" class="pb-mediaPreview">
+			<?php if ( $src ) : ?>
+				<img src="<?=esc_url( $src )?>" alt="preview" style="max-width:100%;">
+			<?php endif; ?>
+		</div>
+		<div class="pb-mediaBtns">
+			<input class="button" type="button" name="pb-media-upload" data-id="<?=$id?>" value="<?=__( 'Select image', 'useful-blocks' )?>" />
+			<input class="button" type="button" name="pb-media-clear" value="<?=__( 'Delete image', 'useful-blocks' )?>" data-id="<?=$id?>" />
+		</div>
+	<?php
 	}
 
 }

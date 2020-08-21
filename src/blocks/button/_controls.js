@@ -34,6 +34,7 @@ import {
 // import classnames from 'classnames';
 import { textDomain, isPro } from '@blocks/config';
 // import pbIcon from '@blocks/icon';
+import FreePreview from '@blocks/freePreview';
 
 export default function (props) {
 	const { attributes, setAttributes, siblingsImageId } = props;
@@ -283,25 +284,14 @@ export default function (props) {
 								/>
 							) : (
 								<BaseControl>
-									{!isPro ? (
-										<div className='pb-free-noticeBox'>
-											<a href='https://ponhiro.com/useful-blocks/'>
-												{__(
-													'With additional add-ons,',
-													textDomain
-												)}
-											</a>
-											{__(
-												'you can choose from several types of icons.',
-												textDomain
-											)}
-											<div className='pb-free-ctrlPreview'>
-												{emIconButtons}
-											</div>
-										</div>
-									) : (
-										emIconButtons
-									)}
+									<FreePreview
+										description={__(
+											'you can choose from several types of icons.',
+											textDomain
+										)}
+									>
+										{emIconButtons}
+									</FreePreview>
 								</BaseControl>
 							)}
 						</div>
@@ -314,22 +304,14 @@ export default function (props) {
 								textDomain
 							)}
 						</BaseControl.VisualLabel>
-						{!isPro ? (
-							<div className='pb-free-noticeBox'>
-								<a href='https://ponhiro.com/useful-blocks/'>
-									{__('With additional add-ons,', textDomain)}
-								</a>
-								{__(
-									'you can choose from several types of icons.',
-									textDomain
-								)}
-								<div className='pb-free-ctrlPreview'>
-									{arrowIconButtons}
-								</div>
-							</div>
-						) : (
-							arrowIconButtons
-						)}
+						<FreePreview
+							description={__(
+								'you can choose from several types of icons.',
+								textDomain
+							)}
+						>
+							{arrowIconButtons}
+						</FreePreview>
 					</BaseControl>
 					<ToggleControl
 						label={__('Round button', textDomain)}

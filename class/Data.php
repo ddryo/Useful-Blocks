@@ -100,7 +100,16 @@ class Data {
 			'colset_compare_01_l_bg' => '#f0f9fc',
 			'colset_compare_01_r' => '#ffa883',
 			'colset_compare_01_r_bg' => '#fff6f2',
-			
+
+			// アイコンボックス
+			'colset_iconbox_01' => '#6e828a',
+			'colset_iconbox_01_bg' => '#fff',
+			'colset_iconbox_01_icon' => '#ee8f81',
+
+			'iconbox_img_01' => '',
+			'iconbox_img_02' => '',
+			'iconbox_img_03' => '',
+			'iconbox_img_04' => '',
 		];
 	}
 

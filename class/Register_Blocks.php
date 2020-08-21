@@ -11,6 +11,7 @@ class Register_Blocks {
 		$this->_register_block_type( 'cv-box' );
 		$this->_register_block_type( 'cv-box-note' );
 		$this->_register_block_type( 'compare-box' );
+		$this->_register_block_type( 'iconbox' );
 		$this->_register_block_type( 'list' );
 		$this->_register_block_type( 'button' );
 		$this->_register_block_type( 'image' );

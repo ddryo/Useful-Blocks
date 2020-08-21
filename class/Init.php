@@ -41,7 +41,7 @@ class Init {
 	 */
 	public function hook__plugin_action_links( $links ) {
 		return array_merge( $links, [
-			'<a class="pb-link-gopro" target="_blank" href="https://ponhiro.com/useful-blocks/">' . esc_html__( 'Go Pro', USFL_BLKS_DOMAIN ) . '</a>',
+			'<a class="pb-link-gopro" target="_blank" href="https://ponhiro.com/useful-blocks/" style="color: #42ce78;font-weight: 700;">' . esc_html__( 'Go Pro', USFL_BLKS_DOMAIN ) . '</a>',
 		]);
 	}
 
@@ -89,19 +89,14 @@ class Init {
 	 */
 	public function hook__admin_enqueue_scripts( $hook_suffix ) {
 
-		// 編集画面かどうか
+		// 投稿編集画面かどうか
 		$is_editor_page = 'post.php' === $hook_suffix || 'post-new.php' === $hook_suffix;
+
+		// 設定ページかどうか
 		$is_menu_page = false !== strpos( $hook_suffix, 'useful_blocks' );
 
-		// 編集画面 or Useful Blocks 設定ページでのみ読み込む
+		// 編集画面 or 設定ページでのみ読み込む
 		if ( $is_editor_page || $is_menu_page ) {
-
-			wp_enqueue_style(
-				'ponhiro-blocks-admin',
-				USFL_BLKS_URL .'dist/css/admin.css',
-				[],
-				USFL_BLKS_VERSION
-			);
 
 			wp_add_inline_style( 'ponhiro-blocks-admin', \Ponhiro_Blocks\Style::output( 'editor' ) );
 		}
@@ -112,6 +107,10 @@ class Init {
 			// カラーピッカー
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
+
+			// メディアアップローダー
+			wp_enqueue_media();
+			wp_enqueue_script( 'ponhiro-blocks-media', USFL_BLKS_URL . '/dist/js/media.js', ['jquery'], USFL_BLKS_VERSION, true );
 		
 			// CSS
 			wp_enqueue_style(
@@ -154,8 +153,6 @@ class Init {
 					USFL_BLKS_PATH . 'languages'
 				);
 			}
-
-
 		}
 	}
 
@@ -174,12 +171,11 @@ class Init {
 		);
 
 		// スクリプト
-		$asset = include( USFL_BLKS_PATH. 'dist/blocks/index.asset.php');
 		wp_enqueue_script(
 			'ponhiro-blocks-script',
-			USFL_BLKS_URL .'dist/blocks/index.js',
-			$asset['dependencies'],
-			$asset['version'],
+			USFL_BLKS_URL .'assets/js/empty.js',
+			[],
+			USFL_BLKS_VERSION,
 			true
 		);
 

@@ -16,6 +16,7 @@ import { InspectorControls } from '@wordpress/block-editor';
  */
 // import classnames from 'classnames';
 import { textDomain, isPro } from '@blocks/config';
+import FreePreview from '@blocks/freePreview';
 
 /**
  * Custom Component
@@ -45,33 +46,6 @@ export default function (props) {
 			val: 'pb-icon-exclamation',
 		},
 	];
-
-	const iconButtons = (
-		<ButtonGroup className='pb-btn-group -wide-btns'>
-			{Icons.map((_icon) => {
-				const iconName = _icon.val;
-				const isSelected = iconName === icon;
-				return (
-					<Button
-						// isSecondary
-						isPrimary={isSelected}
-						key={`pb-cv-note-icon-${iconName}`}
-						onClick={() => {
-							if (!isPro) return;
-							setAttributes({ icon: iconName });
-						}}
-					>
-						{iconName ? (
-							<i className={iconName}></i>
-						) : (
-							<span>{__('None', textDomain)}</span>
-						)}
-					</Button>
-				);
-			})}
-		</ButtonGroup>
-	);
-
 	return (
 		<>
 			<InspectorControls>
@@ -79,7 +53,7 @@ export default function (props) {
 					title={__('Style settings', textDomain)}
 					initialOpen={true}
 				>
-					<ButtonGroup className='pb-panel--compare-color'>
+					<ButtonGroup className='pb-panel--colorSet'>
 						{dataStyles.map((style) => {
 							let isSelected = false;
 							if (-1 !== dataStyle.indexOf(style)) {
@@ -105,12 +79,14 @@ export default function (props) {
 										data-selected={isSelected || null}
 									>
 										<div className='pb-cv-box__notewrap'>
-										<span
-											className='pb-cv-box__note -preview'
-											data-style={style}
-										>
-											{'border' === style ? 'Border' : 'White'}
-										</span>
+											<span
+												className='pb-cv-box__note -preview'
+												data-style={style}
+											>
+												{'border' === style
+													? 'Border'
+													: 'White'}
+											</span>
 										</div>
 									</label>
 								</div>
@@ -123,22 +99,40 @@ export default function (props) {
 					initialOpen={true}
 				>
 					<BaseControl>
-						{!isPro ? (
-							<div className='pb-free-noticeBox'>
-								<a href='https://ponhiro.com/useful-blocks/'>
-									{__('With additional add-ons,', textDomain)}
-								</a>
-								{__(
-									'you can choose from several types of icons.',
-									textDomain
-								)}
-								<div className='pb-free-ctrlPreview'>
-									{iconButtons}
-								</div>
-							</div>
-						) : (
-							iconButtons
-						)}
+						<FreePreview
+							description={__(
+								'you can choose from several types of icons.',
+								textDomain
+							)}
+						>
+							<ButtonGroup className='pb-btn-group -wide-btns'>
+								{Icons.map((_icon) => {
+									const iconName = _icon.val;
+									const isSelected = iconName === icon;
+									return (
+										<Button
+											// isSecondary
+											isPrimary={isSelected}
+											key={`pb-cv-note-icon-${iconName}`}
+											onClick={() => {
+												if (!isPro) return;
+												setAttributes({
+													icon: iconName,
+												});
+											}}
+										>
+											{iconName ? (
+												<i className={iconName}></i>
+											) : (
+												<span>
+													{__('None', textDomain)}
+												</span>
+											)}
+										</Button>
+									);
+								})}
+							</ButtonGroup>
+						</FreePreview>
 					</BaseControl>
 				</PanelBody>
 			</InspectorControls>

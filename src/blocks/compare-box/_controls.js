@@ -13,6 +13,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 // import classnames from 'classnames';
 import { textDomain, isPro } from '@blocks/config';
 
+import FreePreview from '@blocks/freePreview';
+
 /**
  * Custom Component
  */
@@ -36,17 +38,12 @@ export default function (props) {
 			title={__('Removal of content restrictions', textDomain)}
 			initialOpen={true}
 		>
-			{!isPro ? (
-				<div className='pb-free-noticeBox'>
-					<a href='https://ponhiro.com/useful-blocks/'>
-						{__('With additional add-ons,', textDomain)}
-					</a>
-					{__(
-						'you can place free contents other than the list.',
-						textDomain
-					)}
-				</div>
-			) : (
+			<FreePreview
+				description={__(
+					'you can place free contents other than the list.',
+					textDomain
+				)}
+			>
 				<ToggleControl
 					label={__('Allow blocks to be placed freely.', textDomain)}
 					checked={!isLimited}
@@ -70,7 +67,7 @@ export default function (props) {
 						}
 					}}
 				/>
-			)}
+			</FreePreview>
 		</PanelBody>
 	);
 
@@ -81,7 +78,7 @@ export default function (props) {
 					title={__('Color set', textDomain)}
 					initialOpen={true}
 				>
-					<ButtonGroup className='pb-panel--compare-color'>
+					<ButtonGroup className='pb-panel--colorSet'>
 						{colorSets.map((setNum) => {
 							let isSelected = false;
 							if (colSet === setNum) {

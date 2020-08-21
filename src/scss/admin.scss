@@ -1,17 +1,1 @@
 @charset "utf-8";
-
-/*
- * 管理画面で読み込むCSS
- */
-
-// mixin
-@import "mixin/**";
-
-// アイコン
-@import "inc/icomoon";
-
-// 無料版でのみ表示するテキスト
-.pb-link-gopro {
-	color: #52ce8a;
-	font-weight: 700;
-}

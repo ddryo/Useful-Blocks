@@ -101,12 +101,25 @@ class Style {
 			'colset_compare_01_l_bg',
 			'colset_compare_01_r',
 			'colset_compare_01_r_bg',
+
+			'colset_iconbox_01',
+			'colset_iconbox_01_bg',
+			'colset_iconbox_01_icon',
 		];
 
 		foreach ( $root_colors as $key ) {
 			self::add_root( '--pb_' . $key, $settings[$key] );
 		}
 
+		// アイコン画像
+		$icon_sets = [ '01', '02', '03', '04' ];
+		foreach ( $icon_sets as $key ) {
+			$img_url = $settings[ 'iconbox_img_'. $key ] ?: USFL_BLKS_URL . 'assets/img/a_person.png';
+			self::add(
+				'.pb-iconbox__figure[data-iconset="'. $key . '"]',
+				'background-image: url(' . $img_url .')'
+			);
+		}
 	}
 
 

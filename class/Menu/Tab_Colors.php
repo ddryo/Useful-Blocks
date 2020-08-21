@@ -58,7 +58,7 @@ class Tab_Colors {
 				<div class="__field_title">
 					<?=$label?>
 				</div>
-				<div class="__field -flex -color -pb-color-set">
+				<div class="__field -flex -color -pb-colset">
 					<div class="__items">
 						<!-- 普通の色 -->
 						<div class="__item">
@@ -95,10 +95,10 @@ class Tab_Colors {
 						</div>
 					</div>
 					<div class="__preview">
-						<div class="pb-compare-box" data-colset="<?=substr($color_name, 0, 1)?>">
+						<div class="pb-compare-box" data-colset="<?=substr( $color_name, 0, 1 )?>">
 							<div class="pb-compare-box__head"></div>
 							<div class="pb-compare-box__body">
-								<div class="pb-cv-box" data-colset="<?=substr($color_name, 0, 1)?>" data-bg="on">
+								<div class="pb-cv-box" data-colset="<?=substr( $color_name, 0, 1 )?>" data-bg="on">
 									<div class="pb-cv-box__inner">
 										<ul class="pb-list -icon-check"><li>List</li><li>List</li></ul>
 										<div class="pb-button">
@@ -163,7 +163,7 @@ class Tab_Colors {
 				<div class="__field_title">
 					<?=$label?>
 				</div>
-				<div class="__field -flex -color -pb-color-set">
+				<div class="__field -flex -color -pb-colset">
 					<div class="__items">
 						<?php
 							$color_keys = [
@@ -254,7 +254,7 @@ class Tab_Colors {
 				<div class="__field_title">
 					<?=$label?>
 				</div>
-				<div class="__field -flex -color -pb-color-set">
+				<div class="__field -flex -color -pb-colset">
 					<div class="__items">
 						<?php
 							$color_keys = [
@@ -292,6 +292,98 @@ class Tab_Colors {
 								</div>
 								<div class="pb-compare-box__body__r">
 									<ul class="pb-list -icon-check"><li>List</li><li>List</li><li>List</li></ul>
+								</div>
+							</div>
+						</div>
+						<div class="__preview_label">Preview</div>
+					</div>
+				</div>
+			<?php
+		endforeach;
+	}
+
+
+	/**
+	 * アイコンボックス
+	 */
+	public static function iconbox( $page_name ) {
+		$section_name = 'pb_section_iconbox';
+
+		// セクションの追加
+		add_settings_section(
+			$section_name,
+			__( 'Icon box', USFL_BLKS_DOMAIN ),
+			'',
+			$page_name
+		);
+
+		add_settings_field(
+			'pb_iconbox_color',
+			'',
+			['\Ponhiro_Blocks\Menu\Tab_Colors', 'callback_for_iconbox'],
+			$page_name,
+			$section_name,
+			[
+				'class' => 'tr-iconbox',
+				'keys' => [
+					'1' => 'セット01',
+				],
+			]
+		);
+	}
+
+	/**
+	 * アイコンボックス用コールバック
+	 */
+	public static function callback_for_iconbox( $args ) {
+
+		$keys = $args['keys'];
+
+		// 使用するデータベース
+		$db = Data::DB_NAME['settings'];
+
+		foreach ( $keys as $set_num => $label ) :
+			?>
+				<div class="__field_title">
+					<?=$label?>
+				</div>
+				<div class="__field -flex -color -pb-colset">
+					<div class="__items">
+						<?php
+							$color_keys = [
+								'0' . $set_num => __( 'Head', USFL_BLKS_DOMAIN ),
+								'0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
+								'0' . $set_num . '_icon' => __( 'Icon', USFL_BLKS_DOMAIN ),
+							];
+							foreach ($color_keys as $key => $label) :
+								$key = 'colset_iconbox_' . $key;
+						?>
+								<div class="__item">
+									<span class="__label"><?=$label?></span>
+									<input type="text" class="pb-colorpicker"
+										id="<?=$key?>"
+										name="<?=$db .'['. $key .']'?>"
+										value="<?=Data::get_settings( $key )?>"
+										data-key="<?=$key?>"
+										data-default-color="<?=Data::get_default_settings( $key )?>"
+									/>
+								</div>
+						<?php
+							endforeach;
+						?>
+					</div>
+					<div class="__preview">
+						<div class="pb-iconbox" data-colset="<?=$set_num?>">
+						<div class="pb-iconbox__inner">
+							<div class="pb-iconbox__head">
+								Title
+							</div>
+							<div class="pb-iconbox__body">
+								<div class="pb-iconbox__content">
+									<ul class="pb-list -icon-dot"><li>List</li><li>List</li><li>List</li></ul>
+								</div>
+								<div class="pb-iconbox__innerIcon">
+									<figure class="pb-iconbox__figure" data-iconset="01"></figure>
 								</div>
 							</div>
 						</div>

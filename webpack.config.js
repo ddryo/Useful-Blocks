@@ -13,6 +13,7 @@ glob.sync('**/index.js', {
 });
 
 entries['js/admin_menu.js'] = './src/js/admin_menu.js';
+entries['js/media.js'] = './src/js/media.js';
 // console.log( entries );
 
 module.exports = {

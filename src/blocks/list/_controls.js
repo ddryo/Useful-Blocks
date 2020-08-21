@@ -24,6 +24,7 @@ import {
  */
 // import classnames from 'classnames';
 import { textDomain, isPro } from '@blocks/config';
+import FreePreview from '@blocks/freePreview';
 
 /**
  * Custom Component
@@ -159,22 +160,14 @@ export default function (props) {
 					initialOpen={true}
 				>
 					<BaseControl>
-						{!isPro ? (
-							<div className='pb-free-noticeBox'>
-								<a href='https://ponhiro.com/useful-blocks/'>
-									{__('With additional add-ons,', textDomain)}
-								</a>
-								{__(
-									'you can choose from several types of icons.',
-									textDomain
-								)}
-								<div className='pb-free-ctrlPreview'>
-									{listIconButtons}
-								</div>
-							</div>
-						) : (
-							listIconButtons
-						)}
+						<FreePreview
+							description={__(
+								'you can choose from several types of icons.',
+								textDomain
+							)}
+						>
+							{listIconButtons}
+						</FreePreview>
 					</BaseControl>
 				</PanelBody>
 			</InspectorControls>

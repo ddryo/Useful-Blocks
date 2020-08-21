@@ -34,6 +34,25 @@ const { __ } = wp.i18n;
 			});
 	};
 
+	// 設定のリセット
+	(function () {
+		const resetBtn = document.getElementById('pb-btn--reset');
+		if (null !== resetBtn) {
+			resetBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+
+				/* eslint no-alert: 0 */
+				if (
+					window.confirm(
+						__('Do you really want to reset it?', 'useful-blocks')
+					)
+				) {
+					ajaxToClearData('pb_reset_settings');
+				}
+			});
+		}
+	})();
+
 	// カラーパレット
 	$(function () {
 		$('.pb-colorpicker').wpColorPicker({
@@ -54,25 +73,6 @@ const { __ } = wp.i18n;
 			},
 		});
 	});
-
-	// 設定のリセット
-	(function () {
-		const resetBtn = document.getElementById('pb-btn--reset');
-		if (null !== resetBtn) {
-			resetBtn.addEventListener('click', function (e) {
-				e.preventDefault();
-
-				/* eslint no-alert: 0 */
-				if (
-					window.confirm(
-						__('Do you really want to reset it?', 'useful-blocks')
-					)
-				) {
-					ajaxToClearData('pb_reset_settings');
-				}
-			});
-		}
-	})();
 
 	// 設定タブの切替処理
 	(function () {
@@ -124,7 +124,7 @@ const { __ } = wp.i18n;
 	 * カラーセットの変更を反映させる
 	 */
 	(function () {
-		const $colorSetting = $('.-pb-color-set');
+		const $colorSetting = $('.-pb-colset');
 		const $colorInput = $colorSetting.find('.pb-colorpicker');
 
 		$colorInput.change(function () {

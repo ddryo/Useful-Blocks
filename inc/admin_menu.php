@@ -2,10 +2,7 @@
 use \Ponhiro_Blocks\Admin_Menu;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$menu_tabs = [
-	'colors' => __( 'Color set', 'useful-blocks' ),
-	'reset'  => __( 'Reset', 'useful-blocks' ),
-];
+$menu_tabs = Admin_Menu::$menu_tabs;
 
 // 翻訳用
 $green_message = __('Your settings have been saved.', USFL_BLKS_DOMAIN );
@@ -64,8 +61,6 @@ $green_message = __('Your settings have been saved.', USFL_BLKS_DOMAIN );
 
 							// ファイルなければ単純に do_settings_sections
 							do_settings_sections( Admin_Menu::PAGE_NAMES[$key] );
-							// submit_button( '', 'primary large', 'submit_' . $key );
-
 						}
 
 					echo '</div>';

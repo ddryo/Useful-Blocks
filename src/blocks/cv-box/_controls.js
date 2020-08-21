@@ -36,7 +36,7 @@ export default function (props) {
 					title={__('Background style', textDomain)}
 					initialOpen={true}
 				>
-					<ButtonGroup className='pb-panel--compare-color'>
+					<ButtonGroup className='pb-panel--colorSet'>
 						{bgStyles.map((style) => {
 							let isSelected = false;
 							if (bgStyle === style) {
@@ -80,7 +80,7 @@ export default function (props) {
 					title={__('Color set', textDomain)}
 					initialOpen={true}
 				>
-					<ButtonGroup className='pb-panel--compare-color'>
+					<ButtonGroup className='pb-panel--colorSet'>
 						{colorSets.map((setNum) => {
 							let isSelected = false;
 							if (colSet === setNum) {

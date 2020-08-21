@@ -49,9 +49,6 @@
 }
 
 .usfl_blks_page__adarea {
-
-
-
 	// @include tab {
 	position: fixed;
 	right: 16px;
@@ -338,7 +335,7 @@
 
 
 // カラーセットに関するフィールド
-.-pb-color-set {
+.__field.-pb-colset {
 
 	// .pb-compare-box{}
 
@@ -367,7 +364,8 @@
 	}
 
 	.__preview > .pb-compare-box,
-	.__preview > .pb-cv-box {
+	.__preview > .pb-cv-box,
+	.__preview > .pb-iconbox {
 		max-width: 400px;
 		margin-bottom: 0 !important;
 	}
@@ -399,5 +397,43 @@
 
 	.pb-cv-box__note {
 		margin-top: 1.25em !important;
+	}
+
+	.pb-iconbox__figure {
+		max-width: 80px;
+	}
+}
+
+/**
+ * 画像アップロードボタン
+ */
+.pb-mediaBtns {
+	margin: 8px 0;
+
+	[name="media-clear"] {
+		margin-left: 8px;
+		background: none;
+		border: none;
+		box-shadow: none;
+	}
+}
+
+.pb-mediaPreview {
+	min-height: 8px;
+	margin: 4px 0;
+	padding: 4px;
+	border: dashed 1px #ccc;
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+// アイコン画像に関するフィールド
+.__field.-pb-icon {
+
+	.pb-mediaPreview {
+		max-width: 120px;
 	}
 }

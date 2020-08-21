@@ -1,9 +1,8 @@
-/* エディターにインライン読み込みさせるスタイル */
-.block-editor-writing-flow {
+/**
+ * エディター側だけに読み込ませるスタイル
+ */
 
-
-}
-
+// .block-editor-writing-flow {}
 
 [data-type="ponhiro-blocks/compare-box-body"] {
 	margin: 0 !important;
@@ -11,7 +10,6 @@
 }
 
 .pb-compare-box__body {
-
 
 	& > .block-editor-inner-blocks {
 		width: 100%;
@@ -22,7 +20,6 @@
 			align-items: stretch;
 		}
 	}
-
 
 	[data-type="ponhiro-blocks/compare-box-body-content"] {
 		flex-basis: 50%;
@@ -54,7 +51,6 @@
 
 
 // ツールバー関係
-
 .block-editor-block-contextual-toolbar {
 
 	&[data-type="ponhiro-blocks/compare-box-body"],
@@ -66,36 +62,9 @@
 	}
 }
 
+
 // サイドバー
-.pb-panel--compare-color {
-
-	display: flex;
-	flex-wrap: wrap;
-
-	.__btnBox {
-		box-sizing: border-box;
-		width: 50%;
-
-		* {
-			box-sizing: border-box;
-		}
-
-	}
-
-	.__btn {
-		display: none;
-	}
-
-	.__label {
-		display: block;
-		width: 100%;
-		padding: 8px;
-		border-radius: 3px;
-		// height: 40px;
-		&[data-selected] {
-			box-shadow: 0 0 0 1px #555d66;
-		}
-	}
+.pb-panel--colorSet {
 
 	.pb-compare-box {
 		display: block;
