@@ -7,6 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "wp-scripts start",
         "build": "wp-scripts build",
+        "gulp": "gulp",
         "po2json": "po2json languages/useful-blocks-ja.po languages/useful-blocks-ja-ponhiro-blocks-script.json -f jed"
     },
     "author": "",

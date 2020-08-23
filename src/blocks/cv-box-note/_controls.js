@@ -53,46 +53,50 @@ export default function (props) {
 					title={__('Style settings', textDomain)}
 					initialOpen={true}
 				>
-					<ButtonGroup className='pb-panel--colorSet'>
-						{dataStyles.map((style) => {
-							let isSelected = false;
-							if (-1 !== dataStyle.indexOf(style)) {
-								isSelected = true;
-							}
-							const buttonId = 'pb-cvnote-style-' + style;
-							return (
-								<div
-									className='__btnBox'
-									key={`key_style_${style}`}
-								>
-									<button
-										type='button'
-										id={buttonId}
-										className='__btn'
-										onClick={() => {
-											setAttributes({ dataStyle: style });
-										}}
-									></button>
-									<label
-										htmlFor={buttonId}
-										className='__label'
-										data-selected={isSelected || null}
+					<BaseControl>
+						<ButtonGroup className='pb-panel--colorSet'>
+							{dataStyles.map((style) => {
+								let isSelected = false;
+								if (-1 !== dataStyle.indexOf(style)) {
+									isSelected = true;
+								}
+								const buttonId = 'pb-cvnote-style-' + style;
+								return (
+									<div
+										className='__btnBox'
+										key={`key_style_${style}`}
 									>
-										<div className='pb-cv-box__notewrap'>
-											<span
-												className='pb-cv-box__note -preview'
-												data-style={style}
-											>
-												{'border' === style
-													? 'Border'
-													: 'White'}
-											</span>
-										</div>
-									</label>
-								</div>
-							);
-						})}
-					</ButtonGroup>
+										<button
+											type='button'
+											id={buttonId}
+											className='__btn'
+											onClick={() => {
+												setAttributes({
+													dataStyle: style,
+												});
+											}}
+										></button>
+										<label
+											htmlFor={buttonId}
+											className='__label'
+											data-selected={isSelected || null}
+										>
+											<div className='pb-cv-box__notewrap'>
+												<span
+													className='pb-cv-box__note -preview'
+													data-style={style}
+												>
+													{'border' === style
+														? 'Border'
+														: 'White'}
+												</span>
+											</div>
+										</label>
+									</div>
+								);
+							})}
+						</ButtonGroup>
+					</BaseControl>
 				</PanelBody>
 				<PanelBody
 					title={__('Icon settings', textDomain)}

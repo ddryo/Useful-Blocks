@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
-"POT-Creation-Date: 2020-08-21 20:45+0900\n"
-"PO-Revision-Date: 2020-08-21 20:45+0900\n"
+"POT-Creation-Date: 2020-08-23 19:00+0900\n"
+"PO-Revision-Date: 2020-08-23 19:01+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -119,7 +119,7 @@ msgid "Allow blocks to be placed freely."
 msgstr "ブロックを自由に配置できるようにする。"
 
 #: src/blocks/compare-box/_controls.js:78 src/blocks/cv-box/_controls.js:80
-#: src/blocks/iconbox/_controls.js:49 class/Admin_Menu.php:43
+#: src/blocks/iconbox/_controls.js:61 class/Admin_Menu.php:43
 msgid "Color set"
 msgstr "カラーセット"
 
@@ -128,7 +128,7 @@ msgid "Comparison box"
 msgstr "比較ボックス"
 
 #: src/blocks/compare-box/index.js:75 src/blocks/compare-box/index.js:84
-#: src/blocks/iconbox/index.js:144 src/blocks/iconbox/index.js:209
+#: src/blocks/iconbox/index.js:151 src/blocks/iconbox/index.js:221
 msgid "…"
 msgstr "…"
 
@@ -172,47 +172,55 @@ msgstr "CV ボックス"
 msgid "In the Pro version,"
 msgstr "Pro版では、"
 
-#: src/blocks/iconbox/_controls.js:40 class/Menu/Tab_Colors.php:261
+#: src/blocks/iconbox/_controls.js:49 class/Menu/Tab_Colors.php:261
 msgid "Left"
 msgstr "左"
 
-#: src/blocks/iconbox/_controls.js:41 class/Menu/Tab_Colors.php:263
+#: src/blocks/iconbox/_controls.js:50 class/Menu/Tab_Colors.php:263
 msgid "Right"
 msgstr "右"
 
-#: src/blocks/iconbox/_controls.js:42
-msgid "Top"
-msgstr "上"
+#: src/blocks/iconbox/_controls.js:51
+msgid "Top left"
+msgstr "左上"
 
-#: src/blocks/iconbox/_controls.js:91
+#: src/blocks/iconbox/_controls.js:52
+msgid "Top right"
+msgstr "右上"
+
+#: src/blocks/iconbox/_controls.js:103
 msgid "Icon set"
 msgstr "アイコンセット"
 
-#: src/blocks/iconbox/_controls.js:96
+#: src/blocks/iconbox/_controls.js:108
 msgid "you can register 4 types of icons and call them easily."
 msgstr "4種類のアイコンを登録して簡単に呼び出すことができます。"
 
-#: src/blocks/iconbox/_controls.js:149
+#: src/blocks/iconbox/_controls.js:161
 msgid "Clear"
 msgstr "クリア"
 
-#: src/blocks/iconbox/_controls.js:157
+#: src/blocks/iconbox/_controls.js:169
 msgid "Icon position"
 msgstr "アイコンの位置"
 
-#: src/blocks/iconbox/_controls.js:162
+#: src/blocks/iconbox/_controls.js:174
 msgid "you can change the placement of the icons."
 msgstr "アイコンの配置を変更できるようになります。"
 
-#: src/blocks/iconbox/_controls.js:191
+#: src/blocks/iconbox/_controls.js:202
+msgid "Move icon down"
+msgstr "アイコンを下にずらす"
+
+#: src/blocks/iconbox/_controls.js:215
 msgid "Align to top/bottom center"
 msgstr "上下中央に合わせる"
 
-#: src/blocks/iconbox/_controls.js:203
+#: src/blocks/iconbox/_controls.js:227
 msgid "Baloon style"
 msgstr "ふきだしスタイル"
 
-#: src/blocks/iconbox/_controls.js:208
+#: src/blocks/iconbox/_controls.js:232
 msgid "you can change the balloon style."
 msgstr "ふきだしスタイルを変更することができます。"
 
@@ -220,7 +228,7 @@ msgstr "ふきだしスタイルを変更することができます。"
 msgid "Icon box"
 msgstr "アイコンボックス"
 
-#: src/blocks/iconbox/index.js:187
+#: src/blocks/iconbox/index.js:199
 msgid "Remove"
 msgstr "削除"
 
@@ -268,7 +276,7 @@ msgstr "リストの下に点線をつける"
 msgid "Useful List"
 msgstr "Usefulリスト"
 
-#: src/js/admin_menu.js:33 class/Init.php:215
+#: src/js/admin_menu.js:33 class/Init.php:214
 msgid "Failed."
 msgstr "失敗しました。"
 
@@ -297,7 +305,7 @@ msgstr "画像を選択"
 msgid "Go Pro"
 msgstr "プロ版へ"
 
-#: class/Init.php:211
+#: class/Init.php:210
 msgid "Succeeded."
 msgstr "成功しました。"
 
@@ -402,6 +410,12 @@ msgstr "痒いところに手がとどく、便利なブロックを集めたプ
 #. Author of the plugin/theme
 msgid "Ponhiro, Ryo"
 msgstr "ぽんひろ & 了"
+
+#~ msgid "Vertical position of icon"
+#~ msgstr "アイコンの上下位置"
+
+#~ msgid "Top"
+#~ msgstr "上"
 
 #~ msgid "With additional add-ons,"
 #~ msgstr "追加アドオンを使えば、"

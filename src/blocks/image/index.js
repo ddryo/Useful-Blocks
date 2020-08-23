@@ -23,9 +23,6 @@ import { textDomain, blockCategory, isPro } from '@blocks/config';
  * Internal dependencies
  */
 import MyControls from './_controls';
-// import {
-// 	ALLOWED_MEDIA_TYPES,
-// } from './_constants';
 
 /**
  * Block

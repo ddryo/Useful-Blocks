@@ -98,6 +98,12 @@ class Init {
 		// 編集画面 or 設定ページでのみ読み込む
 		if ( $is_editor_page || $is_menu_page ) {
 
+			wp_enqueue_style(
+				'ponhiro-blocks-admin',
+				USFL_BLKS_URL .'dist/css/admin.css',
+				[],
+				USFL_BLKS_VERSION
+			);
 			wp_add_inline_style( 'ponhiro-blocks-admin', \Ponhiro_Blocks\Style::output( 'editor' ) );
 		}
 

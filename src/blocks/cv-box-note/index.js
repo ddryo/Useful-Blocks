@@ -16,7 +16,6 @@ import { textDomain, blockCategory, isPro } from '@blocks/config';
  * Internal dependencies
  */
 import MyControls from './_controls';
-import './scss/_inline.scss';
 
 /**
  * Block

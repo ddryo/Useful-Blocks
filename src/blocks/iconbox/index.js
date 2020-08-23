@@ -36,7 +36,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 	title: __('Icon box', textDomain),
 	icon: {
 		foreground: pbIcon.color,
-		src: pbIcon.compareBox,
+		src: pbIcon.iconbox,
 	},
 	keywords: ['ponhiro', 'useful-block', 'iconbox'],
 	category: blockCategory,
@@ -81,6 +81,10 @@ registerBlockType('ponhiro-blocks/iconbox', {
 			type: 'boolean',
 			default: false,
 		},
+		iconY: {
+			type: 'number',
+			default: 0,
+		},
 	},
 
 	edit: (props) => {
@@ -95,6 +99,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 			iconPos,
 			isCenter,
 			commentStyle,
+			iconY,
 		} = attributes;
 		const blockClass = classnames(blockName, className, '-ponhiro-blocks');
 
@@ -125,10 +130,12 @@ registerBlockType('ponhiro-blocks/iconbox', {
 		// 	});
 		// };
 
+		const isTopIcon = -1 !== iconPos.indexOf('top');
+
 		const iconboxFigure = (
 			<div
 				className={
-					iconPos === 'top'
+					isTopIcon
 						? `${blockName}__topIcon`
 						: `${blockName}__innerIcon`
 				}
@@ -157,6 +164,11 @@ registerBlockType('ponhiro-blocks/iconbox', {
 					<div
 						className={`${blockName}__figure __mediaWrap`}
 						data-iconset={iconSet || null}
+						style={
+							isTopIcon && 0 !== iconY
+								? { top: `${iconY}px` }
+								: null
+						}
 					>
 						<MediaUploadCheck>
 							<MediaUpload
@@ -199,7 +211,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 					data-colset={colSet}
 					data-icon={iconPos}
 				>
-					{iconPos === 'top' && iconboxFigure}
+					{isTopIcon && iconboxFigure}
 					<div className={`${blockName}__inner`}>
 						<RichText
 							tagName='div'
@@ -225,7 +237,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 								templateLock={false} //insert'
 								// template={[['core/paragraph', {}, []]]}
 							/>
-							{iconPos !== 'top' && iconboxFigure}
+							{!isTopIcon && iconboxFigure}
 						</div>
 					</div>
 				</div>
@@ -243,13 +255,16 @@ registerBlockType('ponhiro-blocks/iconbox', {
 			iconPos,
 			isCenter,
 			commentStyle,
+			iconY,
 		} = attributes;
 		const blockClass = classnames(blockName);
+
+		const isTopIcon = -1 !== iconPos.indexOf('top');
 
 		const iconboxFigure = (
 			<div
 				className={
-					iconPos === 'top'
+					isTopIcon
 						? `${blockName}__topIcon`
 						: `${blockName}__innerIcon`
 				}
@@ -262,6 +277,9 @@ registerBlockType('ponhiro-blocks/iconbox', {
 				<figure
 					className={`${blockName}__figure`}
 					data-iconset={iconSet || null}
+					style={
+						isTopIcon && 0 !== iconY ? { top: `${iconY}px` } : null
+					}
 				>
 					{!!mediaUrl && (
 						<img
@@ -279,7 +297,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 				data-colset={colSet}
 				data-icon={iconPos}
 			>
-				{iconPos === 'top' && iconboxFigure}
+				{isTopIcon && iconboxFigure}
 				<div className={`${blockName}__inner`}>
 					{headTitle.length > 0 && (
 						<div className={`${blockName}__head`}>{headTitle}</div>
@@ -291,7 +309,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 						<div className={`${blockName}__content`}>
 							<InnerBlocks.Content />
 						</div>
-						{iconPos !== 'top' && iconboxFigure}
+						{!isTopIcon && iconboxFigure}
 					</div>
 				</div>
 			</div>
