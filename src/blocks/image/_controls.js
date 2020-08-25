@@ -30,7 +30,7 @@ import { textDomain, isPro } from '@blocks/config';
 /**
  * Custom Component
  */
-export default function (props) {
+export default function ( props ) {
 	const { attributes, setAttributes, onSelectImage, onSelectURL } = props;
 	const { id, url, alt, dataSize } = attributes;
 
@@ -56,77 +56,77 @@ export default function (props) {
 	return (
 		<>
 			<BlockControls>
-				{url && (
+				{ url && (
 					<>
 						<MediaReplaceFlow
-							mediaId={id}
-							mediaURL={url}
-							allowedTypes={['image']}
+							mediaId={ id }
+							mediaURL={ url }
+							allowedTypes={ [ 'image' ] }
 							accept='image/*'
-							onSelect={onSelectImage}
-							onSelectURL={onSelectURL}
+							onSelect={ onSelectImage }
+							onSelectURL={ onSelectURL }
 							// onError={ this.onUploadError }
 						/>
 						<Toolbar>
 							<IconButton
 								className='components-toolbar__control'
-								label={__('Delete image', textDomain)}
+								label={ __( 'Delete image', textDomain ) }
 								icon='no-alt'
-								onClick={() => {
-									setAttributes({
+								onClick={ () => {
+									setAttributes( {
 										id: undefined,
 										url: undefined,
 										alt: undefined,
-									});
-								}}
+									} );
+								} }
 							/>
 						</Toolbar>
 					</>
-				)}
+				) }
 			</BlockControls>
 
 			<InspectorControls>
-				{url && (
+				{ url && (
 					<PanelBody
-						title={__('Image settings', textDomain)}
-						initialOpen={true}
+						title={ __( 'Image settings', textDomain ) }
+						initialOpen={ true }
 					>
 						<TextControl
 							label='alt'
 							// type='url'
-							value={alt}
-							onChange={(val) => {
-								setAttributes({ alt: val });
-							}}
+							value={ alt }
+							onChange={ ( val ) => {
+								setAttributes( { alt: val } );
+							} }
 						/>
 						<BaseControl>
 							<BaseControl.VisualLabel>
-								{__('Image Size', textDomain)}
+								{ __( 'Image Size', textDomain ) }
 							</BaseControl.VisualLabel>
 							<ButtonGroup className=''>
-								{sizeButtons.map((btn) => {
+								{ sizeButtons.map( ( btn ) => {
 									const btnVal = btn.val;
 									const isSelected = btnVal === dataSize;
 									return (
 										<Button
 											// isSecondary
 											isSmall
-											isPrimary={isSelected}
-											key={`pb-img-size-${btnVal}`}
-											onClick={() => {
-												setAttributes({
+											isPrimary={ isSelected }
+											key={ `pb-img-size-${ btnVal }` }
+											onClick={ () => {
+												setAttributes( {
 													dataSize: btnVal,
-												});
-											}}
+												} );
+											} }
 										>
-											{btn.label}
+											{ btn.label }
 										</Button>
 									);
-								})}
+								} ) }
 							</ButtonGroup>
 						</BaseControl>
 					</PanelBody>
-				)}
+				) }
 			</InspectorControls>
 		</>
 	);

@@ -22,16 +22,16 @@ import MyControls from './_controls';
  */
 const blockName = 'pb-cv-box__note';
 
-registerBlockType('ponhiro-blocks/cv-box-note', {
-	title: __('CV Text', textDomain),
+registerBlockType( 'ponhiro-blocks/cv-box-note', {
+	title: __( 'CV Text', textDomain ),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: ['ponhiro', 'button'],
+	keywords: [ 'ponhiro', 'button' ],
 	category: blockCategory,
 	supports: { className: false, reusable: false },
-	parent: ['ponhiro-blocks/cv-box'],
+	parent: [ 'ponhiro-blocks/cv-box' ],
 	attributes: {
 		icon: {
 			type: 'string',
@@ -51,54 +51,56 @@ registerBlockType('ponhiro-blocks/cv-box-note', {
 		},
 	},
 
-	edit: (props) => {
+	edit: ( props ) => {
 		const { className, attributes, setAttributes } = props;
 		const { content, icon, dataStyle } = attributes;
-		let blockClass = classnames(blockName, className);
+		let blockClass = classnames( blockName, className );
 
-		if (content.length === 0) {
-			blockClass = classnames(blockClass, 'has-no-content');
+		if ( content.length === 0 ) {
+			blockClass = classnames( blockClass, 'has-no-content' );
 		}
 
 		return (
 			<>
-				<MyControls {...props} />
-				<div className={blockClass} data-style={dataStyle}>
-					{icon && (
+				<MyControls { ...props } />
+				<div className={ blockClass } data-style={ dataStyle }>
+					{ icon && (
 						<div className='__icon'>
-							<i className={icon}></i>
+							<i className={ icon }></i>
 						</div>
-					)}
+					) }
 					<RichText
 						tagName='div'
 						className='__text'
-						placeholder={__('Text…', textDomain)}
-						value={content}
-						onChange={(value) => setAttributes({ content: value })}
+						placeholder={ __( 'Text…', textDomain ) }
+						value={ content }
+						onChange={ ( value ) =>
+							setAttributes( { content: value } )
+						}
 					/>
 				</div>
 			</>
 		);
 	},
 
-	save: ({ attributes }) => {
+	save: ( { attributes } ) => {
 		const { content, icon, dataStyle } = attributes;
-		if (content.length === 0) {
+		if ( content.length === 0 ) {
 			return null;
 		}
 		return (
-			<div className={blockName} data-style={dataStyle}>
-				{icon && (
+			<div className={ blockName } data-style={ dataStyle }>
+				{ icon && (
 					<div className='__icon'>
-						<i className={icon}></i>
+						<i className={ icon }></i>
 					</div>
-				)}
+				) }
 				<RichText.Content
 					tagName='div'
 					className='__text'
-					value={content}
+					value={ content }
 				/>
 			</div>
 		);
 	},
-});
+} );

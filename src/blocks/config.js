@@ -7,4 +7,4 @@ export const textDomain = 'useful-blocks';
 export const blockCategory = 'useful-blocks';
 
 // プロ版かどうか
-export const isPro = applyFilters(`pb-hook.isPro`, false);
+export const isPro = applyFilters( `pb-hook.isPro`, false );

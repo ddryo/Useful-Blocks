@@ -75,7 +75,7 @@ class Init {
 		
 		wp_enqueue_style(
 			'ponhiro-blocks-front',
-			USFL_BLKS_URL .'dist/css/front.css',
+			USFL_BLKS_URL . 'dist/css/front.css',
 			[],
 			USFL_BLKS_VERSION
 		);
@@ -100,7 +100,7 @@ class Init {
 
 			wp_enqueue_style(
 				'ponhiro-blocks-admin',
-				USFL_BLKS_URL .'dist/css/admin.css',
+				USFL_BLKS_URL . 'dist/css/admin.css',
 				[],
 				USFL_BLKS_VERSION
 			);
@@ -121,7 +121,7 @@ class Init {
 			// CSS
 			wp_enqueue_style(
 				'ponhiro-blocks-menu',
-				USFL_BLKS_URL .'dist/css/admin_menu.css',
+				USFL_BLKS_URL . 'dist/css/admin_menu.css',
 				[],
 				USFL_BLKS_VERSION
 			);
@@ -129,7 +129,7 @@ class Init {
 			// JS
 			wp_enqueue_script(
 				'ponhiro-blocks-menu',
-				USFL_BLKS_URL .'dist/js/admin_menu.js',
+				USFL_BLKS_URL . 'dist/js/admin_menu.js',
 				['jquery', 'wp-color-picker', 'wp-i18n'],
 				USFL_BLKS_VERSION,
 				true
@@ -171,7 +171,7 @@ class Init {
 		// スタイル
 		wp_enqueue_style(
 			'ponhiro-blocks-style',
-			USFL_BLKS_URL .'dist/css/blocks.css',
+			USFL_BLKS_URL . 'dist/css/blocks.css',
 			[],
 			USFL_BLKS_VERSION
 		);
@@ -206,12 +206,9 @@ class Init {
 		if ( wp_verify_nonce( $nonce, 'pb-ajax-nonce' ) ) {
 			
 			delete_option( \Ponhiro_Blocks\Data::DB_NAME['settings'] );
-
 			wp_die( __( 'Succeeded.', USFL_BLKS_DOMAIN ) );
-
 		}
 
 		wp_die( __( 'Failed.', USFL_BLKS_DOMAIN ) );
 	}
-
 }

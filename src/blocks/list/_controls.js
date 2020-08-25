@@ -29,7 +29,7 @@ import FreePreview from '@blocks/freePreview';
 /**
  * Custom Component
  */
-export default function (props) {
+export default function ( props ) {
 	const { attributes, setAttributes } = props;
 	const { listTag, icon, showBorder } = attributes;
 
@@ -61,53 +61,53 @@ export default function (props) {
 
 	const listIconButtons = (
 		<>
-			{listTag === 'ul' ? (
+			{ 'ul' === listTag ? (
 				<ButtonGroup className='pb-btn-group -wide-btns'>
-					{ulIcons.map((_icon) => {
+					{ ulIcons.map( ( _icon ) => {
 						const iconVal = _icon.val;
 						const isSelected = iconVal === icon;
 						return (
 							<Button
 								// isSecondary
-								isPrimary={isSelected}
-								key={`pb-ul-icon-${iconVal}`}
-								onClick={() => {
-									if (!isPro) return;
-									setAttributes({
+								isPrimary={ isSelected }
+								key={ `pb-ul-icon-${ iconVal }` }
+								onClick={ () => {
+									if ( ! isPro ) return;
+									setAttributes( {
 										icon: iconVal,
-									});
-								}}
+									} );
+								} }
 							>
-								<i className={'pb-icon-' + iconVal}></i>
+								<i className={ 'pb-icon-' + iconVal }></i>
 							</Button>
 						);
-					})}
+					} ) }
 				</ButtonGroup>
 			) : (
 				<ButtonGroup className='pb-btn-group -wide-btns'>
-					{olIcons.map((_icon) => {
+					{ olIcons.map( ( _icon ) => {
 						const iconVal = _icon.val;
 						const isSelected = iconVal === icon;
 						return (
 							<Button
 								// isSecondary
-								isPrimary={isSelected}
-								key={`pb-ul-icon-${iconVal}`}
-								onClick={() => {
-									if (!isPro) return;
-									setAttributes({
+								isPrimary={ isSelected }
+								key={ `pb-ul-icon-${ iconVal }` }
+								onClick={ () => {
+									if ( ! isPro ) return;
+									setAttributes( {
 										icon: iconVal,
-									});
-								}}
+									} );
+								} }
 							>
-								<i className={'pb-icon-' + iconVal}>
-									{iconVal}
+								<i className={ 'pb-icon-' + iconVal }>
+									{ iconVal }
 								</i>
 							</Button>
 						);
-					})}
+					} ) }
 				</ButtonGroup>
-			)}
+			) }
 		</>
 	);
 
@@ -115,58 +115,58 @@ export default function (props) {
 		<>
 			<BlockControls>
 				<ToolbarGroup
-					controls={[
+					controls={ [
 						{
 							icon: formatListBullets,
-							title: __('Convert to unordered list'),
+							title: __( 'Convert to unordered list' ),
 							isActive: listTag === 'ul',
 							onClick() {
-								setAttributes({ listTag: 'ul' });
-								setAttributes({ icon: 'check' });
+								setAttributes( { listTag: 'ul' } );
+								setAttributes( { icon: 'check' } );
 							},
 						},
 						{
 							icon: formatListNumbered,
-							title: __('Convert to ordered list'),
+							title: __( 'Convert to ordered list' ),
 							isActive: listTag === 'ol',
 							onClick() {
-								setAttributes({ listTag: 'ol' });
-								setAttributes({ icon: 'circle' });
+								setAttributes( { listTag: 'ol' } );
+								setAttributes( { icon: 'circle' } );
 							},
 						},
-					]}
+					] }
 				/>
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody
-					title={__('List settings', textDomain)}
-					initialOpen={true}
+					title={ __( 'List settings', textDomain ) }
+					initialOpen={ true }
 				>
 					<ToggleControl
-						label={__(
+						label={ __(
 							'Add a dotted line below the list',
 							textDomain
-						)}
-						checked={showBorder}
-						onChange={(value) => {
-							setAttributes({
+						) }
+						checked={ showBorder }
+						onChange={ ( value ) => {
+							setAttributes( {
 								showBorder: value,
-							});
-						}}
+							} );
+						} }
 					/>
 				</PanelBody>
 				<PanelBody
-					title={__('Icon settings', textDomain)}
-					initialOpen={true}
+					title={ __( 'Icon settings', textDomain ) }
+					initialOpen={ true }
 				>
 					<BaseControl>
 						<FreePreview
-							description={__(
+							description={ __(
 								'you can choose from several types of icons.',
 								textDomain
-							)}
+							) }
 						>
-							{listIconButtons}
+							{ listIconButtons }
 						</FreePreview>
 					</BaseControl>
 				</PanelBody>

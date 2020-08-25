@@ -29,16 +29,16 @@ import MyControls from './_controls';
  */
 const blockName = 'pb-image';
 
-registerBlockType('ponhiro-blocks/image', {
-	title: __('CV Image', textDomain),
+registerBlockType( 'ponhiro-blocks/image', {
+	title: __( 'CV Image', textDomain ),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: ['ponhiro', 'image'],
+	keywords: [ 'ponhiro', 'image' ],
 	category: blockCategory,
 	supports: { className: false, reusable: false },
-	parent: ['ponhiro-blocks/cv-box'],
+	parent: [ 'ponhiro-blocks/cv-box' ],
 
 	attributes: {
 		id: {
@@ -80,48 +80,56 @@ registerBlockType('ponhiro-blocks/image', {
 		},
 	},
 
-	edit: (props) => {
+	edit: ( props ) => {
 		const { attributes, setAttributes, className, noticeUI } = props;
 		const { url, alt, id, href, dataSize } = attributes;
-		const blockClass = classnames(blockName, className, '-ponhiro-blocks');
+		const blockClass = classnames(
+			blockName,
+			className,
+			'-ponhiro-blocks'
+		);
 
 		// 画像ソース
-		const isExternal = !id;
+		const isExternal = ! id;
 		const src = isExternal ? url : undefined;
 
-		const onSelectImage = (media) => {
+		const onSelectImage = ( media ) => {
 			// console.log( media );
-			if (!media || !media.url) {
+			if ( ! media || ! media.url ) {
 				// メディア情報が取得できなかった時
-				setAttributes({
+				setAttributes( {
 					url: undefined,
 					alt: undefined,
 					id: undefined,
-				});
+				} );
 				return;
 			}
 
-			setAttributes({
+			setAttributes( {
 				url: media.url,
 				alt: media.alt,
 				id: media.id,
-			});
+			} );
 		};
 
-		const onSelectURL = (newURL) => {
-			if (newURL !== url) {
-				setAttributes({
+		const onSelectURL = ( newURL ) => {
+			if ( newURL !== url ) {
+				setAttributes( {
 					url: newURL,
 					id: undefined,
-				});
+				} );
 			}
 		};
 
 		const imgTag = (
-			<img className={`${blockName}__img`} src={url} alt={alt || ''} />
+			<img
+				className={ `${ blockName }__img` }
+				src={ url }
+				alt={ alt || '' }
+			/>
 		);
 
-		if (!isPro) {
+		if ( ! isPro ) {
 			return null;
 			// return (
 			// 	<div className='pb-free-noticeBox -image'>
@@ -135,79 +143,86 @@ registerBlockType('ponhiro-blocks/image', {
 		return (
 			<>
 				<MyControls
-					{...props}
-					onSelectImage={onSelectImage}
-					onSelectURL={onSelectURL}
+					{ ...props }
+					onSelectImage={ onSelectImage }
+					onSelectURL={ onSelectURL }
 				/>
-				{!url ? (
+				{ ! url ? (
 					<MediaPlaceholder
 						// icon='image'
-						icon={<BlockIcon icon={imgIcon} />}
-						onSelect={onSelectImage}
-						onSelectURL={onSelectURL}
-						notices={noticeUI}
+						icon={ <BlockIcon icon={ imgIcon } /> }
+						onSelect={ onSelectImage }
+						onSelectURL={ onSelectURL }
+						notices={ noticeUI }
 						// onError={ this.onUploadError }
 						accept='image/*'
-						allowedTypes={['image']}
-						value={{ id, src }}
+						allowedTypes={ [ 'image' ] }
+						value={ { id, src } }
 						mediaPreview={
-							!!url && (
+							!! url && (
 								<img
-									alt={__('Edit image')}
-									title={__('Edit image')}
-									className={'edit-image-preview'}
-									src={url}
+									alt={ __( 'Edit image' ) }
+									title={ __( 'Edit image' ) }
+									className={ 'edit-image-preview' }
+									src={ url }
 								/>
 							)
 						}
-						disableMediaButtons={url}
+						disableMediaButtons={ url }
 						// isAppender={ true }
 					/>
 				) : (
-					<figure className={blockClass} data-size={dataSize || null}>
-						{href ? (
+					<figure
+						className={ blockClass }
+						data-size={ dataSize || null }
+					>
+						{ href ? (
 							<div
 								// href={ href }
-								className={`${blockName}__link`}
+								className={ `${ blockName }__link` }
 							>
-								{imgTag}
+								{ imgTag }
 							</div>
 						) : (
 							imgTag
-						)}
+						) }
 					</figure>
-				)}
+				) }
 			</>
 		);
 	},
 
-	save: ({ attributes }) => {
+	save: ( { attributes } ) => {
 		const { url, alt, href, rel, isNewTab, dataSize } = attributes;
 		const blockClass = blockName;
-		if (!url) {
+		if ( ! url ) {
 			return null;
 		}
 		const imgTag = (
-			<img className={`${blockName}__img`} src={url} alt={alt || ''} />
+			<img
+				className={ `${ blockName }__img` }
+				src={ url }
+				alt={ alt || '' }
+			/>
 		);
 
 		return (
 			<>
-				<figure className={blockClass} data-size={dataSize || null}>
-					{href ? (
+				<figure className={ blockClass } data-size={ dataSize || null }>
+					{ href ? (
 						<a
-							href={href}
-							className={`${blockName}__link`}
-							target={isNewTab ? '_blank' : null}
-							rel={rel || null}
+							href={ href }
+							className={ `${ blockName }__link` }
+							target={ isNewTab ? '_blank' : null }
+							rel={ rel || null }
 						>
-							{imgTag}
+							{ imgTag }
 						</a>
 					) : (
 						imgTag
-					)}
+					) }
 				</figure>
 			</>
 		);
 	},
-});
+} );
