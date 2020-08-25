@@ -17,7 +17,7 @@
 	padding: 1em 2em;
 	color: #fff;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.5;
 	letter-spacing: 0.05em;
 	text-align: center;
@@ -44,6 +44,16 @@
 	flex: 1 1 auto;
 	width: 70%;
 	font-size: 16px;
+
+	& > :first-child {
+		margin-top: 0 !important;
+		padding-top: 0 !important;
+	}
+
+	& > :last-child {
+		margin-bottom: 0 !important;
+		padding-bottom: 0 !important;
+	}
 
 	@include sp {
 		font-size: 14px;
