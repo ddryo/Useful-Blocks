@@ -1,0 +1,26 @@
+{
+    "core": null,
+    "config": {
+        "WP_DEBUG": true
+    },
+    "themes": [
+        ".",
+        "~/DEV/Themes/SWELL/swell",
+        "~/DEV/Themes/Arkhe/arkhe"
+    ],
+    "plugins": [
+        ".",
+        "../useful-blocks-pro"
+    ],
+    "env": {
+        "development": {
+            "port": 5555
+        },
+        "tests": {
+            "port": 5554
+        }
+    },
+    "mappings": {
+        "sql": "~/Dropbox/LOOS/DEV/wpenv/usfl-blks"
+    }
+}

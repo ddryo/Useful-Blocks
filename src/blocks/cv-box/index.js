@@ -25,13 +25,13 @@ import MyControls from './_controls';
  */
 const blockName = 'pb-cv-box';
 
-registerBlockType( 'ponhiro-blocks/cv-box', {
-	title: __( 'CV Box', textDomain ),
+registerBlockType('ponhiro-blocks/cv-box', {
+	title: __('CV Box', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: [ 'ponhiro', 'useful-block', 'cv-btn', 'btn' ],
+	keywords: ['ponhiro', 'useful-block', 'cv-btn', 'btn'],
 	category: blockCategory,
 	supports: { className: false },
 	attributes: {
@@ -50,41 +50,37 @@ registerBlockType( 'ponhiro-blocks/cv-box', {
 		// },
 	},
 
-	edit: ( props ) => {
+	edit: (props) => {
 		const { className, attributes } = props;
 		const { colSet, bgStyle } = attributes;
-		let blockClass = classnames( blockName, className, '-ponhiro-blocks' );
-		if ( ! isPro ) {
-			blockClass = classnames( blockClass, '-is-free' );
+		let blockClass = classnames(blockName, className, '-ponhiro-blocks');
+		if (!isPro) {
+			blockClass = classnames(blockClass, '-is-free');
 		}
 
 		return (
 			<>
-				<MyControls { ...props } />
+				<MyControls {...props} />
 				<div
-					className={ blockClass }
-					data-colset={ colSet }
-					data-bg={ bgStyle }
+					className={blockClass}
+					data-colset={colSet}
+					data-bg={bgStyle}
 				>
-					<div className={ `${ blockName }__inner` }>
+					<div className={`${blockName}__inner`}>
 						<InnerBlocks
-							allowedBlocks={ [
+							allowedBlocks={[
 								'ponhiro-blocks/list',
 								'ponhiro-blocks/image',
 								'ponhiro-blocks/button',
 								'ponhiro-blocks/cv-box-note',
-							] }
-							templateLock={ 'all' }
-							template={ [
-								[ 'ponhiro-blocks/image', {}, [] ],
-								[
-									'ponhiro-blocks/list',
-									{ icon: 'check' },
-									[],
-								],
-								[ 'ponhiro-blocks/button', {}, [] ],
-								[ 'ponhiro-blocks/cv-box-note', {}, [] ],
-							] }
+							]}
+							templateLock={'all'}
+							template={[
+								['ponhiro-blocks/image', {}, []],
+								['ponhiro-blocks/list', { icon: 'check' }, []],
+								['ponhiro-blocks/button', {}, []],
+								['ponhiro-blocks/cv-box-note', {}, []],
+							]}
 						/>
 					</div>
 				</div>
@@ -92,19 +88,15 @@ registerBlockType( 'ponhiro-blocks/cv-box', {
 		);
 	},
 
-	save: ( { attributes } ) => {
+	save: ({ attributes }) => {
 		const { colSet, bgStyle } = attributes;
 		// const blockClass = blockName;
 		return (
-			<div
-				className={ blockName }
-				data-colset={ colSet }
-				data-bg={ bgStyle }
-			>
-				<div className={ `${ blockName }__inner` }>
+			<div className={blockName} data-colset={colSet} data-bg={bgStyle}>
+				<div className={`${blockName}__inner`}>
 					<InnerBlocks.Content />
 				</div>
 			</div>
 		);
 	},
-} );
+});

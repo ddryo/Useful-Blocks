@@ -1,0 +1,192 @@
+/************************************
+** 比較棒グラフ
+************************************/
+.pb-bar-graph {
+	margin: 0 auto 2rem !important;
+	padding: 2em !important;
+	color: #333;
+	font-size: 16px !important;
+
+	@include sp {
+		padding: 2em 1em !important;
+	}
+
+	&[data-bg] {
+		background: #fafafa;
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.07);
+	}
+
+}
+
+.pb-bar-graph__title {
+	margin: 0 auto 2em !important;
+	padding: 5px 0 !important;
+	font-weight: 600 !important;
+	font-size: 1em !important;
+	line-height: 1.8 !important;
+	letter-spacing: 1.5px !important;
+	text-align: center;
+
+	&.-none {
+		display: none;
+	}
+
+	&.-border {
+		margin-bottom: 3em !important;
+		border-bottom: 1px dashed #aaa;
+	}
+}
+
+.pb-bar-graph .pb-bar-graph__dl {
+	font-size: 16px;
+}
+
+.pb-bar-graph__dl {
+
+	.pb-bar-graph__item {
+		position: relative;
+		display: flex;
+		height: 30px;
+		margin: 0 auto !important;
+		padding: 0 !important;
+		font-size: 0.9rem;
+
+		@include sp {
+			margin: 0 auto !important;
+		}
+
+		& + .pb-bar-graph__item {
+			margin-top: 2.5em !important;
+
+			@include sp {
+				margin-top: 2em !important;
+			}
+		}
+	}
+
+
+	.pb-bar-graph__fill {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #fbd366;
+	}
+
+	// .pb-bar-graph__em {
+	// 	background: #6cd2d8;
+	// }
+
+	.pb-bar-graph__dt {
+		position: relative;
+		// display: flex;
+		// align-items: center;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.pb-bar-graph__dd {
+		position: relative;
+		// display: flex;
+		flex: 1;
+		// align-items: center;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+
+	// .pb-bar-graph__value {
+	// 	top: 5px;
+	// 	right: 5px;
+	// }
+
+
+	&[data-bg] {
+
+		.pb-bar-graph__item {
+			box-shadow: 0 3px 5px rgba(0, 0, 0, 0.03);
+		}
+
+		.pb-bar-graph__dt {
+			border-right: 2px solid #fff;
+		}
+
+		.pb-bar-graph__dd {
+			background: #dfe6e8;
+		}
+	}
+
+	.pb-bar-graph__label,
+	.pb-bar-graph__value {
+		// position: relative;
+		position: absolute;
+		z-index: 1;
+		margin: 0;
+		color: #333;
+		font-size: inherit;
+		line-height: 1.5;
+		white-space: nowrap !important;
+		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+	}
+
+	// .pb-bar-graph__label {}
+
+	.pb-bar-graph__value {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&[data-label="top"] {
+
+		.pb-bar-graph__label {
+			top: -24px;
+			left: 2px;
+		}
+	}
+
+	&[data-label="inner"] {
+
+		.pb-bar-graph__label {
+			top: 50%;
+			left: 6px;
+			margin: 0 6px;
+			// color: #fff;
+			transform: translateY(-50%);
+		}
+	}
+
+	&[data-value="right"] {
+
+		.pb-bar-graph__value {
+			right: 6px;
+			text-align: right;
+		}
+
+	}
+
+	&[data-value="left"] {
+
+		.pb-bar-graph__value {
+			left: 6px;
+		}
+	}
+
+}
+
+.pb-bar-graph__item {
+
+	&[data-thin] {
+
+		.pb-bar-graph__fill {
+			opacity: 0.6;
+
+		}
+	}
+}
+
+.pb-bar-graph__dd {
+	justify-content: flex-start;
+}

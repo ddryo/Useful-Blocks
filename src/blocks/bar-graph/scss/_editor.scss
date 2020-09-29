@@ -1,0 +1,32 @@
+
+.pb-bar-graph {
+
+	.block-list-appender__toggle.block-editor-button-block-appender {
+		margin-left: 0;
+	}
+
+}
+
+[data-type="ponhiro-blocks/bar-graph-item"] {
+
+	&.is-selected {
+		padding-top: 1.5em;
+	}
+
+	& + [data-type="ponhiro-blocks/bar-graph-item"] {
+		margin-top: 2.5em !important;
+	}
+
+
+	&::after {
+		top: -4px !important;
+		right: -4px !important;
+		bottom: -4px !important;
+		left: -4px !important;
+	}
+
+
+	.rich-text {
+		min-width: 2.5em;
+	}
+}

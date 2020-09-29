@@ -27,13 +27,13 @@ import MyControls from './_controls';
  */
 const blockName = 'pb-button';
 
-registerBlockType( 'ponhiro-blocks/button', {
-	title: __( 'CV Botton', textDomain ),
+registerBlockType('ponhiro-blocks/button', {
+	title: __('CV Botton', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.button,
 	},
-	keywords: [ 'ponhiro', 'button' ],
+	keywords: ['ponhiro', 'button'],
 	category: blockCategory,
 	supports: { className: false, reusable: false },
 	parent: [
@@ -69,7 +69,7 @@ registerBlockType( 'ponhiro-blocks/button', {
 			type: 'string',
 			source: 'html',
 			selector: '.pb-text-link__label',
-			default: __( 'Link to : ', textDomain ),
+			default: __('Link to : ', textDomain),
 		},
 		linkUrl: {
 			type: 'string',
@@ -102,7 +102,7 @@ registerBlockType( 'ponhiro-blocks/button', {
 		},
 	},
 
-	edit: ( props ) => {
+	edit: (props) => {
 		const { clientId, className, attributes, setAttributes } = props;
 		const {
 			btnEm,
@@ -115,83 +115,78 @@ registerBlockType( 'ponhiro-blocks/button', {
 			isRound,
 			linkUrl,
 		} = attributes;
-		let blockClass = classnames( blockName, className );
+		let blockClass = classnames(blockName, className);
 
-		if ( isRound ) {
-			blockClass = classnames( blockClass, 'is-round' );
+		if (isRound) {
+			blockClass = classnames(blockClass, 'is-round');
 		}
 		// 親ブロックの取得
 		const parents = useSelect(
-			( select ) =>
-				select( 'core/block-editor' ).getBlockParents( clientId ),
-			[ clientId ]
+			(select) => select('core/block-editor').getBlockParents(clientId),
+			[clientId]
 		);
-		const parentBoxId = parents[ 0 ];
+		const parentBoxId = parents[0];
 
 		const parentBoxData = useSelect(
-			( select ) =>
-				select( 'core/block-editor' ).getBlocksByClientId(
-					parentBoxId
-				)[ 0 ],
-			[ parentBoxId ]
+			(select) =>
+				select('core/block-editor').getBlocksByClientId(parentBoxId)[0],
+			[parentBoxId]
 		);
 
 		// 兄弟要素の画像ブロックのIDを種録
 		let siblingsImageId = '';
-		parentBoxData.innerBlocks.forEach( ( block ) => {
-			if ( 'ponhiro-blocks/image' === block.name ) {
+		parentBoxData.innerBlocks.forEach((block) => {
+			if ('ponhiro-blocks/image' === block.name) {
 				siblingsImageId = block.clientId;
 			}
-		} );
+		});
 		// console.log( siblingsImageId );
 
 		let btnEmContent = null;
-		if ( emIcon ) {
+		if (emIcon) {
 			btnEmContent = (
-				<span className={ `${ blockName }__em has-icon` }>
-					<i className={ emIcon }></i>
+				<span className={`${blockName}__em has-icon`}>
+					<i className={emIcon}></i>
 				</span>
 			);
-		} else if ( btnEm ) {
-			btnEmContent = (
-				<span className={ `${ blockName }__em` }>{ btnEm }</span>
-			);
+		} else if (btnEm) {
+			btnEmContent = <span className={`${blockName}__em`}>{btnEm}</span>;
 		}
 
 		return (
 			<>
-				<MyControls { ...props } siblingsImageId={ siblingsImageId } />
-				<div className={ blockClass }>
-					<div className={ `${ blockName }__btn` }>
-						{ btnEmContent }
+				<MyControls {...props} siblingsImageId={siblingsImageId} />
+				<div className={blockClass}>
+					<div className={`${blockName}__btn`}>
+						{btnEmContent}
 						<RichText
 							tagName='span'
-							className={ `${ blockName }__text` }
-							placeholder={ __( 'Button text…', textDomain ) }
-							value={ btnText }
-							onChange={ ( value ) =>
-								setAttributes( { btnText: value } )
+							className={`${blockName}__text`}
+							placeholder={__('Button text…', textDomain)}
+							value={btnText}
+							onChange={(value) =>
+								setAttributes({ btnText: value })
 							}
-							allowedFormats={ [] } //[ 'core/bold', 'core/link' ] とかで細かく指定できる
+							allowedFormats={[]} //[ 'core/bold', 'core/link' ] とかで細かく指定できる
 						/>
-						{ arrowIcon && <i className={ arrowIcon }></i> }
+						{arrowIcon && <i className={arrowIcon}></i>}
 					</div>
 				</div>
-				{ isShowLink && (
-					<div className={ `pb-text-link` }>
-						<span className={ `pb-text-link__label` }>
-							{ linkLabel }
+				{isShowLink && (
+					<div className={`pb-text-link`}>
+						<span className={`pb-text-link__label`}>
+							{linkLabel}
 						</span>
-						<span className={ `pb-text-link__url` }>
-							{ linkUrl || url }
+						<span className={`pb-text-link__url`}>
+							{linkUrl || url}
 						</span>
 					</div>
-				) }
+				)}
 			</>
 		);
 	},
 
-	save: ( { attributes } ) => {
+	save: ({ attributes }) => {
 		const {
 			btnEm,
 			btnText,
@@ -208,61 +203,59 @@ registerBlockType( 'ponhiro-blocks/button', {
 		} = attributes;
 
 		let blockClass = blockName;
-		if ( isRound ) {
-			blockClass = classnames( blockClass, 'is-round' );
+		if (isRound) {
+			blockClass = classnames(blockClass, 'is-round');
 		}
 
 		let btnEmContent = null;
-		if ( emIcon ) {
+		if (emIcon) {
 			btnEmContent = (
-				<span className={ `${ blockName }__em has-icon` }>
-					<i className={ emIcon }></i>
+				<span className={`${blockName}__em has-icon`}>
+					<i className={emIcon}></i>
 				</span>
 			);
-		} else if ( btnEm ) {
-			btnEmContent = (
-				<span className={ `${ blockName }__em` }>{ btnEm }</span>
-			);
+		} else if (btnEm) {
+			btnEmContent = <span className={`${blockName}__em`}>{btnEm}</span>;
 		}
 
 		return (
 			<>
-				<div className={ blockClass }>
+				<div className={blockClass}>
 					<a
-						href={ url }
-						className={ `${ blockName }__btn` }
-						target={ isNewTab ? '_blank' : null }
-						rel={ rel || null }
+						href={url}
+						className={`${blockName}__btn`}
+						target={isNewTab ? '_blank' : null}
+						rel={rel || null}
 					>
-						{ btnEmContent }
+						{btnEmContent}
 						<RichText.Content
 							tagName='span'
-							className={ `${ blockName }__text` }
-							value={ btnText }
+							className={`${blockName}__text`}
+							value={btnText}
 						/>
-						{ arrowIcon && <i className={ arrowIcon }></i> }
+						{arrowIcon && <i className={arrowIcon}></i>}
 					</a>
-					{ !! imgTag && (
+					{!!imgTag && (
 						// 計測用HTMLタグ
-						<RawHTML>{ imgTag }</RawHTML>
-					) }
+						<RawHTML>{imgTag}</RawHTML>
+					)}
 				</div>
-				{ isShowLink && (
-					<div className={ `pb-text-link` }>
-						<span className={ `pb-text-link__label` }>
-							{ linkLabel }
+				{isShowLink && (
+					<div className={`pb-text-link`}>
+						<span className={`pb-text-link__label`}>
+							{linkLabel}
 						</span>
 						<a
-							href={ url }
-							className={ `pb-text-link__url` }
-							target={ isNewTab ? '_blank' : null }
-							rel={ rel || null }
+							href={url}
+							className={`pb-text-link__url`}
+							target={isNewTab ? '_blank' : null}
+							rel={rel || null}
 						>
-							{ linkUrl || url }
+							{linkUrl || url}
 						</a>
 					</div>
-				) }
+				)}
 			</>
 		);
 	},
-} );
+});
