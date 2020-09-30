@@ -105,11 +105,18 @@ class Data {
 			'colset_iconbox_01' => '#6e828a',
 			'colset_iconbox_01_bg' => '#fff',
 			'colset_iconbox_01_icon' => '#ee8f81',
-
 			'iconbox_img_01' => '',
 			'iconbox_img_02' => '',
 			'iconbox_img_03' => '',
 			'iconbox_img_04' => '',
+
+			// 棒グラフ
+			'colset_bargraph_01' => '#9dd9dd',
+			'colset_bargraph_01_bg' => '#fafafa',
+			'colset_bar_01' => '#f8db92',
+			'colset_bar_02' => '#fda9a8',
+			'colset_bar_03' => '#bdda8b',
+			'colset_bar_04' => '#a1c6f1',
 		];
 	}
 

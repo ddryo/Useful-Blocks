@@ -9,10 +9,10 @@ version=$1
 cd ..
 
 #zプラグインファイルをip化
-zip -r useful-blocks.zip useful-blocks -x "*._*" "*__MACOSX*" "*.DS_Store" "*.git*" "*.vscode*" "*/_nouse/*" "*/src/*" "*/bin/*" "*gulpfile.js" "*webpack.config.js" "*/node_modules/*" "*package.json" "*package-lock.json" "*composer.json" "*README.md"
+zip -r useful-blocks.zip useful-blocks -x "*._*" "*__MACOSX*" "*.DS_Store" "*.git*" "*.vscode*" "*/_nouse/*" "*/src/*" "*/bin/*" "*gulpfile.js" "*webpack.config.*.js" "*/node_modules/*" "*package.json" "*package-lock.json" "*composer.json" "*README.md"
 
 #設定ファイル系削除
 zip --delete useful-blocks.zip  "useful-blocks/.*"
 
 #zipファイルを移動
-mv useful-blocks.zip ./Versions/zip/useful-blocks-${version}.zip
+mv useful-blocks.zip ./_versions/zip/useful-blocks-${version}.zip

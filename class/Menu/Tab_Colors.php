@@ -173,7 +173,7 @@ class Tab_Colors {
 								'0' . $set_num . '_shadow' => _x( 'Shadow', 'color', USFL_BLKS_DOMAIN ),
 								'0' . $set_num . '_note' => _x( 'Border', 'color', USFL_BLKS_DOMAIN ),
 							];
-							foreach ($color_keys as $key => $label) :
+							foreach ( $color_keys as $key => $label ) :
 								$key = 'colset_cvbox_' . $key;
 						?>
 								<div class="__item">
@@ -208,6 +208,7 @@ class Tab_Colors {
 			<?php
 		endforeach;
 	}
+
 
 	/**
 	 * 比較表
@@ -263,7 +264,7 @@ class Tab_Colors {
 								'0' . $set_num . '_r' => __( 'Right', USFL_BLKS_DOMAIN ),
 								'0' . $set_num . '_r_bg' => '',
 							];
-							foreach ($color_keys as $key => $label) :
+							foreach ( $color_keys as $key => $label ) :
 								$key = 'colset_compare_' . $key;
 						?>
 								<div class="__item">
@@ -355,7 +356,7 @@ class Tab_Colors {
 								'0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
 								'0' . $set_num . '_icon' => __( 'Icon', USFL_BLKS_DOMAIN ),
 							];
-							foreach ($color_keys as $key => $label) :
+							foreach ( $color_keys as $key => $label ) :
 								$key = 'colset_iconbox_' . $key;
 						?>
 								<div class="__item">
@@ -392,6 +393,164 @@ class Tab_Colors {
 				</div>
 			<?php
 		endforeach;
+	}
+
+	/**
+	 * 棒グラフ
+	 */
+	public static function bar_graph( $page_name ) {
+		$section_name = 'pb_section_bar_graph';
+
+		// セクションの追加
+		add_settings_section(
+			$section_name,
+			__( 'Bar Graph', USFL_BLKS_DOMAIN ),
+			'',
+			$page_name
+		);
+
+		add_settings_field(
+			'pb_bar_graph_color',
+			'',
+			['\Ponhiro_Blocks\Menu\Tab_Colors', 'callback_for_bar_graph'],
+			$page_name,
+			$section_name,
+			[
+				'class' => 'tr-bar_graph',
+				'keys' => [
+					'1' => 'セット01',
+				],
+			]
+		);
+	}
+
+	/**
+	 * 棒グラフ用コールバック
+	 */
+	public static function callback_for_bar_graph( $args ) {
+
+		$keys = $args['keys'];
+
+		// 使用するデータベース
+		$db = Data::DB_NAME['settings'];
+
+		foreach ( $keys as $set_num => $label ) :
+			?>
+				<div class="__field_title">
+					<?=$label?>
+				</div>
+				<div class="__field -flex -color -pb-colset">
+					<div class="__items">
+						<?php
+							$color_keys = [
+								'colset_bargraph_0' . $set_num => __( 'Graph', USFL_BLKS_DOMAIN ),
+								'colset_bargraph_0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
+							];
+							foreach ( $color_keys as $key => $label ) :
+						?>
+								<div class="__item">
+									<span class="__label"><?=$label?></span>
+									<input type="text" class="pb-colorpicker"
+										id="<?=$key?>"
+										name="<?=$db .'['. $key .']'?>"
+										value="<?=Data::get_settings( $key )?>"
+										data-key="<?=$key?>"
+										data-default-color="<?=Data::get_default_settings( $key )?>"
+									/>
+								</div>
+						<?php
+							endforeach;
+						?>
+					</div>
+					<div class="__preview">
+						<div class='pb-bar-graph' data-colset="<?=$set_num?>" data-bg='1'>
+							<div class='pb-bar-graph__title -border'>
+								Title
+							</div>
+							<div class='pb-bar-graph__dl' data-bg='1'>
+								<div class='pb-bar-graph__item'>
+									<div class='pb-bar-graph__dt' style="width:60%;">
+										<span class='pb-bar-graph__fill'></span>
+									</div>
+									<div class='pb-bar-graph__dd'></div>
+								</div>
+								<div class='pb-bar-graph__item' data-thin="1">
+								<div class='pb-bar-graph__dt' style="width:40%;">
+										<span class='pb-bar-graph__fill'></span>
+									</div>
+									<div class='pb-bar-graph__dd'></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="__preview_label">Preview</div>
+					</div>
+				</div>
+			<?php
+		endforeach;
+		?>
+		<div class="__field_title">
+			グラフカラー
+		</div>
+		<div class="__field -flex -color -pb-colset">
+			<div class="__items">
+				<?php
+					$color_keys = [
+						'colset_bar_01' =>'01',
+						'colset_bar_02' =>'02',
+						'colset_bar_03' =>'03',
+						'colset_bar_04' =>'04',
+					];
+					foreach ( $color_keys as $key => $label ) :
+				?>
+						<div class="__item">
+							<span class="__label"><?=$label?></span>
+							<input type="text" class="pb-colorpicker"
+								id="<?=$key?>"
+								name="<?=$db .'['. $key .']'?>"
+								value="<?=Data::get_settings( $key )?>"
+								data-key="<?=$key?>"
+								data-default-color="<?=Data::get_default_settings( $key )?>"
+							/>
+						</div>
+				<?php
+					endforeach;
+				?>
+			</div>
+			<div class="__preview">
+				<!-- <div class='pb-bar-graph' data-colset="1"> -->
+					<div class='pb-bar-graph__dl' data-bg='1'>
+						<div class='pb-bar-graph__item'>
+							<div class='pb-bar-graph__dt'>
+								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_01);"></span>
+							</div>
+							<div class='pb-bar-graph__dd'></div>
+						</div>
+						<div class='pb-bar-graph__item'>
+							<div class='pb-bar-graph__dt'>
+								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_02);"></span>
+							</div>
+							<div class='pb-bar-graph__dd'></div>
+						</div>
+						<div class='pb-bar-graph__item'>
+							<div class='pb-bar-graph__dt'>
+								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_03);"></span>
+							</div>
+							<div class='pb-bar-graph__dd'></div>
+						</div>
+						<div class='pb-bar-graph__item'>
+							<div class='pb-bar-graph__dt'>
+								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_04);"></span>
+							</div>
+							<div class='pb-bar-graph__dd'></div>
+						</div>
+					</div>
+				<!-- </div> -->
+
+				<div class="__preview_label">Preview</div>
+			</div>
+		</div>
+		<?php
 	}
 
 }

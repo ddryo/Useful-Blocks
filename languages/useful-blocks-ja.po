@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
-"POT-Creation-Date: 2020-08-23 19:00+0900\n"
-"PO-Revision-Date: 2020-08-23 19:01+0900\n"
+"POT-Creation-Date: 2020-09-30 15:41+0900\n"
+"PO-Revision-Date: 2020-09-30 15:41+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -16,14 +16,102 @@ msgstr ""
 "X-Poedit-WPHeader: useful-blocks.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _poedit;__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: inc/update\n"
-"X-Poedit-SearchPathExcluded-4: src/blocks/icon.js\n"
+"X-Poedit-SearchPathExcluded-4: src/**icon.js\n"
+
+#: src/blocks/bar-graph-item/_controls.js:66
+msgid "Graph Color"
+msgstr "グラフの色"
+
+#: src/blocks/bar-graph-item/_controls.js:80
+msgid "you can choose the color of the graph as you like."
+msgstr "グラフの色を好きに選択できます。"
+
+#: src/blocks/bar-graph-item/_controls.js:89
+msgid "Lighten the color"
+msgstr "色を薄く表示する"
+
+#: src/blocks/bar-graph-item/_controls.js:98
+msgid "Percentage of graph"
+msgstr "グラフの割合"
+
+#: src/blocks/bar-graph-item/index.js:27
+msgid "Graph"
+msgstr "グラフ"
+
+#: src/blocks/bar-graph-item/index.js:84 src/blocks/bar-graph-item/index.js:93
+#: src/blocks/bar-graph/index.js:97 src/blocks/cv-box-note/index.js:75
+#: src/blocks/list/index.js:95
+msgid "Text…"
+msgstr "テキスト…"
+
+#: src/blocks/bar-graph/_controls.js:50
+msgid "Left justified"
+msgstr "左寄せ"
+
+#: src/blocks/bar-graph/_controls.js:51
+msgid "Right justified"
+msgstr "右寄せ"
+
+#: src/blocks/bar-graph/_controls.js:56
+msgid "Top"
+msgstr "上部"
+
+#: src/blocks/bar-graph/_controls.js:57
+msgid "Inner"
+msgstr "内部"
+
+#: src/blocks/bar-graph/_controls.js:63
+msgid "Color the right side of the graph"
+msgstr "グラフ右側に色を付ける"
+
+#: src/blocks/bar-graph/_controls.js:71
+msgid "The position of the label on the left"
+msgstr "左側のラベルの位置"
+
+#: src/blocks/bar-graph/_controls.js:91
+msgid "The position of the label on the right"
+msgstr "右側のラベルの位置"
+
+#: src/blocks/bar-graph/_controls.js:115 src/blocks/compare-box/_controls.js:88
+#: src/blocks/cv-box/_controls.js:80 src/blocks/iconbox/_controls.js:61
+#: class/Admin_Menu.php:43
+msgid "Color set"
+msgstr "カラーセット"
+
+#: src/blocks/bar-graph/_controls.js:152
+msgid "Title settings"
+msgstr "タイトル設定"
+
+#: src/blocks/bar-graph/_controls.js:156
+msgid "Don't show"
+msgstr "表示しない"
+
+#: src/blocks/bar-graph/_controls.js:164
+msgid "Add a border below"
+msgstr "下にボーダーをつける"
+
+#: src/blocks/bar-graph/_controls.js:176
+msgid "Graph settings"
+msgstr "グラフ設定"
+
+#: src/blocks/bar-graph/_controls.js:180
+msgid "Add background color"
+msgstr "背景色をつける"
+
+#: src/blocks/bar-graph/_controls.js:188
+msgid "you can make more detailed settings."
+msgstr "より細かな設定が可能です。"
+
+#: src/blocks/bar-graph/index.js:27
+msgid "Bar Graph"
+msgstr "棒グラフ"
 
 #: src/blocks/button/_controls.js:140
 msgid "URL"
@@ -37,106 +125,101 @@ msgstr ""
 msgid "Link rel"
 msgstr ""
 
-#: src/blocks/button/_controls.js:197
+#: src/blocks/button/_controls.js:199
 msgid "Img tag for measurement"
 msgstr "計測用imgタグ"
 
-#: src/blocks/button/_controls.js:216
+#: src/blocks/button/_controls.js:218
 msgid "Link"
 msgstr ""
 
-#: src/blocks/button/_controls.js:239
+#: src/blocks/button/_controls.js:241
 msgid "Link settings"
 msgstr "リンク設定"
 
-#: src/blocks/button/_controls.js:245
+#: src/blocks/button/_controls.js:247
 msgid "Button settings"
 msgstr "ボタン設定"
 
-#: src/blocks/button/_controls.js:251
+#: src/blocks/button/_controls.js:253
 msgid "Left side of button"
 msgstr "ボタンの左側"
 
-#: src/blocks/button/_controls.js:260
+#: src/blocks/button/_controls.js:262
 msgid "Text"
 msgstr "テキスト"
 
-#: src/blocks/button/_controls.js:270 class/Menu/Tab_Colors.php:356
+#: src/blocks/button/_controls.js:272 class/Menu/Tab_Colors.php:356
 msgid "Icon"
 msgstr "アイコン"
 
-#: src/blocks/button/_controls.js:289 src/blocks/button/_controls.js:309
-#: src/blocks/cv-box-note/_controls.js:104 src/blocks/list/_controls.js:165
+#: src/blocks/button/_controls.js:291 src/blocks/button/_controls.js:311
+#: src/blocks/cv-box-note/_controls.js:108 src/blocks/list/_controls.js:165
 msgid "you can choose from several types of icons."
 msgstr "アイコンを数種類の中から選択できます。"
 
-#: src/blocks/button/_controls.js:303
+#: src/blocks/button/_controls.js:305
 msgid "Icon displayed on the right edge of the button"
 msgstr "ボタンの右端に表示するアイコン"
 
-#: src/blocks/button/_controls.js:317
+#: src/blocks/button/_controls.js:319
 msgid "Round button"
 msgstr "ボタンを丸くする"
 
-#: src/blocks/button/_controls.js:326
+#: src/blocks/button/_controls.js:328
 msgid "Display text link below button"
 msgstr "ボタン下にテキストリンクを表示"
 
-#: src/blocks/button/_controls.js:334 src/blocks/button/index.js:73
+#: src/blocks/button/_controls.js:336 src/blocks/button/index.js:72
 msgid "Link to : "
 msgstr "リンク先 : "
 
-#: src/blocks/button/_controls.js:344
+#: src/blocks/button/_controls.js:346
 msgid "Text link settings"
 msgstr "テキストリンク設定"
 
-#: src/blocks/button/_controls.js:349
+#: src/blocks/button/_controls.js:351
 msgid "Text before URL"
 msgstr "URL前のテキスト"
 
-#: src/blocks/button/_controls.js:357
+#: src/blocks/button/_controls.js:359
 msgid "URL text to display"
 msgstr "表示するURLテキスト"
 
-#: src/blocks/button/index.js:32
+#: src/blocks/button/index.js:31
 msgid "CV Botton"
 msgstr "CV ボタン"
 
-#: src/blocks/button/index.js:166
+#: src/blocks/button/index.js:165
 msgid "Button text…"
 msgstr "ボタンテキスト…"
 
-#: src/blocks/compare-box/_controls.js:38
+#: src/blocks/compare-box/_controls.js:43
 msgid "Removal of content restrictions"
 msgstr "コンテンツ制限の解除"
 
-#: src/blocks/compare-box/_controls.js:43
+#: src/blocks/compare-box/_controls.js:49
 msgid "you can place free contents other than the list."
 msgstr "リスト以外にも自由なコンテンツを配置できるようになります。"
 
-#: src/blocks/compare-box/_controls.js:48
+#: src/blocks/compare-box/_controls.js:55
 msgid "Allow blocks to be placed freely."
 msgstr "ブロックを自由に配置できるようにする。"
-
-#: src/blocks/compare-box/_controls.js:78 src/blocks/cv-box/_controls.js:80
-#: src/blocks/iconbox/_controls.js:61 class/Admin_Menu.php:43
-msgid "Color set"
-msgstr "カラーセット"
 
 #: src/blocks/compare-box/index.js:26 class/Menu/Tab_Colors.php:221
 msgid "Comparison box"
 msgstr "比較ボックス"
 
-#: src/blocks/compare-box/index.js:75 src/blocks/compare-box/index.js:84
+#: src/blocks/compare-box/index.js:79 src/blocks/compare-box/index.js:88
 #: src/blocks/iconbox/index.js:151 src/blocks/iconbox/index.js:221
 msgid "…"
 msgstr "…"
 
-#: src/blocks/compare-box/index.js:126
+#: src/blocks/compare-box/index.js:136
 msgid "Comparison area"
 msgstr "比較エリア"
 
-#: src/blocks/compare-box/index.js:178
+#: src/blocks/compare-box/index.js:188
 msgid "Comparison content"
 msgstr "比較コンテンツ"
 
@@ -144,23 +227,19 @@ msgstr "比較コンテンツ"
 msgid "Style settings"
 msgstr "スタイル設定"
 
-#: src/blocks/cv-box-note/_controls.js:98 src/blocks/list/_controls.js:159
+#: src/blocks/cv-box-note/_controls.js:102 src/blocks/list/_controls.js:159
 msgid "Icon settings"
 msgstr "アイコン設定"
 
-#: src/blocks/cv-box-note/_controls.js:128
+#: src/blocks/cv-box-note/_controls.js:132
 msgid "None"
 msgstr "なし"
 
-#: src/blocks/cv-box-note/index.js:27
+#: src/blocks/cv-box-note/index.js:26
 msgid "CV Text"
 msgstr "CV テキスト"
 
-#: src/blocks/cv-box-note/index.js:76 src/blocks/list/index.js:95
-msgid "Text…"
-msgstr "テキスト…"
-
-#: src/blocks/cv-box/_controls.js:36
+#: src/blocks/cv-box/_controls.js:32
 msgid "Background style"
 msgstr "背景のスタイル"
 
@@ -188,39 +267,39 @@ msgstr "左上"
 msgid "Top right"
 msgstr "右上"
 
-#: src/blocks/iconbox/_controls.js:103
+#: src/blocks/iconbox/_controls.js:106
 msgid "Icon set"
 msgstr "アイコンセット"
 
-#: src/blocks/iconbox/_controls.js:108
+#: src/blocks/iconbox/_controls.js:112
 msgid "you can register 4 types of icons and call them easily."
 msgstr "4種類のアイコンを登録して簡単に呼び出すことができます。"
 
-#: src/blocks/iconbox/_controls.js:161
+#: src/blocks/iconbox/_controls.js:168
 msgid "Clear"
 msgstr "クリア"
 
-#: src/blocks/iconbox/_controls.js:169
+#: src/blocks/iconbox/_controls.js:177
 msgid "Icon position"
 msgstr "アイコンの位置"
 
-#: src/blocks/iconbox/_controls.js:174
+#: src/blocks/iconbox/_controls.js:182
 msgid "you can change the placement of the icons."
 msgstr "アイコンの配置を変更できるようになります。"
 
-#: src/blocks/iconbox/_controls.js:202
+#: src/blocks/iconbox/_controls.js:212
 msgid "Move icon down"
 msgstr "アイコンを下にずらす"
 
-#: src/blocks/iconbox/_controls.js:215
+#: src/blocks/iconbox/_controls.js:225
 msgid "Align to top/bottom center"
 msgstr "上下中央に合わせる"
 
-#: src/blocks/iconbox/_controls.js:227
+#: src/blocks/iconbox/_controls.js:237
 msgid "Baloon style"
 msgstr "ふきだしスタイル"
 
-#: src/blocks/iconbox/_controls.js:232
+#: src/blocks/iconbox/_controls.js:243
 msgid "you can change the balloon style."
 msgstr "ふきだしスタイルを変更することができます。"
 
@@ -244,15 +323,15 @@ msgstr "画像設定"
 msgid "Image Size"
 msgstr "画像サイズ"
 
-#: src/blocks/image/index.js:36
+#: src/blocks/image/index.js:33
 msgid "CV Image"
 msgstr "CV 画像"
 
-#: src/blocks/image/index.js:132
+#: src/blocks/image/index.js:137
 msgid "In the pro version, you can place your favorite image here."
 msgstr "プロ版では、ここに好きな画像を配置できます。"
 
-#: src/blocks/image/index.js:159 src/blocks/image/index.js:160
+#: src/blocks/image/index.js:164 src/blocks/image/index.js:165
 msgid "Edit image"
 msgstr ""
 
@@ -276,7 +355,7 @@ msgstr "リストの下に点線をつける"
 msgid "Useful List"
 msgstr "Usefulリスト"
 
-#: src/js/admin_menu.js:33 class/Init.php:214
+#: src/js/admin_menu.js:33 class/Init.php:212
 msgid "Failed."
 msgstr "失敗しました。"
 
@@ -305,7 +384,7 @@ msgstr "画像を選択"
 msgid "Go Pro"
 msgstr "プロ版へ"
 
-#: class/Init.php:210
+#: class/Init.php:209
 msgid "Succeeded."
 msgstr "成功しました。"
 
@@ -411,11 +490,13 @@ msgstr "痒いところに手がとどく、便利なブロックを集めたプ
 msgid "Ponhiro, Ryo"
 msgstr "ぽんひろ & 了"
 
+#, fuzzy
+#~| msgid "Color set"
+#~ msgid "Color Set"
+#~ msgstr "カラーセット"
+
 #~ msgid "Vertical position of icon"
 #~ msgstr "アイコンの上下位置"
-
-#~ msgid "Top"
-#~ msgstr "上"
 
 #~ msgid "With additional add-ons,"
 #~ msgstr "追加アドオンを使えば、"

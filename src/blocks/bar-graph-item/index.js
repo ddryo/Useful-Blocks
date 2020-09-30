@@ -24,7 +24,7 @@ import classnames from 'classnames';
 const blockName = 'pb-bar-graph';
 
 registerBlockType('ponhiro-blocks/bar-graph-item', {
-	title: __('グラフ', textDomain),
+	title: __('Graph', textDomain),
 	icon: {
 		foreground: iconColor,
 		src: icon,
@@ -36,7 +36,7 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 	attributes: {
 		color: {
 			type: 'string',
-			default: '1',
+			default: '',
 		},
 		label: {
 			type: 'array',
@@ -67,7 +67,6 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 				<MyControls {...props} />
 				<div
 					className={classnames(`${blockName}__item`, className)}
-					data-color={color}
 					data-thin={isThin ? '1' : null}
 				>
 					<div
@@ -77,6 +76,7 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 						<span
 							className={`${blockName}__fill`}
 							role='presentation'
+							style={color ? { backgroundColor: color } : null}
 						></span>
 						<RichText
 							tagName='span'
@@ -105,7 +105,6 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 		return (
 			<div
 				className={`${blockName}__item`}
-				data-color={color}
 				data-thin={isThin ? '1' : null}
 			>
 				<dt
@@ -114,6 +113,7 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 				>
 					<span
 						className={`${blockName}__fill`}
+						style={color ? { backgroundColor: color } : null}
 						role='presentation'
 					></span>
 					<RichText.Content

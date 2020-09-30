@@ -105,6 +105,13 @@ class Style {
 			'colset_iconbox_01',
 			'colset_iconbox_01_bg',
 			'colset_iconbox_01_icon',
+
+			'colset_bargraph_01',
+			'colset_bargraph_01_bg',
+			'colset_bar_01',
+			'colset_bar_02',
+			'colset_bar_03',
+			'colset_bar_04',
 		];
 
 		foreach ( $root_colors as $key ) {

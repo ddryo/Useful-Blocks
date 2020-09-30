@@ -24,7 +24,7 @@ import classnames from 'classnames';
 const blockName = 'pb-bar-graph';
 
 registerBlockType('ponhiro-blocks/bar-graph', {
-	title: __('棒グラフ', textDomain),
+	title: __('Bar Graph', textDomain),
 	icon: {
 		foreground: iconColor,
 		src: icon,
@@ -41,6 +41,10 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 			type: 'array',
 			source: 'children',
 			selector: '.pb-bar-graph__title',
+		},
+		hideTtl: {
+			type: 'boolean',
+			default: false,
 		},
 		ttlData: {
 			type: 'string',
@@ -73,6 +77,7 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 			barBg,
 			valuePos,
 			labelPos,
+			hideTtl,
 			ttlData,
 		} = attributes;
 		const blockClass = classnames(blockName, className);
@@ -85,23 +90,24 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 					data-colset={colSet}
 					data-bg={bg ? '1' : null}
 				>
-					<RichText
-						tagName='div'
-						className={`${blockName}__title -${ttlData}`}
-						placeholder={__('Text…', textDomain)}
-						value={title}
-						onChange={(value) => setAttributes({ title: value })}
-					/>
+					{!hideTtl && (
+						<RichText
+							tagName='div'
+							className={`${blockName}__title -${ttlData}`}
+							placeholder={__('Text…', textDomain)}
+							value={title}
+							onChange={(value) =>
+								setAttributes({ title: value })
+							}
+						/>
+					)}
+
 					<div
 						className={`${blockName}__dl`}
 						data-bg={barBg ? '1' : null}
 						data-label={labelPos}
 						data-value={valuePos}
 					>
-						{/* <InnerBlocks
-							allowedBlocks={['core/paragraph']}
-							templateLock={false}
-						/> */}
 						<InnerBlocks
 							allowedBlocks={['ponhiro-blocks/bar-graph-item']}
 							templateLock={false}
@@ -131,6 +137,7 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 			title,
 			bg,
 			barBg,
+			hideTtl,
 			ttlData,
 			labelPos,
 			valuePos,
@@ -141,12 +148,14 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 				data-colset={colSet}
 				data-bg={bg ? '1' : null}
 			>
-				<RichText.Content
-					tagName='div'
-					className={`${blockName}__title -${ttlData}`}
-					data-ttl={ttlData}
-					value={title}
-				/>
+				{!hideTtl && (
+					<RichText.Content
+						tagName='div'
+						className={`${blockName}__title -${ttlData}`}
+						data-ttl={ttlData}
+						value={title}
+					/>
+				)}
 				<dl
 					className={`${blockName}__dl`}
 					data-bg={barBg ? '1' : null}
