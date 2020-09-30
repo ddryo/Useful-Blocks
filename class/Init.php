@@ -25,6 +25,10 @@ class Init {
 		if ( ! USFL_BLKS_IS_PRO ) {
 			add_filter( 'plugin_action_links_'. USFL_BLKS_BASENAME, [$this, 'hook__plugin_action_links'] );
 		}
+
+		// テーマごとの追加CSS
+		add_action( 'wp_head', [ $this, 'add_adjustment_css' ], 20 );
+		// add_action( 'admin_head', [$this, 'add_adjustment_css'], 20 );
 	}
 
 
@@ -192,6 +196,28 @@ class Init {
 				USFL_BLKS_DOMAIN,
 				USFL_BLKS_PATH . 'languages'
 			);
+		}
+	}
+
+
+	/**
+	 * テーマごとの追加調整
+	 */
+	public function add_adjustment_css() {
+		$css = '';
+
+		// テーマ情報取得
+		$theme_data     = wp_get_theme();
+		$theme_name     = $theme_data->get( 'Name' );
+		$theme_template = $theme_data->get( 'Template' );
+
+
+		// JINの場合
+		if ( 'JIN' === $theme_name || 'jin' === $theme_template ) {
+			$css .= '.pb-cv-box, .pb-compare-box, .pb-iconbox, .pb-bar-graph{ margin-top: 0 !important;}';
+		}
+		if ( $css ) {
+			echo '<style id="usfl-blks-adjustment-css">' . $css . '</style>'. PHP_EOL;
 		}
 	}
 

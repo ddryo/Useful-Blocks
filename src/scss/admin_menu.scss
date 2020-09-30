@@ -268,10 +268,10 @@
 		margin-bottom: 24px;
 		font-weight: bold;
 		font-size: 16px;
+	}
 
-		.__field + & {
-			margin-top: 40px;
-		}
+	.__field + .__field_title {
+		margin-top: 40px;
 	}
 
 	.__preview {

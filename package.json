@@ -7,6 +7,7 @@
         "postinstall": "npm run build",
         "wp-start": "wp-env start && open http://localhost:5555",
         "wp-stop": "wp-env run cli wp db export sql/local.sql && wp-env stop",
+        "wp-import": "wp-env run cli wp db import sql/local.sql",
         "build:css": "npx gulp compileScss",
         "build:js": "npx webpack --config webpack.config.scripts.js",
         "build:blocks": "wp-scripts build",

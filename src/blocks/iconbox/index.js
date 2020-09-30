@@ -32,13 +32,13 @@ import MyControls from './_controls';
  */
 const blockName = 'pb-iconbox';
 
-registerBlockType( 'ponhiro-blocks/iconbox', {
-	title: __( 'Icon box', textDomain ),
+registerBlockType('ponhiro-blocks/iconbox', {
+	title: __('Icon box', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.iconbox,
 	},
-	keywords: [ 'ponhiro', 'useful-block', 'iconbox' ],
+	keywords: ['ponhiro', 'useful-block', 'iconbox'],
 	category: blockCategory,
 	supports: { className: false },
 	attributes: {
@@ -87,7 +87,7 @@ registerBlockType( 'ponhiro-blocks/iconbox', {
 		},
 	},
 
-	edit: ( props ) => {
+	edit: (props) => {
 		const { className, attributes, setAttributes, noticeUI } = props;
 		const {
 			headTitle,
@@ -101,30 +101,26 @@ registerBlockType( 'ponhiro-blocks/iconbox', {
 			commentStyle,
 			iconY,
 		} = attributes;
-		const blockClass = classnames(
-			blockName,
-			className,
-			'-ponhiro-blocks'
-		);
+		const blockClass = classnames(blockName, className, '-ponhiro-blocks');
 
 		// 画像ソース
 		// const isExternal = !mediaId;
 		// const src = isExternal ? mediaUrl : undefined;
 
-		const onSelectImage = ( media ) => {
-			if ( ! media || ! media.url ) {
+		const onSelectImage = (media) => {
+			if (!media || !media.url) {
 				// メディア情報が取得できなかった時
-				setAttributes( {
+				setAttributes({
 					mediaUrl: undefined,
 					mediaId: undefined,
-				} );
+				});
 				return;
 			}
-			setAttributes( {
+			setAttributes({
 				mediaUrl: media.url,
 				mediaId: media.id,
 				iconSet: '',
-			} );
+			});
 		};
 
 		// const removeImage = () => {
@@ -134,116 +130,114 @@ registerBlockType( 'ponhiro-blocks/iconbox', {
 		// 	});
 		// };
 
-		const isTopIcon = -1 !== iconPos.indexOf( 'top' );
+		const isTopIcon = -1 !== iconPos.indexOf('top');
 
 		const iconboxFigure = (
 			<div
 				className={
 					isTopIcon
-						? `${ blockName }__topIcon`
-						: `${ blockName }__innerIcon`
+						? `${blockName}__topIcon`
+						: `${blockName}__innerIcon`
 				}
 			>
 				<RichText
 					tagName='div'
-					className={ classnames(
-						`${ blockName }__comment -${ commentStyle }`,
+					className={classnames(
+						`${blockName}__comment -${commentStyle}`,
 						{
 							'pb-is-empty': comment.length === 0,
 						}
-					) }
-					placeholder={ __( '…', textDomain ) }
-					value={ comment }
-					onChange={ ( value ) =>
-						setAttributes( { comment: value } )
-					}
+					)}
+					placeholder={__('…', textDomain)}
+					value={comment}
+					onChange={(value) => setAttributes({ comment: value })}
 				/>
-				{ ! mediaUrl && ! iconSet ? (
+				{!mediaUrl && !iconSet ? (
 					<MediaPlaceholder
-						icon={ <BlockIcon icon={ imgIcon } /> }
-						onSelect={ onSelectImage }
-						notices={ noticeUI }
+						icon={<BlockIcon icon={imgIcon} />}
+						onSelect={onSelectImage}
+						notices={noticeUI}
 						accept='image/*'
-						allowedTypes={ [ 'image' ] }
+						allowedTypes={['image']}
 					/>
 				) : (
 					<div
-						className={ `${ blockName }__figure __mediaWrap` }
-						data-iconset={ iconSet || null }
+						className={`${blockName}__figure __mediaWrap`}
+						data-iconset={iconSet || null}
 						style={
 							isTopIcon && 0 !== iconY
-								? { top: `${ iconY }px` }
+								? { top: `${iconY}px` }
 								: null
 						}
 					>
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={ onSelectImage }
-								allowedTypes={ 'image' }
-								value={ mediaId }
-								render={ ( { open } ) => (
+								onSelect={onSelectImage}
+								allowedTypes={'image'}
+								value={mediaId}
+								render={({ open }) => (
 									<Button
-										onClick={ open }
+										onClick={open}
 										className='__changeImage'
 									>
 										画像を変更
 									</Button>
-								) }
+								)}
 							/>
 						</MediaUploadCheck>
-						{ mediaUrl && (
+						{mediaUrl && (
 							<img
-								className={ `${ blockName }__img` }
-								src={ mediaUrl }
+								className={`${blockName}__img`}
+								src={mediaUrl}
 								alt=''
 							/>
-						) }
-						{ /* <Button
+						)}
+						{/* <Button
 							onClick={removeImage}
 							isTertiary
 						>
 							{__('Remove')}
-						</Button> */ }
+						</Button> */}
 					</div>
-				) }
+				)}
 			</div>
 		);
 
 		return (
 			<>
-				<MyControls { ...props } />
+				<MyControls {...props} />
 				<div
-					className={ blockClass }
-					data-colset={ colSet }
-					data-icon={ iconPos }
+					className={blockClass}
+					data-colset={colSet}
+					data-icon={iconPos}
 				>
-					{ isTopIcon && iconboxFigure }
-					<div className={ `${ blockName }__inner` }>
+					{isTopIcon && iconboxFigure}
+					<div className={`${blockName}__inner`}>
 						<RichText
 							tagName='div'
-							className={ classnames( `${ blockName }__head`, {
+							className={classnames(`${blockName}__head`, {
 								'pb-is-empty': headTitle.length === 0,
-							} ) }
-							placeholder={ __( '…', textDomain ) }
-							value={ headTitle }
-							onChange={ ( value ) =>
-								setAttributes( { headTitle: value } )
+							})}
+							placeholder={__('…', textDomain)}
+							value={headTitle}
+							onChange={(value) =>
+								setAttributes({ headTitle: value })
 							}
 						/>
 						<div
-							className={ `${ blockName }__body` }
-							data-align={ isCenter ? 'center' : null }
+							className={`${blockName}__body`}
+							data-align={isCenter ? 'center' : null}
 						>
 							<InnerBlocks
-								className={ `${ blockName }__content` }
-								allowedBlocks={ [
+								className={`${blockName}__content`}
+								allowedBlocks={[
 									'core/paragraph',
 									'ponhiro-blocks/list',
-								] }
-								templateLock={ false } //insert'
+								]}
+								templateLock={false} //insert'
 								// template={[['core/paragraph', {}, []]]}
 							/>
-							{ ! isTopIcon && iconboxFigure }
+							{!isTopIcon && iconboxFigure}
 						</div>
 					</div>
 				</div>
@@ -251,7 +245,7 @@ registerBlockType( 'ponhiro-blocks/iconbox', {
 		);
 	},
 
-	save: ( { attributes } ) => {
+	save: ({ attributes }) => {
 		const {
 			headTitle,
 			comment,
@@ -263,68 +257,62 @@ registerBlockType( 'ponhiro-blocks/iconbox', {
 			commentStyle,
 			iconY,
 		} = attributes;
-		const blockClass = classnames( blockName );
+		const blockClass = classnames(blockName);
 
-		const isTopIcon = -1 !== iconPos.indexOf( 'top' );
+		const isTopIcon = -1 !== iconPos.indexOf('top');
 
 		const iconboxFigure = (
 			<div
 				className={
 					isTopIcon
-						? `${ blockName }__topIcon`
-						: `${ blockName }__innerIcon`
+						? `${blockName}__topIcon`
+						: `${blockName}__innerIcon`
 				}
 			>
-				{ comment.length > 0 && (
-					<div
-						className={ `${ blockName }__comment -${ commentStyle }` }
-					>
-						{ comment }
+				{comment.length > 0 && (
+					<div className={`${blockName}__comment -${commentStyle}`}>
+						{comment}
 					</div>
-				) }
+				)}
 				<figure
-					className={ `${ blockName }__figure` }
-					data-iconset={ iconSet || null }
+					className={`${blockName}__figure`}
+					data-iconset={iconSet || null}
 					style={
-						isTopIcon && 0 !== iconY
-							? { top: `${ iconY }px` }
-							: null
+						isTopIcon && 0 !== iconY ? { top: `${iconY}px` } : null
 					}
 				>
-					{ !! mediaUrl && (
+					{!!mediaUrl && (
 						<img
-							className={ `${ blockName }__icon -no-lb` }
-							src={ mediaUrl }
+							className={`${blockName}__icon -no-lb`}
+							src={mediaUrl}
 							alt=''
 						/>
-					) }
+					)}
 				</figure>
 			</div>
 		);
 		return (
 			<div
-				className={ blockClass }
-				data-colset={ colSet }
-				data-icon={ iconPos }
+				className={blockClass}
+				data-colset={colSet}
+				data-icon={iconPos}
 			>
-				{ isTopIcon && iconboxFigure }
-				<div className={ `${ blockName }__inner` }>
-					{ headTitle.length > 0 && (
-						<div className={ `${ blockName }__head` }>
-							{ headTitle }
-						</div>
-					) }
+				{isTopIcon && iconboxFigure}
+				<div className={`${blockName}__inner`}>
+					{headTitle.length > 0 && (
+						<div className={`${blockName}__head`}>{headTitle}</div>
+					)}
 					<div
-						className={ `${ blockName }__body` }
-						data-align={ isCenter ? 'center' : null }
+						className={`${blockName}__body`}
+						data-align={isCenter ? 'center' : null}
 					>
-						<div className={ `${ blockName }__content` }>
+						<div className={`${blockName}__content`}>
 							<InnerBlocks.Content />
 						</div>
-						{ ! isTopIcon && iconboxFigure }
+						{!isTopIcon && iconboxFigure}
 					</div>
 				</div>
 			</div>
 		);
 	},
-} );
+});
