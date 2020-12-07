@@ -8,20 +8,12 @@ import {
 	// BlockControls,
 } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-	// TextControl,
-	ToggleControl,
-	BaseControl,
-	Button,
-	ButtonGroup,
-	RadioControl,
-} from '@wordpress/components';
+import { PanelBody, ToggleControl, BaseControl, Button, ButtonGroup } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import { textDomain, isPro } from '@blocks/config';
+import { textDomain } from '@blocks/config';
 import FreePreview from '@blocks/freePreview';
 import ColsetDOM from './_ColsetDOM';
 
@@ -30,17 +22,8 @@ import ColsetDOM from './_ColsetDOM';
  */
 // import classnames from 'classnames';
 
-export default function (props) {
-	const { attributes, setAttributes } = props;
-	const {
-		colSet,
-		hideTtl,
-		ttlData,
-		bg,
-		barBg,
-		valuePos,
-		labelPos,
-	} = attributes;
+export default function ({ attributes, setAttributes }) {
+	const { colSet, hideTtl, ttlData, bg, barBg, valuePos, labelPos } = attributes;
 
 	// カラーセット
 	const colorSets = ['y', 'p', 'g', 'b', '1'];
@@ -57,74 +40,17 @@ export default function (props) {
 		inner: __('Inner', textDomain),
 	};
 
-	const proCtrls = (
-		<>
-			<ToggleControl
-				label={__('Color the right side of the graph', textDomain)}
-				checked={barBg}
-				onChange={(value) => {
-					setAttributes({ barBg: value });
-				}}
-			/>
-			<BaseControl>
-				<BaseControl.VisualLabel>
-					{__('The position of the label on the left', textDomain)}
-				</BaseControl.VisualLabel>
-				<ButtonGroup className='pb-btn-group'>
-					{Object.keys(labelPosChoices).map((pos) => {
-						return (
-							<Button
-								key={`key_${pos}`}
-								isPrimary={pos === labelPos}
-								onClick={() => {
-									setAttributes({ labelPos: pos });
-								}}
-							>
-								{labelPosChoices[pos]}
-							</Button>
-						);
-					})}
-				</ButtonGroup>
-			</BaseControl>
-			<BaseControl>
-				<BaseControl.VisualLabel>
-					{__('The position of the label on the right', textDomain)}
-				</BaseControl.VisualLabel>
-				<ButtonGroup className='pb-btn-group'>
-					{Object.keys(valuePosChoices).map((pos) => {
-						return (
-							<Button
-								key={`key_${pos}`}
-								isPrimary={pos === valuePos}
-								onClick={() => {
-									setAttributes({ valuePos: pos });
-								}}
-							>
-								{valuePosChoices[pos]}
-							</Button>
-						);
-					})}
-				</ButtonGroup>
-			</BaseControl>
-		</>
-	);
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody
-					title={__('Color set', textDomain)}
-					initialOpen={true}
-				>
+				<PanelBody title={__('Color set', textDomain)} initialOpen={true}>
 					<BaseControl>
 						<ButtonGroup className='pb-panel--colorSet -bar-graph'>
 							{colorSets.map((setNum) => {
 								const isSelected = colSet === setNum;
 								const buttonId = 'pb-iconbox-colset-' + setNum;
 								return (
-									<div
-										className='__btnBox'
-										key={`key_style_${setNum}`}
-									>
+									<div className='__btnBox' key={`key_style_${setNum}`}>
 										<button
 											type='button'
 											id={buttonId}
@@ -148,10 +74,7 @@ export default function (props) {
 						</ButtonGroup>
 					</BaseControl>
 				</PanelBody>
-				<PanelBody
-					title={__('Title settings', textDomain)}
-					initialOpen={true}
-				>
+				<PanelBody title={__('Title settings', textDomain)} initialOpen={true}>
 					<ToggleControl
 						label={__("Don't show", textDomain)}
 						checked={hideTtl}
@@ -172,10 +95,7 @@ export default function (props) {
 						}}
 					/>
 				</PanelBody>
-				<PanelBody
-					title={__('Graph settings', textDomain)}
-					initialOpen={true}
-				>
+				<PanelBody title={__('Graph settings', textDomain)} initialOpen={true}>
 					<ToggleControl
 						label={__('Add background color', textDomain)}
 						checked={bg}
@@ -184,12 +104,55 @@ export default function (props) {
 						}}
 					/>
 					<FreePreview
-						description={__(
-							'you can make more detailed settings.',
-							textDomain
-						)}
+						description={__('you can make more detailed settings.', textDomain)}
 					>
-						{proCtrls}
+						<ToggleControl
+							label={__('Color the right side of the graph', textDomain)}
+							checked={barBg}
+							onChange={(value) => {
+								setAttributes({ barBg: value });
+							}}
+						/>
+						<BaseControl>
+							<BaseControl.VisualLabel>
+								{__('The position of the label on the left', textDomain)}
+							</BaseControl.VisualLabel>
+							<ButtonGroup className='pb-btn-group'>
+								{Object.keys(labelPosChoices).map((pos) => {
+									return (
+										<Button
+											key={`key_${pos}`}
+											isPrimary={pos === labelPos}
+											onClick={() => {
+												setAttributes({ labelPos: pos });
+											}}
+										>
+											{labelPosChoices[pos]}
+										</Button>
+									);
+								})}
+							</ButtonGroup>
+						</BaseControl>
+						<BaseControl>
+							<BaseControl.VisualLabel>
+								{__('The position of the label on the right', textDomain)}
+							</BaseControl.VisualLabel>
+							<ButtonGroup className='pb-btn-group'>
+								{Object.keys(valuePosChoices).map((pos) => {
+									return (
+										<Button
+											key={`key_${pos}`}
+											isPrimary={pos === valuePos}
+											onClick={() => {
+												setAttributes({ valuePos: pos });
+											}}
+										>
+											{valuePosChoices[pos]}
+										</Button>
+									);
+								})}
+							</ButtonGroup>
+						</BaseControl>
 					</FreePreview>
 				</PanelBody>
 			</InspectorControls>

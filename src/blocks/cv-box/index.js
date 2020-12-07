@@ -18,7 +18,7 @@ import { textDomain, blockCategory, isPro } from '@blocks/config';
 /**
  * Internal dependencies
  */
-import MyControls from './_controls';
+import MySidebar from './_sidebar';
 
 /**
  * Block
@@ -43,15 +43,10 @@ registerBlockType('ponhiro-blocks/cv-box', {
 			type: 'string',
 			default: 'on',
 		},
-		// note: {
-		// 	type: 'array',
-		// 	source: 'children',
-		// 	selector: '.pb-cv-box__note',
-		// },
 	},
 
 	edit: (props) => {
-		const { className, attributes } = props;
+		const { className, attributes, setAttributes } = props;
 		const { colSet, bgStyle } = attributes;
 		let blockClass = classnames(blockName, className, '-ponhiro-blocks');
 		if (!isPro) {
@@ -60,12 +55,8 @@ registerBlockType('ponhiro-blocks/cv-box', {
 
 		return (
 			<>
-				<MyControls {...props} />
-				<div
-					className={blockClass}
-					data-colset={colSet}
-					data-bg={bgStyle}
-				>
+				<MySidebar {...{ attributes, setAttributes }} />
+				<div className={blockClass} data-colset={colSet} data-bg={bgStyle}>
 					<div className={`${blockName}__inner`}>
 						<InnerBlocks
 							allowedBlocks={[

@@ -3,7 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-// import {} from '@wordpress/components';
 import { image as imgIcon } from '@wordpress/icons';
 
 import {
@@ -11,6 +10,7 @@ import {
 	MediaPlaceholder,
 	// RichText,
 } from '@wordpress/block-editor';
+import { useCallback } from '@wordpress/element';
 
 /**
  * External dependencies
@@ -22,207 +22,186 @@ import { textDomain, blockCategory, isPro } from '@blocks/config';
 /**
  * Internal dependencies
  */
-import MyControls from './_controls';
+import metadata from './block.json';
+import MyToolbar from './_toolbar';
+import MySidebar from './_sidebar';
 
 /**
- * Block
+ * metadata
  */
 const blockName = 'pb-image';
+const { name, parent, keywords, supports } = metadata;
 
-registerBlockType( 'ponhiro-blocks/image', {
-	title: __( 'CV Image', textDomain ),
+registerBlockType(name, {
+	title: __('CV Image', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: [ 'ponhiro', 'image' ],
 	category: blockCategory,
-	supports: { className: false, reusable: false },
-	parent: [ 'ponhiro-blocks/cv-box' ],
-
-	attributes: {
-		id: {
-			type: 'number',
-		},
-		url: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'src',
-		},
-		alt: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'alt',
-			default: '',
-		},
-		dataSize: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'figure',
-			attribute: 'data-size',
-			default: '',
-		},
-
-		// リンク系は親ブロックから渡ってきたりするので source: 'attribute' はNG
-		href: {
-			type: 'string',
-			default: '',
-		},
-		rel: {
-			type: 'string',
-			default: '',
-		},
-		isNewTab: {
-			type: 'boolean',
-			default: false,
-		},
-	},
-
-	edit: ( props ) => {
+	keywords,
+	supports,
+	parent,
+	attributes: metadata.attributes,
+	edit: (props) => {
 		const { attributes, setAttributes, className, noticeUI } = props;
 		const { url, alt, id, href, dataSize } = attributes;
-		const blockClass = classnames(
-			blockName,
-			className,
-			'-ponhiro-blocks'
-		);
+		const blockClass = classnames(blockName, className, '-ponhiro-blocks');
 
 		// 画像ソース
-		const isExternal = ! id;
+		const isExternal = !id;
 		const src = isExternal ? url : undefined;
 
-		const onSelectImage = ( media ) => {
+		const deleteImage = useCallback(() => {
+			setAttributes({
+				url: undefined,
+				alt: undefined,
+				id: undefined,
+			});
+		}, []);
+
+		const onSelectImage = useCallback((media) => {
 			// console.log( media );
-			if ( ! media || ! media.url ) {
+			if (!media || !media.url) {
 				// メディア情報が取得できなかった時
-				setAttributes( {
-					url: undefined,
-					alt: undefined,
-					id: undefined,
-				} );
+				deleteImage();
 				return;
 			}
-
-			setAttributes( {
+			setAttributes({
 				url: media.url,
 				alt: media.alt,
 				id: media.id,
-			} );
-		};
+			});
+		}, []);
 
-		const onSelectURL = ( newURL ) => {
-			if ( newURL !== url ) {
-				setAttributes( {
-					url: newURL,
-					id: undefined,
-				} );
-			}
-		};
-
-		const imgTag = (
-			<img
-				className={ `${ blockName }__img` }
-				src={ url }
-				alt={ alt || '' }
-			/>
+		const onSelectURL = useCallback(
+			(newURL) => {
+				if (newURL !== url) {
+					setAttributes({
+						url: newURL,
+						id: undefined,
+					});
+				}
+			},
+			[url]
 		);
 
-		if ( ! isPro ) {
+		const imgTag = <img className={`${blockName}__img`} src={url} alt={alt || ''} />;
+
+		if (!isPro) {
 			return null;
-			// return (
-			// 	<div className='pb-free-noticeBox -image'>
-			// 		{__(
-			// 			'In the pro version, you can place your favorite image here.',
-			// 			textDomain
-			// 		)}
-			// 	</div>
-			// );
 		}
+
 		return (
 			<>
-				<MyControls
-					{ ...props }
-					onSelectImage={ onSelectImage }
-					onSelectURL={ onSelectURL }
-				/>
-				{ ! url ? (
+				<MyToolbar {...{ id, url, onSelectImage, onSelectURL, deleteImage }} />
+				<MySidebar {...{ attributes, setAttributes }} />
+				{!url ? (
 					<MediaPlaceholder
 						// icon='image'
-						icon={ <BlockIcon icon={ imgIcon } /> }
-						onSelect={ onSelectImage }
-						onSelectURL={ onSelectURL }
-						notices={ noticeUI }
+						icon={<BlockIcon icon={imgIcon} />}
+						onSelect={onSelectImage}
+						onSelectURL={onSelectURL}
+						notices={noticeUI}
 						// onError={ this.onUploadError }
 						accept='image/*'
-						allowedTypes={ [ 'image' ] }
-						value={ { id, src } }
+						allowedTypes={['image']}
+						value={{ id, src }}
 						mediaPreview={
-							!! url && (
+							!!url && (
 								<img
-									alt={ __( 'Edit image' ) }
-									title={ __( 'Edit image' ) }
-									className={ 'edit-image-preview' }
-									src={ url }
+									alt={__('Edit image')}
+									title={__('Edit image')}
+									className={'edit-image-preview'}
+									src={url}
 								/>
 							)
 						}
-						disableMediaButtons={ url }
+						disableMediaButtons={url}
 						// isAppender={ true }
 					/>
 				) : (
-					<figure
-						className={ blockClass }
-						data-size={ dataSize || null }
-					>
-						{ href ? (
+					<figure className={blockClass} data-size={dataSize || null}>
+						{href ? (
 							<div
 								// href={ href }
-								className={ `${ blockName }__link` }
+								className={`${blockName}__link`}
 							>
-								{ imgTag }
+								{imgTag}
 							</div>
 						) : (
 							imgTag
-						) }
+						)}
 					</figure>
-				) }
+				)}
 			</>
 		);
 	},
 
-	save: ( { attributes } ) => {
-		const { url, alt, href, rel, isNewTab, dataSize } = attributes;
-		const blockClass = blockName;
-		if ( ! url ) {
+	save: ({ attributes }) => {
+		const { id, url, alt, href, rel, isNewTab, dataSize } = attributes;
+		if (!url) {
 			return null;
 		}
-		const imgTag = (
-			<img
-				className={ `${ blockName }__img` }
-				src={ url }
-				alt={ alt || '' }
-			/>
-		);
+
+		const blockClass = blockName;
+		let imgClass = `${blockName}__img`;
+		if (!!id) {
+			imgClass = classnames(imgClass, `wp-image-${id}`);
+		}
+
+		const imgTag = <img className={`${imgClass}`} src={url} alt={alt || ''} />;
 
 		return (
 			<>
-				<figure className={ blockClass } data-size={ dataSize || null }>
-					{ href ? (
+				<figure className={blockClass} data-size={dataSize || null}>
+					{href ? (
 						<a
-							href={ href }
-							className={ `${ blockName }__link` }
-							target={ isNewTab ? '_blank' : null }
-							rel={ rel || null }
+							href={href}
+							className={`${blockName}__link`}
+							target={isNewTab ? '_blank' : null}
+							rel={rel || null}
 						>
-							{ imgTag }
+							{imgTag}
 						</a>
 					) : (
 						imgTag
-					) }
+					)}
 				</figure>
 			</>
 		);
 	},
-} );
+	deprecated: [
+		{
+			attributes: metadata.attributes,
+			supports,
+			save: ({ attributes }) => {
+				const { url, alt, href, rel, isNewTab, dataSize } = attributes;
+				const blockClass = blockName;
+				if (!url) {
+					return null;
+				}
+				const imgTag = <img className={`${blockName}__img`} src={url} alt={alt || ''} />;
+
+				return (
+					<>
+						<figure className={blockClass} data-size={dataSize || null}>
+							{href ? (
+								<a
+									href={href}
+									className={`${blockName}__link`}
+									target={isNewTab ? '_blank' : null}
+									rel={rel || null}
+								>
+									{imgTag}
+								</a>
+							) : (
+								imgTag
+							)}
+						</figure>
+					</>
+				);
+			},
+		},
+	],
+});

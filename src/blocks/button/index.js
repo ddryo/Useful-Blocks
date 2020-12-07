@@ -3,24 +3,25 @@
  */
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
+import { RawHTML } from '@wordpress/element';
 import { registerBlockType } from '@wordpress/blocks';
 import {
 	RichText,
 	// InnerBlocks,
 } from '@wordpress/block-editor';
-import { RawHTML } from '@wordpress/element';
+
+/**
+ * Internal dependencies
+ */
+import pbIcon from '@blocks/icon';
+import MyToolbar from './_toolbar';
+import MySidebar from './_sidebar';
+import { textDomain, blockCategory } from '@blocks/config';
 
 /**
  * External dependencies
  */
 import classnames from 'classnames';
-import pbIcon from '@blocks/icon';
-import { textDomain, blockCategory, isPro } from '@blocks/config';
-
-/**
- * Internal dependencies
- */
-import MyControls from './_controls';
 
 /**
  * Block
@@ -96,8 +97,6 @@ registerBlockType('ponhiro-blocks/button', {
 		},
 		imgTag: {
 			type: 'string',
-			// source: 'html',
-			// selector: '',
 			default: '',
 		},
 	},
@@ -120,27 +119,32 @@ registerBlockType('ponhiro-blocks/button', {
 		if (isRound) {
 			blockClass = classnames(blockClass, 'is-round');
 		}
-		// 親ブロックの取得
-		const parents = useSelect(
-			(select) => select('core/block-editor').getBlockParents(clientId),
+
+		// 兄弟要素の画像ブロックのIDを取得
+		const siblingsImageId = useSelect(
+			(select) => {
+				let theId = '';
+
+				// 親ブロックの取得
+				const parents = select('core/block-editor').getBlockParents(clientId);
+
+				// 一つ上の親
+				const parentBoxId = parents[0];
+
+				// その子ブロックのデータを取得（つまり、自分の兄弟要素）
+				const parentData = select('core/block-editor').getBlocksByClientId(parentBoxId)[0];
+
+				// その中から画像ブロックを探す
+				parentData.innerBlocks.forEach((block) => {
+					if ('ponhiro-blocks/image' === block.name) {
+						theId = block.clientId;
+					}
+				});
+
+				return theId;
+			},
 			[clientId]
 		);
-		const parentBoxId = parents[0];
-
-		const parentBoxData = useSelect(
-			(select) =>
-				select('core/block-editor').getBlocksByClientId(parentBoxId)[0],
-			[parentBoxId]
-		);
-
-		// 兄弟要素の画像ブロックのIDを種録
-		let siblingsImageId = '';
-		parentBoxData.innerBlocks.forEach((block) => {
-			if ('ponhiro-blocks/image' === block.name) {
-				siblingsImageId = block.clientId;
-			}
-		});
-		// console.log( siblingsImageId );
 
 		let btnEmContent = null;
 		if (emIcon) {
@@ -155,7 +159,8 @@ registerBlockType('ponhiro-blocks/button', {
 
 		return (
 			<>
-				<MyControls {...props} siblingsImageId={siblingsImageId} />
+				<MyToolbar {...{ attributes, setAttributes, siblingsImageId }} />
+				<MySidebar {...{ attributes, setAttributes, siblingsImageId }} />
 				<div className={blockClass}>
 					<div className={`${blockName}__btn`}>
 						{btnEmContent}
@@ -164,9 +169,7 @@ registerBlockType('ponhiro-blocks/button', {
 							className={`${blockName}__text`}
 							placeholder={__('Button text…', textDomain)}
 							value={btnText}
-							onChange={(value) =>
-								setAttributes({ btnText: value })
-							}
+							onChange={(value) => setAttributes({ btnText: value })}
 							allowedFormats={[]} //[ 'core/bold', 'core/link' ] とかで細かく指定できる
 						/>
 						{arrowIcon && <i className={arrowIcon}></i>}
@@ -174,12 +177,8 @@ registerBlockType('ponhiro-blocks/button', {
 				</div>
 				{isShowLink && (
 					<div className={`pb-text-link`}>
-						<span className={`pb-text-link__label`}>
-							{linkLabel}
-						</span>
-						<span className={`pb-text-link__url`}>
-							{linkUrl || url}
-						</span>
+						<span className={`pb-text-link__label`}>{linkLabel}</span>
+						<span className={`pb-text-link__url`}>{linkUrl || url}</span>
 					</div>
 				)}
 			</>
@@ -242,9 +241,7 @@ registerBlockType('ponhiro-blocks/button', {
 				</div>
 				{isShowLink && (
 					<div className={`pb-text-link`}>
-						<span className={`pb-text-link__label`}>
-							{linkLabel}
-						</span>
+						<span className={`pb-text-link__label`}>{linkLabel}</span>
 						<a
 							href={url}
 							className={`pb-text-link__url`}

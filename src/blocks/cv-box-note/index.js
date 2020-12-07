@@ -6,16 +6,16 @@ import { registerBlockType } from '@wordpress/blocks';
 import { RichText } from '@wordpress/block-editor';
 
 /**
+ * Internal dependencies
+ */
+import pbIcon from '@blocks/icon';
+import MySidebar from './_sidebar';
+import { textDomain, blockCategory } from '@blocks/config';
+
+/**
  * External dependencies
  */
 import classnames from 'classnames';
-import pbIcon from '@blocks/icon';
-import { textDomain, blockCategory, isPro } from '@blocks/config';
-
-/**
- * Internal dependencies
- */
-import MyControls from './_controls';
 
 /**
  * Block
@@ -62,7 +62,7 @@ registerBlockType('ponhiro-blocks/cv-box-note', {
 
 		return (
 			<>
-				<MyControls {...props} />
+				<MySidebar {...{ attributes, setAttributes }} />
 				<div className={blockClass} data-style={dataStyle}>
 					{icon && (
 						<div className='__icon'>
@@ -93,11 +93,7 @@ registerBlockType('ponhiro-blocks/cv-box-note', {
 						<i className={icon}></i>
 					</div>
 				)}
-				<RichText.Content
-					tagName='div'
-					className='__text'
-					value={content}
-				/>
+				<RichText.Content tagName='div' className='__text' value={content} />
 			</div>
 		);
 	},

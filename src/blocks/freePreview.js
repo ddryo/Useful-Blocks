@@ -4,26 +4,24 @@ import { textDomain, isPro } from '@blocks/config';
 /**
  * Custom Component
  */
-export default function ( props ) {
+export default function ({ description, children }) {
 	return (
 		<>
-			{ ! isPro ? (
+			{!isPro ? (
 				<div className='pb-free-noticeBox'>
 					<a
 						href='https://ponhiro.com/useful-blocks/#download-link'
 						target='_blank'
 						rel='noreferrer noopener'
 					>
-						{ __( 'In the Pro version,', textDomain ) }
+						{__('In the Pro version,', textDomain)}
 					</a>
-					{ props.description || '' }
-					<div className='pb-free-ctrlPreview'>
-						{ props.children }
-					</div>
+					{description || ''}
+					<div className='pb-free-ctrlPreview'>{children}</div>
 				</div>
 			) : (
-				props.children
-			) }
+				children
+			)}
 		</>
 	);
 }

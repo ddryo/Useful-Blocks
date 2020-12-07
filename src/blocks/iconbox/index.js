@@ -19,7 +19,11 @@ import { image as imgIcon } from '@wordpress/icons';
  */
 import classnames from 'classnames';
 import pbIcon from '@blocks/icon';
-import { textDomain, blockCategory, isPro } from '@blocks/config';
+import {
+	textDomain,
+	blockCategory,
+	// isPro
+} from '@blocks/config';
 
 /**
  * Internal dependencies
@@ -133,21 +137,12 @@ registerBlockType('ponhiro-blocks/iconbox', {
 		const isTopIcon = -1 !== iconPos.indexOf('top');
 
 		const iconboxFigure = (
-			<div
-				className={
-					isTopIcon
-						? `${blockName}__topIcon`
-						: `${blockName}__innerIcon`
-				}
-			>
+			<div className={isTopIcon ? `${blockName}__topIcon` : `${blockName}__innerIcon`}>
 				<RichText
 					tagName='div'
-					className={classnames(
-						`${blockName}__comment -${commentStyle}`,
-						{
-							'pb-is-empty': comment.length === 0,
-						}
-					)}
+					className={classnames(`${blockName}__comment -${commentStyle}`, {
+						'pb-is-empty': comment.length === 0,
+					})}
 					placeholder={__('…', textDomain)}
 					value={comment}
 					onChange={(value) => setAttributes({ comment: value })}
@@ -164,11 +159,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 					<div
 						className={`${blockName}__figure __mediaWrap`}
 						data-iconset={iconSet || null}
-						style={
-							isTopIcon && 0 !== iconY
-								? { top: `${iconY}px` }
-								: null
-						}
+						style={isTopIcon && 0 !== iconY ? { top: `${iconY}px` } : null}
 					>
 						<MediaUploadCheck>
 							<MediaUpload
@@ -176,22 +167,13 @@ registerBlockType('ponhiro-blocks/iconbox', {
 								allowedTypes={'image'}
 								value={mediaId}
 								render={({ open }) => (
-									<Button
-										onClick={open}
-										className='__changeImage'
-									>
+									<Button onClick={open} className='__changeImage'>
 										画像を変更
 									</Button>
 								)}
 							/>
 						</MediaUploadCheck>
-						{mediaUrl && (
-							<img
-								className={`${blockName}__img`}
-								src={mediaUrl}
-								alt=''
-							/>
-						)}
+						{mediaUrl && <img className={`${blockName}__img`} src={mediaUrl} alt='' />}
 						{/* <Button
 							onClick={removeImage}
 							isTertiary
@@ -206,11 +188,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 		return (
 			<>
 				<MyControls {...props} />
-				<div
-					className={blockClass}
-					data-colset={colSet}
-					data-icon={iconPos}
-				>
+				<div className={blockClass} data-colset={colSet} data-icon={iconPos}>
 					{isTopIcon && iconboxFigure}
 					<div className={`${blockName}__inner`}>
 						<RichText
@@ -220,9 +198,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 							})}
 							placeholder={__('…', textDomain)}
 							value={headTitle}
-							onChange={(value) =>
-								setAttributes({ headTitle: value })
-							}
+							onChange={(value) => setAttributes({ headTitle: value })}
 						/>
 						<div
 							className={`${blockName}__body`}
@@ -230,10 +206,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 						>
 							<InnerBlocks
 								className={`${blockName}__content`}
-								allowedBlocks={[
-									'core/paragraph',
-									'ponhiro-blocks/list',
-								]}
+								allowedBlocks={['core/paragraph', 'ponhiro-blocks/list']}
 								templateLock={false} //insert'
 								// template={[['core/paragraph', {}, []]]}
 							/>
@@ -262,50 +235,29 @@ registerBlockType('ponhiro-blocks/iconbox', {
 		const isTopIcon = -1 !== iconPos.indexOf('top');
 
 		const iconboxFigure = (
-			<div
-				className={
-					isTopIcon
-						? `${blockName}__topIcon`
-						: `${blockName}__innerIcon`
-				}
-			>
+			<div className={isTopIcon ? `${blockName}__topIcon` : `${blockName}__innerIcon`}>
 				{comment.length > 0 && (
-					<div className={`${blockName}__comment -${commentStyle}`}>
-						{comment}
-					</div>
+					<div className={`${blockName}__comment -${commentStyle}`}>{comment}</div>
 				)}
 				<figure
 					className={`${blockName}__figure`}
 					data-iconset={iconSet || null}
-					style={
-						isTopIcon && 0 !== iconY ? { top: `${iconY}px` } : null
-					}
+					style={isTopIcon && 0 !== iconY ? { top: `${iconY}px` } : null}
 				>
 					{!!mediaUrl && (
-						<img
-							className={`${blockName}__icon -no-lb`}
-							src={mediaUrl}
-							alt=''
-						/>
+						<img className={`${blockName}__icon -no-lb`} src={mediaUrl} alt='' />
 					)}
 				</figure>
 			</div>
 		);
 		return (
-			<div
-				className={blockClass}
-				data-colset={colSet}
-				data-icon={iconPos}
-			>
+			<div className={blockClass} data-colset={colSet} data-icon={iconPos}>
 				{isTopIcon && iconboxFigure}
 				<div className={`${blockName}__inner`}>
 					{headTitle.length > 0 && (
 						<div className={`${blockName}__head`}>{headTitle}</div>
 					)}
-					<div
-						className={`${blockName}__body`}
-						data-align={isCenter ? 'center' : null}
-					>
+					<div className={`${blockName}__body`} data-align={isCenter ? 'center' : null}>
 						<div className={`${blockName}__content`}>
 							<InnerBlocks.Content />
 						</div>
