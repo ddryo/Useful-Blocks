@@ -52,8 +52,11 @@ spl_autoload_register( function( $classname ) {
  */
 add_action( 'plugins_loaded', function() {
 	// 翻訳
-	$locale = apply_filters( 'plugin_locale', determine_locale(), USFL_BLKS_DOMAIN );
-	load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-' . $locale . '.mo' );
+	if ( 'ja' === determine_locale() ) {
+		load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-ja.mo' );
+	} else {
+		load_plugin_textdomain( 'useful-blocks' );
+	}
 
 	if ( ! defined( 'USFL_BLKS_IS_PRO' ) ) define( 'USFL_BLKS_IS_PRO', false );
 	new Ponhiro_Blocks\Init();

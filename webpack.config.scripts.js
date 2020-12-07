@@ -1,17 +1,17 @@
-const path = require( 'path' );
+const path = require('path');
 
 module.exports = {
 	mode: 'production', // npm start でも圧縮させる
 
 	//エントリーポイント
 	entry: {
-		'admin_menu.js': path.resolve( __dirname, 'src/js/admin_menu.js' ),
-		'media.js': path.resolve( __dirname, 'src/js/media.js' ),
+		'admin_menu.js': path.resolve(__dirname, 'src/js/admin_menu.js'),
+		'media.js': path.resolve(__dirname, 'src/js/media.js'),
 	},
 
 	//アウトプット先
 	output: {
-		path: path.resolve( __dirname, 'dist/js' ),
+		path: path.resolve(__dirname, 'dist/js'),
 		filename: '[name]',
 	},
 	module: {
@@ -49,7 +49,7 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'@blocks': path.resolve( __dirname, 'src/blocks/' ),
+			'@blocks': path.resolve(__dirname, 'src/blocks/'),
 		},
 	},
 	performance: { hints: false },
