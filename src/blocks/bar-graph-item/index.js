@@ -9,9 +9,9 @@ import { RichText } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { textDomain, blockCategory, iconColor, isPro } from '@blocks/config';
 import icon from './_icon';
 import MyControls from './_controls';
+import { textDomain, blockCategory, iconColor } from '@blocks/config';
 
 /**
  * External dependencies
@@ -64,15 +64,12 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 
 		return (
 			<>
-				<MyControls {...props} />
+				<MyControls {...{ attributes, setAttributes }} />
 				<div
 					className={classnames(`${blockName}__item`, className)}
 					data-thin={isThin ? '1' : null}
 				>
-					<div
-						className={`${blockName}__dt`}
-						style={{ width: `${ratio}%` }}
-					>
+					<div className={`${blockName}__dt`} style={{ width: `${ratio}%` }}>
 						<span
 							className={`${blockName}__fill`}
 							role='presentation'
@@ -103,14 +100,8 @@ registerBlockType('ponhiro-blocks/bar-graph-item', {
 	save: ({ attributes }) => {
 		const { color, value, label, ratio, isThin } = attributes;
 		return (
-			<div
-				className={`${blockName}__item`}
-				data-thin={isThin ? '1' : null}
-			>
-				<dt
-					className={`${blockName}__dt`}
-					style={{ width: `${ratio}%` }}
-				>
+			<div className={`${blockName}__item`} data-thin={isThin ? '1' : null}>
+				<dt className={`${blockName}__dt`} style={{ width: `${ratio}%` }}>
 					<span
 						className={`${blockName}__fill`}
 						style={color ? { backgroundColor: color } : null}

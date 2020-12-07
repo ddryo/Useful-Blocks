@@ -14,17 +14,11 @@ import {
 /**
  * Internal dependencies
  */
-import { textDomain, isPro } from '@blocks/config';
 import FreePreview from '@blocks/freePreview';
+import { textDomain, isPro } from '@blocks/config';
 
-/**
- * External dependencies
- */
-// import classnames from 'classnames';
-
-export default function (props) {
-	const { attributes, setAttributes } = props;
-	const { color, value, label, ratio, isThin } = attributes;
+export default function ({ attributes, setAttributes }) {
+	const { color, ratio, isThin } = attributes;
 
 	// const capBlockColors = window.capBlockColors;
 

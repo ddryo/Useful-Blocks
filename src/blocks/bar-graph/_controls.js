@@ -2,25 +2,38 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-
-import {
-	InspectorControls,
-	// BlockControls,
-} from '@wordpress/block-editor';
-
+import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, BaseControl, Button, ButtonGroup } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import { textDomain } from '@blocks/config';
 import FreePreview from '@blocks/freePreview';
-import ColsetDOM from './_ColsetDOM';
+import { textDomain } from '@blocks/config';
 
 /**
- * External dependencies
+ * component
  */
-// import classnames from 'classnames';
+const ColsetDOM = ({ colset }) => {
+	return (
+		<span className='pb-bar-graph' data-colset={colset} data-bg='1'>
+			<span className='pb-bar-graph__dl' data-bg='1'>
+				<span className='pb-bar-graph__item'>
+					<span className='pb-bar-graph__dt'>
+						<span className='pb-bar-graph__fill'></span>
+					</span>
+					<span className='pb-bar-graph__dd'></span>
+				</span>
+				<span className='pb-bar-graph__item'>
+					<span className='pb-bar-graph__dt'>
+						<span className='pb-bar-graph__fill'></span>
+					</span>
+					<span className='pb-bar-graph__dd'></span>
+				</span>
+			</span>
+		</span>
+	);
+};
 
 export default function ({ attributes, setAttributes }) {
 	const { colSet, hideTtl, ttlData, bg, barBg, valuePos, labelPos } = attributes;

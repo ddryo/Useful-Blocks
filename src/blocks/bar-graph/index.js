@@ -9,9 +9,9 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { textDomain, blockCategory, iconColor, isPro } from '@blocks/config';
 import icon from './_icon';
 import MyControls from './_controls';
+import { textDomain, blockCategory, iconColor } from '@blocks/config';
 
 /**
  * External dependencies
@@ -75,7 +75,7 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 
 		return (
 			<>
-				<MyControls {...props} />
+				<MyControls {...{ attributes, setAttributes }} />
 				<div className={blockClass} data-colset={colSet} data-bg={bg ? '1' : null}>
 					{!hideTtl && (
 						<RichText

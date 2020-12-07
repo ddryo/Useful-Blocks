@@ -187,7 +187,7 @@ registerBlockType('ponhiro-blocks/iconbox', {
 
 		return (
 			<>
-				<MyControls {...props} />
+				<MyControls {...{ attributes, setAttributes }} />
 				<div className={blockClass} data-colset={colSet} data-icon={iconPos}>
 					{isTopIcon && iconboxFigure}
 					<div className={`${blockName}__inner`}>
