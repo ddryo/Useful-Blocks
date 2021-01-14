@@ -2,20 +2,12 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo } from '@wordpress/element';
-// import { withSelect, useSelect, useDispatch } from '@wordpress/data';
 import { PanelBody, BaseControl, ButtonGroup } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import { textDomain } from '@blocks/config';
-
-/**
- * External dependencies
- */
-// import classnames from 'classnames';
 
 /**
  * Settings
@@ -26,11 +18,11 @@ const bgStyles = ['on', 'shadow', 'none'];
 /**
  * Custom Component
  */
-export default memo(({ attributes, setAttributes }) => {
+export default ({ attributes, setAttributes }) => {
 	const { colSet, bgStyle } = attributes;
 
 	return (
-		<InspectorControls>
+		<>
 			<PanelBody title={__('Background style', textDomain)} initialOpen={true}>
 				<BaseControl>
 					<ButtonGroup className='pb-panel--colorSet'>
@@ -124,6 +116,6 @@ export default memo(({ attributes, setAttributes }) => {
 					</ButtonGroup>
 				</BaseControl>
 			</PanelBody>
-		</InspectorControls>
+		</>
 	);
-});
+};

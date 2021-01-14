@@ -2,8 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo, useState } from '@wordpress/element';
-import { BlockControls } from '@wordpress/block-editor';
+import { useState } from '@wordpress/element';
 import { ToolbarButton, ToolbarGroup, Popover } from '@wordpress/components';
 import { Icon, link } from '@wordpress/icons';
 
@@ -20,11 +19,11 @@ import LinkControls from './components/LinkControls';
 /**
  * Custom Component
  */
-export default memo(({ attributes, setAttributes, siblingsImageId }) => {
+export default ({ attributes, setAttributes, siblingsImageId }) => {
 	const [isURLPickerOpen, setIsURLPickerOpen] = useState(false);
 
 	return (
-		<BlockControls>
+		<>
 			<ToolbarGroup>
 				<ToolbarButton
 					name='link'
@@ -44,6 +43,6 @@ export default memo(({ attributes, setAttributes, siblingsImageId }) => {
 					</div>
 				</Popover>
 			)}
-		</BlockControls>
+		</>
 	);
-});
+};

@@ -2,8 +2,6 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
@@ -53,7 +51,7 @@ const arrowIcons = [
 	},
 ];
 
-export default memo(({ attributes, setAttributes, siblingsImageId }) => {
+export default ({ attributes, setAttributes, siblingsImageId }) => {
 	const { btnEm, linkLabel, linkUrl, url, arrowIcon, emIcon, isShowLink, isRound } = attributes;
 	// const { updateBlockAttributes } = useDispatch('core/block-editor');
 
@@ -106,7 +104,7 @@ export default memo(({ attributes, setAttributes, siblingsImageId }) => {
 	);
 
 	return (
-		<InspectorControls>
+		<>
 			<PanelBody title={__('Link settings', textDomain)} initialOpen={true}>
 				<LinkControls {...{ attributes, setAttributes, siblingsImageId }} />
 			</PanelBody>
@@ -223,6 +221,6 @@ export default memo(({ attributes, setAttributes, siblingsImageId }) => {
 					}}
 				/>
 			</PanelBody>
-		</InspectorControls>
+		</>
 	);
-});
+};

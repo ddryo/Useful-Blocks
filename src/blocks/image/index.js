@@ -6,6 +6,8 @@ import { registerBlockType } from '@wordpress/blocks';
 import { image as imgIcon } from '@wordpress/icons';
 
 import {
+	BlockControls,
+	InspectorControls,
 	BlockIcon,
 	MediaPlaceholder,
 	// RichText,
@@ -17,7 +19,7 @@ import { useCallback } from '@wordpress/element';
  */
 import classnames from 'classnames';
 import pbIcon from '@blocks/icon';
-import { textDomain, blockCategory, isPro } from '@blocks/config';
+import { textDomain, isPro } from '@blocks/config';
 
 /**
  * Internal dependencies
@@ -30,7 +32,7 @@ import MySidebar from './_sidebar';
  * metadata
  */
 const blockName = 'pb-image';
-const { name, parent, keywords, supports } = metadata;
+const { name, category, parent, keywords, supports } = metadata;
 
 registerBlockType(name, {
 	title: __('CV Image', textDomain),
@@ -38,7 +40,7 @@ registerBlockType(name, {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	category: blockCategory,
+	category,
 	keywords,
 	supports,
 	parent,
@@ -94,8 +96,12 @@ registerBlockType(name, {
 
 		return (
 			<>
-				<MyToolbar {...{ id, url, onSelectImage, onSelectURL, deleteImage }} />
-				<MySidebar {...{ attributes, setAttributes }} />
+				<BlockControls>
+					<MyToolbar {...{ id, url, onSelectImage, onSelectURL, deleteImage }} />
+				</BlockControls>
+				<InspectorControls>
+					<MySidebar {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				{!url ? (
 					<MediaPlaceholder
 						// icon='image'

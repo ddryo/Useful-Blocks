@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { InspectorControls, RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * External dependencies
@@ -28,7 +28,7 @@ registerBlockType('ponhiro-blocks/compare-box', {
 		foreground: pbIcon.color,
 		src: pbIcon.compareBox,
 	},
-	keywords: ['ponhiro', 'useful-block', 'compare-box'],
+	keywords: ['useful'],
 	category: blockCategory,
 	supports: { className: false },
 
@@ -64,7 +64,9 @@ registerBlockType('ponhiro-blocks/compare-box', {
 
 		return (
 			<>
-				<MyControls {...{ attributes, setAttributes, clientId }} />
+				<InspectorControls>
+					<MyControls {...{ attributes, setAttributes, clientId }} />
+				</InspectorControls>
 				{/* カスタムカラーは style={ { '--headColor': '#000' } } で...？ */}
 				<div className={blockClass} data-colset={colSet}>
 					{/* ヘッダー部分 */}
@@ -131,7 +133,6 @@ registerBlockType('ponhiro-blocks/compare-box-body', {
 		html: false,
 	},
 	parent: ['ponhiro-blocks/compare-box'],
-	// attributes: {},
 
 	edit: () => {
 		return (
@@ -186,8 +187,7 @@ registerBlockType('ponhiro-blocks/compare-box-body-content', {
 		},
 	},
 
-	edit: (props) => {
-		const { className, attributes, setAttributes } = props;
+	edit: ({ attributes }) => {
 		const { isLimited, position } = attributes;
 
 		const templateLock = isLimited ? 'insert' : false;

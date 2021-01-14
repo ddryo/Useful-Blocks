@@ -2,17 +2,15 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo } from '@wordpress/element';
-import { BlockControls } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 import { formatListBullets, formatListNumbered } from '@wordpress/icons';
 
 /**
  * Custom Component
  */
-export default memo(({ listTag, setAttributes }) => {
+export default ({ listTag, setAttributes }) => {
 	return (
-		<BlockControls>
+		<>
 			<ToolbarGroup
 				controls={[
 					{
@@ -35,6 +33,6 @@ export default memo(({ listTag, setAttributes }) => {
 					},
 				]}
 			/>
-		</BlockControls>
+		</>
 	);
-});
+};

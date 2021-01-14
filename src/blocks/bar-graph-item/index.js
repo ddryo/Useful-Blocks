@@ -4,14 +4,14 @@
 import { __ } from '@wordpress/i18n';
 // import { useSelect } from '@wordpress/data';
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+import { InspectorControls, RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import icon from './_icon';
 import MyControls from './_controls';
-import { textDomain, blockCategory, iconColor } from '@blocks/config';
+import { textDomain, iconColor } from '@blocks/config';
 
 /**
  * External dependencies
@@ -19,52 +19,36 @@ import { textDomain, blockCategory, iconColor } from '@blocks/config';
 import classnames from 'classnames';
 
 /**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, parent, supports, category } = metadata;
+
+/**
  * Block
  */
 const blockName = 'pb-bar-graph';
 
-registerBlockType('ponhiro-blocks/bar-graph-item', {
+registerBlockType(name, {
 	title: __('Graph', textDomain),
 	icon: {
 		foreground: iconColor,
 		src: icon,
 	},
-	// keywords: ['ponhiro', 'bar', 'graph'],
-	category: blockCategory,
-	supports: { className: false },
-	parent: ['ponhiro-blocks/bar-graph'],
-	attributes: {
-		color: {
-			type: 'string',
-			default: '',
-		},
-		label: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-bar-graph__label',
-		},
-		value: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-bar-graph__value',
-		},
-		ratio: {
-			type: 'number',
-			default: 50,
-		},
-		isThin: {
-			type: 'boolean',
-			default: false,
-		},
-	},
-
+	// keywords: [],
+	category,
+	supports,
+	parent,
+	attributes: metadata.attributes,
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
 		const { color, value, label, ratio, isThin } = attributes;
 
 		return (
 			<>
-				<MyControls {...{ attributes, setAttributes }} />
+				<InspectorControls>
+					<MyControls {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				<div
 					className={classnames(`${blockName}__item`, className)}
 					data-thin={isThin ? '1' : null}

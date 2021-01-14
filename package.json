@@ -12,7 +12,7 @@
         "build:css": "run-s scss postcss",
         "build:js": "npx webpack --config webpack.config.scripts.js",
         "build:blocks": "wp-scripts build",
-        "watch": "rubn-p watchs:css watch:js watch:blocks watch:lang",
+        "watch": "run-p watchs:css watch:js watch:blocks watch:lang",
         "watchs:css": "nodemon --watch src -e scss -x \"npm run build:css\"",
         "watch:js": "nodemon --watch src/js -e js -x \"npm run build:js\"",
         "watch:blocks": "nodemon --watch src/blocks -e js -x \"npm run build:blocks\"",

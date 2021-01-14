@@ -2,8 +2,6 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, BaseControl, Button, ButtonGroup, ToggleControl } from '@wordpress/components';
 // import { Icon } from '@wordpress/icons';
 
@@ -71,11 +69,11 @@ const ulIcons = [
 /**
  * Custom Component
  */
-export default memo(({ attributes, setAttributes }) => {
+export default ({ attributes, setAttributes }) => {
 	const { listTag, icon, showBorder } = attributes;
 
 	return (
-		<InspectorControls>
+		<>
 			<PanelBody title={__('List settings', textDomain)} initialOpen={true}>
 				<ToggleControl
 					label={__('Add a dotted line below the list', textDomain)}
@@ -140,6 +138,6 @@ export default memo(({ attributes, setAttributes }) => {
 					</FreePreview>
 				</BaseControl>
 			</PanelBody>
-		</InspectorControls>
+		</>
 	);
-});
+};

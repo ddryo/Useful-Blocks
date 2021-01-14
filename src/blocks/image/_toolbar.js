@@ -2,9 +2,8 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { memo } from '@wordpress/element';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
+import { MediaReplaceFlow } from '@wordpress/block-editor';
 
 /**
  * External dependencies
@@ -15,11 +14,9 @@ import { textDomain } from '@blocks/config';
 /**
  * Custom Component
  */
-export default memo((props) => {
-	const { id, url, onSelectImage, onSelectURL, deleteImage } = props;
-
+export default ({ id, url, onSelectImage, onSelectURL, deleteImage }) => {
 	return (
-		<BlockControls>
+		<>
 			{url && (
 				<>
 					<MediaReplaceFlow
@@ -43,6 +40,6 @@ export default memo((props) => {
 					</ToolbarGroup>
 				</>
 			)}
-		</BlockControls>
+		</>
 	);
-});
+};

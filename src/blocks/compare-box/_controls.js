@@ -5,13 +5,17 @@
 import { __ } from '@wordpress/i18n';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { PanelBody, BaseControl, ButtonGroup, ToggleControl } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import { textDomain } from '@blocks/config';
 import FreePreview from '@blocks/freePreview';
+
+/**
+ * 設定
+ */
+const colorSets = ['y', 'p', 'g', 'b', '1']; // カラーセット
 
 /**
  * Custom Component
@@ -25,9 +29,6 @@ export default function ({ attributes, setAttributes, clientId }) {
 		(select) => select('core/block-editor').getBlocksByClientId(clientId)[0],
 		[clientId]
 	);
-
-	// カラーセット
-	const colorSets = ['y', 'p', 'g', 'b', '1'];
 
 	const limitSettings = (
 		<PanelBody title={__('Removal of content restrictions', textDomain)} initialOpen={true}>
@@ -65,54 +66,52 @@ export default function ({ attributes, setAttributes, clientId }) {
 
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={__('Color set', textDomain)} initialOpen={true}>
-					<BaseControl>
-						<ButtonGroup className='pb-panel--colorSet'>
-							{colorSets.map((setNum) => {
-								let isSelected = false;
-								if (colSet === setNum) {
-									isSelected = true;
-								}
-								const buttonId = 'pb-compare-colset-' + setNum;
-								return (
-									<div className='__btnBox' key={`key_style_${setNum}`}>
-										<button
-											type='button'
-											id={buttonId}
-											className='__btn'
-											onClick={() => {
-												setAttributes({
-													colSet: setNum,
-												});
-											}}
-										></button>
-										<label
-											htmlFor={buttonId}
-											className='__label'
-											data-selected={isSelected || null}
-										>
-											<span className='pb-compare-box' data-colset={setNum}>
-												<span className='pb-compare-box__head'>
-													<span className='pb-compare-box__head__l'></span>
-													<span className='pb-compare-box__head__r'></span>
-												</span>
-												<span className='pb-compare-box__body'>
-													<span className='pb-compare-box__body__l'></span>
-													<span className='pb-compare-box__body__r'></span>
-												</span>
+			<PanelBody title={__('Color set', textDomain)} initialOpen={true}>
+				<BaseControl>
+					<ButtonGroup className='pb-panel--colorSet'>
+						{colorSets.map((setNum) => {
+							let isSelected = false;
+							if (colSet === setNum) {
+								isSelected = true;
+							}
+							const buttonId = 'pb-compare-colset-' + setNum;
+							return (
+								<div className='__btnBox' key={`key_style_${setNum}`}>
+									<button
+										type='button'
+										id={buttonId}
+										className='__btn'
+										onClick={() => {
+											setAttributes({
+												colSet: setNum,
+											});
+										}}
+									></button>
+									<label
+										htmlFor={buttonId}
+										className='__label'
+										data-selected={isSelected || null}
+									>
+										<span className='pb-compare-box' data-colset={setNum}>
+											<span className='pb-compare-box__head'>
+												<span className='pb-compare-box__head__l'></span>
+												<span className='pb-compare-box__head__r'></span>
 											</span>
-											{/* <span className='__leftCol'></span>
+											<span className='pb-compare-box__body'>
+												<span className='pb-compare-box__body__l'></span>
+												<span className='pb-compare-box__body__r'></span>
+											</span>
+										</span>
+										{/* <span className='__leftCol'></span>
 									<span className='__rightCol'></span> */}
-										</label>
-									</div>
-								);
-							})}
-						</ButtonGroup>
-					</BaseControl>
-				</PanelBody>
-				{true && limitSettings}
-			</InspectorControls>
+									</label>
+								</div>
+							);
+						})}
+					</ButtonGroup>
+				</BaseControl>
+			</PanelBody>
+			{true && limitSettings}
 		</>
 	);
 }

@@ -1,8 +1,8 @@
 {
     "name": "ponhiro-blocks/image",
     "title": "CV Image",
+    "category": "useful-blocks",
     "keywords": [
-        "ponhiro",
         "image"
     ],
     "supports": {

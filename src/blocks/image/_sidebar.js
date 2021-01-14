@@ -4,10 +4,6 @@
 import { __ } from '@wordpress/i18n';
 import { PanelBody, BaseControl, Button, ButtonGroup, TextControl } from '@wordpress/components';
 
-import { InspectorControls } from '@wordpress/block-editor';
-
-import { memo } from '@wordpress/element';
-
 /**
  * External dependencies
  */
@@ -39,11 +35,11 @@ const sizeButtons = [
 /**
  * Custom Component
  */
-export default memo(({ attributes, setAttributes }) => {
+export default ({ attributes, setAttributes }) => {
 	const { url, alt, dataSize } = attributes;
 
 	return (
-		<InspectorControls>
+		<>
 			{url && (
 				<PanelBody title={__('Image settings', textDomain)} initialOpen={true}>
 					<TextControl
@@ -82,6 +78,6 @@ export default memo(({ attributes, setAttributes }) => {
 					</BaseControl>
 				</PanelBody>
 			)}
-		</InspectorControls>
+		</>
 	);
-});
+};

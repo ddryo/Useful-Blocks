@@ -6,6 +6,8 @@ import { useSelect } from '@wordpress/data';
 import { RawHTML } from '@wordpress/element';
 import { registerBlockType } from '@wordpress/blocks';
 import {
+	BlockControls,
+	InspectorControls,
 	RichText,
 	// InnerBlocks,
 } from '@wordpress/block-editor';
@@ -16,7 +18,7 @@ import {
 import pbIcon from '@blocks/icon';
 import MyToolbar from './_toolbar';
 import MySidebar from './_sidebar';
-import { textDomain, blockCategory } from '@blocks/config';
+import { textDomain } from '@blocks/config';
 
 /**
  * External dependencies
@@ -24,24 +26,26 @@ import { textDomain, blockCategory } from '@blocks/config';
 import classnames from 'classnames';
 
 /**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, parent, category, keywords, supports } = metadata;
+
+/**
  * Block
  */
 const blockName = 'pb-button';
 
-registerBlockType('ponhiro-blocks/button', {
+registerBlockType(name, {
 	title: __('CV Botton', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.button,
 	},
-	keywords: ['ponhiro', 'button'],
-	category: blockCategory,
-	supports: { className: false, reusable: false },
-	parent: [
-		'ponhiro-blocks/cv-box',
-		// 'ponhiro-blocks/compare-box-body-content',
-	],
-
+	keywords,
+	category,
+	supports,
+	parent,
 	attributes: {
 		arrowIcon: {
 			type: 'string',
@@ -57,9 +61,7 @@ registerBlockType('ponhiro-blocks/button', {
 		},
 		btnEm: {
 			type: 'string',
-			// source: 'html',
-			// selector: '.pb-button__em',
-			default: '必見',
+			default: __('必見', textDomain),
 		},
 		btnText: {
 			type: 'array',
@@ -159,8 +161,12 @@ registerBlockType('ponhiro-blocks/button', {
 
 		return (
 			<>
-				<MyToolbar {...{ attributes, setAttributes, siblingsImageId }} />
-				<MySidebar {...{ attributes, setAttributes, siblingsImageId }} />
+				<BlockControls>
+					<MyToolbar {...{ attributes, setAttributes, siblingsImageId }} />
+				</BlockControls>
+				<InspectorControls>
+					<MySidebar {...{ attributes, setAttributes, siblingsImageId }} />
+				</InspectorControls>
 				<div className={blockClass}>
 					<div className={`${blockName}__btn`}>
 						{btnEmContent}

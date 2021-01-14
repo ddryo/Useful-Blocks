@@ -3,48 +3,41 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import {
-	// RichText,
-	InnerBlocks,
-} from '@wordpress/block-editor';
+import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import pbIcon from '@blocks/icon';
+import { textDomain, isPro } from '@blocks/config';
+import MySidebar from './_sidebar';
 
 /**
  * External dependencies
  */
 import classnames from 'classnames';
-import pbIcon from '@blocks/icon';
-import { textDomain, blockCategory, isPro } from '@blocks/config';
 
 /**
- * Internal dependencies
+ * metadata
  */
-import MySidebar from './_sidebar';
+import metadata from './block.json';
+const { name, category, keywords, supports } = metadata;
 
 /**
  * Block
  */
 const blockName = 'pb-cv-box';
 
-registerBlockType('ponhiro-blocks/cv-box', {
+registerBlockType(name, {
 	title: __('CV Box', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: ['ponhiro', 'useful-block', 'cv-btn', 'btn'],
-	category: blockCategory,
-	supports: { className: false },
-	attributes: {
-		colSet: {
-			type: 'string',
-			default: '1',
-		},
-		bgStyle: {
-			type: 'string',
-			default: 'on',
-		},
-	},
-
+	keywords,
+	category,
+	supports,
+	attributes: metadata.attributes,
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
 		const { colSet, bgStyle } = attributes;
@@ -55,7 +48,9 @@ registerBlockType('ponhiro-blocks/cv-box', {
 
 		return (
 			<>
-				<MySidebar {...{ attributes, setAttributes }} />
+				<InspectorControls>
+					<MySidebar {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				<div className={blockClass} data-colset={colSet} data-bg={bgStyle}>
 					<div className={`${blockName}__inner`}>
 						<InnerBlocks
@@ -81,7 +76,7 @@ registerBlockType('ponhiro-blocks/cv-box', {
 
 	save: ({ attributes }) => {
 		const { colSet, bgStyle } = attributes;
-		// const blockClass = blockName;
+
 		return (
 			<div className={blockName} data-colset={colSet} data-bg={bgStyle}>
 				<div className={`${blockName}__inner`}>

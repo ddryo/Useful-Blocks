@@ -21,7 +21,6 @@ import classnames from 'classnames';
 import pbIcon from '@blocks/icon';
 import {
 	textDomain,
-	blockCategory,
 	// isPro
 } from '@blocks/config';
 
@@ -32,65 +31,26 @@ import MyControls from './_controls';
 // import './scss/_inline.scss';
 
 /**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, category, keywords, supports } = metadata;
+
+/**
  * Block
  */
 const blockName = 'pb-iconbox';
 
-registerBlockType('ponhiro-blocks/iconbox', {
+registerBlockType(name, {
 	title: __('Icon box', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.iconbox,
 	},
-	keywords: ['ponhiro', 'useful-block', 'iconbox'],
-	category: blockCategory,
-	supports: { className: false },
-	attributes: {
-		mediaId: {
-			type: 'number',
-		},
-		mediaUrl: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'src',
-		},
-		headTitle: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-iconbox__head',
-		},
-		comment: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-iconbox__comment',
-		},
-		commentStyle: {
-			type: 'string',
-			default: 'normal',
-		},
-		colSet: {
-			type: 'string',
-			default: 'y',
-		},
-		iconSet: {
-			type: 'string',
-			default: '01',
-		},
-		iconPos: {
-			type: 'string',
-			default: 'right',
-		},
-		isCenter: {
-			type: 'boolean',
-			default: false,
-		},
-		iconY: {
-			type: 'number',
-			default: 0,
-		},
-	},
-
+	keywords,
+	category,
+	supports,
+	attributes: metadata.attributes,
 	edit: (props) => {
 		const { className, attributes, setAttributes, noticeUI } = props;
 		const {

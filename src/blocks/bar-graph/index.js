@@ -4,14 +4,14 @@
 import { __ } from '@wordpress/i18n';
 // import { useSelect } from '@wordpress/data';
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { InspectorControls, RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import icon from './_icon';
 import MyControls from './_controls';
-import { textDomain, blockCategory, iconColor } from '@blocks/config';
+import { textDomain, iconColor } from '@blocks/config';
 
 /**
  * External dependencies
@@ -19,55 +19,26 @@ import { textDomain, blockCategory, iconColor } from '@blocks/config';
 import classnames from 'classnames';
 
 /**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, keywords, supports, category } = metadata;
+
+/**
  * Block
  */
 const blockName = 'pb-bar-graph';
 
-registerBlockType('ponhiro-blocks/bar-graph', {
+registerBlockType(name, {
 	title: __('Bar Graph', textDomain),
 	icon: {
 		foreground: iconColor,
 		src: icon,
 	},
-	keywords: ['ponhiro', 'bar', 'graph'],
-	category: blockCategory,
-	supports: { className: false },
-	attributes: {
-		colSet: {
-			type: 'string',
-			default: '1',
-		},
-		title: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-bar-graph__title',
-		},
-		hideTtl: {
-			type: 'boolean',
-			default: false,
-		},
-		ttlData: {
-			type: 'string',
-			default: 'border',
-		},
-		bg: {
-			type: 'boolean',
-			default: true,
-		},
-		barBg: {
-			type: 'boolean',
-			default: true,
-		},
-		valuePos: {
-			type: 'string',
-			default: 'right',
-		},
-		labelPos: {
-			type: 'string',
-			default: 'top',
-		},
-	},
-
+	keywords,
+	category,
+	supports,
+	attributes: metadata.attributes,
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
 		const { colSet, title, bg, barBg, valuePos, labelPos, hideTtl, ttlData } = attributes;
@@ -75,7 +46,9 @@ registerBlockType('ponhiro-blocks/bar-graph', {
 
 		return (
 			<>
-				<MyControls {...{ attributes, setAttributes }} />
+				<InspectorControls>
+					<MyControls {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				<div className={blockClass} data-colset={colSet} data-bg={bg ? '1' : null}>
 					{!hideTtl && (
 						<RichText

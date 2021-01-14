@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+import { BlockControls, InspectorControls, RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -11,12 +11,18 @@ import { RichText } from '@wordpress/block-editor';
 import pbIcon from '@blocks/icon';
 import MyToolbar from './_toolbar';
 import MySidebar from './_sidebar';
-import { textDomain, blockCategory } from '@blocks/config';
+import { textDomain } from '@blocks/config';
 
 /**
  * External dependencies
  */
 import classnames from 'classnames';
+
+/**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, category, keywords, parent, supports } = metadata;
 
 /**
  * Block
@@ -35,37 +41,17 @@ const isListEmpty = (listItems) => {
 	return false;
 };
 
-registerBlockType('ponhiro-blocks/list', {
+registerBlockType(name, {
 	title: __('Useful List', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.list,
 	},
-	keywords: ['ponhiro', 'useful-block', 'list'],
-	category: blockCategory,
-	supports: { className: false, reusable: false },
-	parent: ['ponhiro-blocks/cv-box', 'ponhiro-blocks/compare-box-body-content'],
-
-	attributes: {
-		listTag: {
-			type: 'string',
-			default: 'ul',
-		},
-		icon: {
-			type: 'string',
-			default: 'dot',
-		},
-		listItems: {
-			type: 'array',
-			source: 'children',
-			selector: '.pb-list',
-		},
-		showBorder: {
-			type: 'boolean',
-			default: false,
-		},
-	},
-
+	keywords,
+	category,
+	supports,
+	parent,
+	attributes: metadata.attributes,
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
 		const { listTag, icon, listItems, showBorder } = attributes;
@@ -82,8 +68,12 @@ registerBlockType('ponhiro-blocks/list', {
 
 		return (
 			<>
-				<MyToolbar {...{ listTag, setAttributes }} />
-				<MySidebar {...{ attributes, setAttributes }} />
+				<BlockControls>
+					<MyToolbar {...{ listTag, setAttributes }} />
+				</BlockControls>
+				<InspectorControls>
+					<MySidebar {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				<RichText
 					tagName={listTag}
 					className={blockClass}

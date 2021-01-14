@@ -3,14 +3,14 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+import { InspectorControls, RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import pbIcon from '@blocks/icon';
 import MySidebar from './_sidebar';
-import { textDomain, blockCategory } from '@blocks/config';
+import { textDomain } from '@blocks/config';
 
 /**
  * External dependencies
@@ -18,38 +18,27 @@ import { textDomain, blockCategory } from '@blocks/config';
 import classnames from 'classnames';
 
 /**
+ * metadata
+ */
+import metadata from './block.json';
+const { name, category, parent, supports } = metadata;
+
+/**
  * Block
  */
 const blockName = 'pb-cv-box__note';
 
-registerBlockType('ponhiro-blocks/cv-box-note', {
+registerBlockType(name, {
 	title: __('CV Text', textDomain),
 	icon: {
 		foreground: pbIcon.color,
 		src: pbIcon.cvBox,
 	},
-	keywords: ['ponhiro', 'button'],
-	category: blockCategory,
-	supports: { className: false, reusable: false },
-	parent: ['ponhiro-blocks/cv-box'],
-	attributes: {
-		icon: {
-			type: 'string',
-			default: '',
-		},
-		dataStyle: {
-			type: 'string',
-			source: 'attribute',
-			attribute: 'data-style',
-			selector: '.pb-cv-box__note',
-			default: 'border',
-		},
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: '.__text',
-		},
-	},
+	// keywords: [],
+	category,
+	supports,
+	parent,
+	attributes: metadata.attributes,
 
 	edit: (props) => {
 		const { className, attributes, setAttributes } = props;
@@ -62,7 +51,9 @@ registerBlockType('ponhiro-blocks/cv-box-note', {
 
 		return (
 			<>
-				<MySidebar {...{ attributes, setAttributes }} />
+				<InspectorControls>
+					<MySidebar {...{ attributes, setAttributes }} />
+				</InspectorControls>
 				<div className={blockClass} data-style={dataStyle}>
 					{icon && (
 						<div className='__icon'>
