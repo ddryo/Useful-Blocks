@@ -17,6 +17,8 @@ class Register_Blocks {
 		$this->_register_block_type( 'image' );
 		$this->_register_block_type( 'bar-graph' );
 		$this->_register_block_type( 'bar-graph-item' );
+		$this->_register_block_type( 'rating-graph' );
+		$this->_register_block_type( 'rating-graph-item' );
 	}
 
 

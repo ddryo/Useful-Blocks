@@ -1,0 +1,17 @@
+{
+    "name": "ponhiro-blocks/rating-graph",
+    "title": "Rating Graph",
+    "category": "useful-blocks",
+    "keywords": [
+        "useful"
+    ],
+    "supports": {
+        "className": false
+    },
+    "attributes": {
+        "colSet": {
+            "type": "string",
+            "default": "1"
+        }
+    }
+}
