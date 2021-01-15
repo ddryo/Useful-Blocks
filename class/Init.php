@@ -197,6 +197,15 @@ class Init {
 				USFL_BLKS_PATH . 'languages'
 			);
 		}
+
+		// Font Awesomeコンポーネント
+		wp_enqueue_script(
+			'ponhiro-blocks-fa',
+			USFL_BLKS_URL .'dist/blocks/fa.js',
+			[],
+			USFL_BLKS_VERSION,
+			true
+		);
 	}
 
 

@@ -28,13 +28,54 @@
             "source": "html",
             "selector": ".pb-rating-graph__basis.-right"
         },
+        "label01": {
+            "type": "string",
+            "source": "html",
+            "selector": "[data-step='1'] .__label"
+        },
+        "label02": {
+            "type": "string",
+            "source": "html",
+            "selector": "[data-step='2'] .__label"
+        },
+        "label03": {
+            "type": "string",
+            "source": "html",
+            "selector": "[data-step='3'] .__label"
+        },
+        "label04": {
+            "type": "string",
+            "source": "html",
+            "selector": "[data-step='4'] .__label"
+        },
+        "label05": {
+            "type": "string",
+            "source": "html",
+            "selector": "[data-step='5'] .__label"
+        },
         "activeNum": {
             "type": "number",
             "default": 3
         },
-        "maxNum": {
+        "maxStep": {
             "type": "number",
             "default": 5
+        },
+        "markType": {
+            "type": "string",
+            "default": "dot"
+        },
+        "iconClass": {
+            "type": "string",
+            "default": "fas fa-paw"
+        },
+        "mediaId": {
+            "type": "number",
+            "default": 0
+        },
+        "mediaUrl": {
+            "type": "string",
+            "default": ""
         }
     }
 }

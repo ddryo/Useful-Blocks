@@ -11,45 +11,34 @@ import FreePreview from '@blocks/freePreview';
 import { textDomain } from '@blocks/config';
 
 /**
- * component
- */
-const ColsetDOM = ({ colset }) => {
-	return (
-		<span className='pb-bar-graph' data-colset={colset} data-bg='1'>
-			<span className='pb-bar-graph__dl' data-bg='1'>
-				<span className='pb-bar-graph__item'>
-					<span className='pb-bar-graph__dt'>
-						<span className='pb-bar-graph__fill'></span>
-					</span>
-					<span className='pb-bar-graph__dd'></span>
-				</span>
-				<span className='pb-bar-graph__item'>
-					<span className='pb-bar-graph__dt'>
-						<span className='pb-bar-graph__fill'></span>
-					</span>
-					<span className='pb-bar-graph__dd'></span>
-				</span>
-			</span>
-		</span>
-	);
-};
-
-/**
  * 設定
  */
 // カラーセット
 const colorSets = ['y', 'p', 'g', 'b', '1'];
 
-// 右テキストの位置
-const valuePosChoices = {
-	left: __('Left justified', textDomain),
-	right: __('Right justified', textDomain),
-};
-
-// 左テキストの位置
-const labelPosChoices = {
-	top: __('Top', textDomain),
-	inner: __('Inner', textDomain),
+/**
+ * component
+ */
+const ColsetDOM = ({ colset }) => {
+	return (
+		<span className='pb-rating-graph' data-colset={colset}>
+			<span className='pb-rating-graph__item'>
+				<span className='pb-rating-graph__wrap'>
+					<span className='pb-rating-graph__axis'>
+						<span className='pb-rating-graph__scale'>
+							<span className='__shape -dot'></span>
+						</span>
+						<span className='pb-rating-graph__scale' data-check='1'>
+							<span className='__shape -dot'></span>
+						</span>
+						<span className='pb-rating-graph__scale'>
+							<span className='__shape -dot'></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</span>
+	);
 };
 
 /**

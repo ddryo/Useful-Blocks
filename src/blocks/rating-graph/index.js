@@ -55,7 +55,7 @@ registerBlockType(name, {
 		});
 		const innerBlocksProps = useInnerBlocksProps(blockProps, {
 			allowedBlocks: ['ponhiro-blocks/rating-graph-item'],
-			template: [['ponhiro-blocks/rating-graph-item'], ['ponhiro-blocks/rating-graph-item']],
+			template: [['ponhiro-blocks/rating-graph-item']],
 			templateLock: false,
 			renderAppender: InnerBlocks.ButtonBlockAppender,
 		});

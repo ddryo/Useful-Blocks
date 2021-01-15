@@ -117,6 +117,8 @@ class Data {
 			'colset_bar_02' => '#fda9a8',
 			'colset_bar_03' => '#bdda8b',
 			'colset_bar_04' => '#a1c6f1',
+
+			// 評価グラフ
 		];
 	}
 

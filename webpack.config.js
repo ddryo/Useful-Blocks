@@ -12,6 +12,22 @@ glob.sync('**/index.js', {
 	entries[key] = path.resolve(srcDir, key);
 });
 
+// entries['fa.js'] = path.resolve(srcDir, 'fa.js');
+
+/**
+ * CleanWebpackPlugin （ビルド先のほかのファイルを勝手に削除するやつ） はオフに。
+ */
+defaultConfig.plugins.shift();
+
+// ↓ CleanWebpackPlugin が 先頭じゃなくなったとき用
+// for (let i = 0; i < defaultConfig.plugins.length; i++) {
+// 	const pluginInstance = defaultConfig.plugins[i];
+// 	if ('CleanWebpackPlugin' === pluginInstance.constructor.name) {
+// 		defaultConfig.plugins.splice(i, i);
+// 	}
+// }
+
+
 module.exports = {
 	...defaultConfig, //@wordpress/scriptを引き継ぐ
 

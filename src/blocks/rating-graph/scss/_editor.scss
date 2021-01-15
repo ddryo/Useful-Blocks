@@ -1,73 +1,64 @@
-
-[data-type="ponhiro-blocks/bar-graph"] {
-
-	// .pb-bar-graph {
-	// }
-
-	.pb-bar-graph__dl > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
-		margin-top: 24px;
-	}
-
-	// 非選択時、+ ボタン非表示
-	&:not(.is-selected):not(.has-child-selected) {
-
-		.block-list-appender {
-			display: none;
-		}
-	}
-
-	.block-list-appender__toggle.block-editor-button-block-appender {
-		margin-left: 0;
-	}
-}
-
-[data-type="ponhiro-blocks/bar-graph-item"] {
-
-	&.is-selected {
-		padding-top: 1.5em;
-	}
-
-	& + [data-type="ponhiro-blocks/bar-graph-item"] {
-		margin-top: 2.5em !important;
-	}
-
-
-	&::after {
-		top: -4px !important;
-		right: -4px !important;
-		bottom: -4px !important;
-		left: -4px !important;
-	}
-
-
-	.rich-text {
-		min-width: 2.5em;
-	}
-}
-
-
 // サイドバーのカラーセット用CSS
-.pb-panel--colorSet.-bar-graph {
+.pb-panel--colorSet.-rating-graph {
 
 	span {
 		display: block;
 	}
 
-	.pb-bar-graph {
+	// .__btnBox {
+	// 	width: 100%;
+	// }
+
+	.pb-rating-graph__item {
+		width: 200%;
+		max-width: 200%;
+		transform: scale(0.5);
+		transform-origin: 0 50%;
+	}
+
+	.pb-rating-graph__wrap {
+		margin: 0 !important;
+	}
+
+	.pb-rating-graph__axis {
+		display: flex;
+		width: 100%;
+	}
+
+	.pb-rating-graph {
 		margin: 0 !important;
 		padding: 12px 8px !important;
-		font-size: 10px !important;
 	}
 
-	.pb-bar-graph__item {
-		height: 8px;
+	// .pb-rating-graph__scale .__label {
+	// 	padding: 0;
+	// }
+
+}
+
+
+.pb-media-setting.-rating-graph {
+
+	.pb-media-setting__preview {
+		width: 64px;
+		height: 64px;
+		margin: 0 0 8px;
+		padding: 4px;
+		border: dashed 1px #dcdcdc;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 
-	.pb-bar-graph__item + .pb-bar-graph__item {
-		margin-top: 8px !important;
+	.pb-media-setting__btns {
+		display: flex;
 
-		.pb-bar-graph__dt {
-			width: 40%;
+		.is-primary {
+			margin-right: 8px;
 		}
 	}
 }
