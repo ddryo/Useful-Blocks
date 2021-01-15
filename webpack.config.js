@@ -27,7 +27,6 @@ defaultConfig.plugins.shift();
 // 	}
 // }
 
-
 module.exports = {
 	...defaultConfig, //@wordpress/scriptを引き継ぐ
 

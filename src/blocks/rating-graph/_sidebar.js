@@ -2,12 +2,12 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, BaseControl, Button, ButtonGroup } from '@wordpress/components';
+import { PanelBody, BaseControl, ButtonGroup } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import FreePreview from '@blocks/freePreview';
+// import FreePreview from '@blocks/freePreview';
 import { textDomain } from '@blocks/config';
 
 /**
@@ -62,9 +62,7 @@ export default ({ attributes, setAttributes }) => {
 										id={buttonId}
 										className='__btn'
 										onClick={() => {
-											setAttributes({
-												colSet: setNum,
-											});
+											setAttributes({ colSet: setNum });
 										}}
 									></button>
 									<label

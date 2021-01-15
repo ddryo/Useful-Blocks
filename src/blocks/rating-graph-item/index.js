@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  * metadata
  */
 import metadata from './block.json';
-const { name, parent, supports, category } = metadata;
+const { name, apiVersion, parent, supports, category } = metadata;
 
 /**
  * 普通のアイコンと fontawesome を分けるための関数
@@ -49,11 +49,13 @@ export const splitIconClass = (iconClass) => {
 const blockName = 'pb-rating-graph';
 
 registerBlockType(name, {
+	apiVersion,
 	title: __('Graph', textDomain),
-	icon: {
-		foreground: iconColor,
-		src: icon,
-	},
+	// icon: {
+	// 	foreground: iconColor,
+	// 	src: icon,
+	// },
+	icon: 'wordpress',
 	// keywords: [],
 	category,
 	supports,

@@ -1,4 +1,5 @@
 {
+    "apiVersion": 2,
     "name": "ponhiro-blocks/rating-graph",
     "title": "Rating Graph",
     "category": "useful-blocks",

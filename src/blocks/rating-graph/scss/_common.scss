@@ -2,7 +2,7 @@
 ** 評価グラフ
 ************************************/
 .pb-rating-graph {
-	max-width: 700px;
+	max-width: 700px !important;
 	margin: 0 auto 2em !important;
 	padding: 2.5em 2em !important;
 	color: var(--pb-rating-color_text, #707070);
@@ -15,7 +15,8 @@
 
 	&:not(.is-selected):not(.has-child-selected) {
 
-		.is-null {
+		.is-null,
+		.block-list-appender {
 			display: none;
 		}
 	}
@@ -37,18 +38,22 @@
 
 .pb-rating-graph__label {
 	display: inline-block;
+	min-width: 3em;
+	margin-bottom: 20px !important;
 	padding: 6px 15px;
 	color: #fff;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 1.2;
+	text-align: center;
 	background: var(--pb-rating-color_label, #71828a);
 }
 
 .pb-rating-graph__wrap {
 	display: flex;
 	justify-content: center;
-	margin: 20px 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .pb-rating-graph__axis {

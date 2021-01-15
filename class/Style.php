@@ -127,17 +127,6 @@ class Style {
 				'background-image: url(' . $img_url .')'
 			);
 		}
-
-		// 評価グラフ
-		$color_sets = [ 'yellow', 'pink', 'green', 'blue' ];
-		foreach ( $color_sets as $key ) {
-			$bar_color = self::get_rgba( $settings['colset_' . $key . '_thin'], 1, -.06 );
-			// self::add(
-			// 	'.pb-rating-graph[data-colset="'. substr( $key, 0, 1 ) . '"]',
-			// 	'--pb-rating-color_bar: ' . $bar_color
-			// );
-		}
-		
 	}
 
 
@@ -171,34 +160,6 @@ class Style {
 		if ( ! empty( $styles['mobile'] ) ) $output_css .= '@media screen and (max-width: 599px){'. $styles['mobile'] .'}';
 
 		return $output_css;
-	}
-
-
-	/**
-	 * カラーコードをrgbaに変換
-	 * $brightness : -1 ~ 1
-	 */
-	public static function get_rgba( $color_code, $alpha = 1, $brightness = 0 ) {
-
-		$color_code = str_replace( '#', '', $color_code );
-
-		$rgba_code          = [];
-		$rgba_code['red']   = hexdec( substr( $color_code, 0, 2 ) );
-		$rgba_code['green'] = hexdec( substr( $color_code, 2, 2 ) );
-		$rgba_code['blue']  = hexdec( substr( $color_code, 4, 2 ) );
-
-		if ( $brightness !== 0 ) {
-			foreach ( $rgba_code as $key => $val ) {
-				$val               = (int) $val;
-				$result            = $val + ( $val * $brightness );
-				$rgba_code[ $key ] = max( 0, min( 255, round( $result ) ) );
-			}
-		}
-
-		$rgba_code['alpha'] = $alpha;
-
-		return 'rgba(' . implode( ', ', $rgba_code ) . ' )';
-
 	}
 
 }

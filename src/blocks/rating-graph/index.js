@@ -28,7 +28,7 @@ import { textDomain, iconColor } from '@blocks/config';
  * metadata
  */
 import metadata from './block.json';
-const { name, keywords, supports, category } = metadata;
+const { name, apiVersion, keywords, supports, category } = metadata;
 
 /**
  * Block
@@ -36,6 +36,7 @@ const { name, keywords, supports, category } = metadata;
 const blockName = 'pb-rating-graph';
 
 registerBlockType(name, {
+	apiVersion,
 	title: __('Rating Graph', textDomain),
 	icon: {
 		foreground: iconColor,
