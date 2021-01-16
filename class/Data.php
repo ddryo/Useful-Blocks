@@ -119,6 +119,10 @@ class Data {
 			'colset_bar_04' => '#a1c6f1',
 
 			// 評価グラフ
+			'colset_rating_01_bg' => '#fafafa',
+			'colset_rating_01_text' => '#71828a',
+			'colset_rating_01_label' => '#71828a',
+			'colset_rating_01_point' => '#ee8f81',
 		];
 	}
 

@@ -5,14 +5,13 @@ import { __ } from '@wordpress/i18n';
 import {
 	PanelBody,
 	Button,
-	RangeControl,
-	// ToggleControl,
+	ButtonGroup,
+	BaseControl,
 	RadioControl,
-	// BaseControl,
-	// ColorPalette,
+	CheckboxControl,
 	TextControl,
 } from '@wordpress/components';
-import { createInterpolateElement } from '@wordpress/element';
+import { useMemo, createInterpolateElement } from '@wordpress/element';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 /**
@@ -24,16 +23,6 @@ import { textDomain, isPro } from '@blocks/config';
 /**
  * 設定項目
  */
-const maxStepOptions = [
-	{
-		label: __('3 stages', textDomain),
-		value: 3,
-	},
-	{
-		label: __('5 stages', textDomain),
-		value: 5,
-	},
-];
 const markTypeOptions = [
 	{
 		label: __('Dot', textDomain),
@@ -50,7 +39,9 @@ const markTypeOptions = [
 ];
 
 export default ({ attributes, setAttributes }) => {
-	const { activeNum, maxStep, markType, iconClass, mediaId, mediaUrl } = attributes;
+	const { activePoint, maxStep, markType, iconClass, mediaId, mediaUrl } = attributes;
+
+	const activePoints = activePoint.split(',');
 
 	/* eslint jsx-a11y/anchor-has-content: 0 */
 	const faNote = createInterpolateElement(
@@ -82,30 +73,69 @@ export default ({ attributes, setAttributes }) => {
 			mediaUrl: '',
 		});
 	};
+
+	// console.log('activePoints', activePoints);
+	const pointControls = useMemo(() => {
+		const mapNums = maxStep === 5 ? [1, 2, 3, 4, 5] : [1, 2, 3];
+
+		return mapNums.map((num) => {
+			const numStr = String(num);
+			return (
+				<CheckboxControl
+					key={`checkbox_key_${num}`}
+					checked={activePoints.includes(numStr)}
+					onChange={(checked) => {
+						let newActivePoints = activePoints;
+						if (checked) {
+							newActivePoints.push(numStr);
+						} else {
+							newActivePoints = newActivePoints.filter((point) => {
+								return point !== numStr;
+							});
+						}
+						setAttributes({ activePoint: newActivePoints.join(',') });
+					}}
+				/>
+			);
+		});
+	}, [maxStep, activePoint, activePoints]);
+
 	return (
 		<>
 			<PanelBody title={__('Graph setting', textDomain)} initialOpen={true}>
-				<RadioControl
-					label={__('Number of steps in the graph', textDomain)} // グラフの段階数
-					selected={maxStep}
-					options={maxStepOptions}
-					onChange={(val) => {
-						const newVal = parseInt(val);
-						setAttributes({ maxStep: newVal });
-						if (activeNum > newVal) {
-							setAttributes({ activeNum: 3 });
-						}
-					}}
-				/>
-				<RangeControl
-					label={__('Position of active point', textDomain)}
-					value={activeNum}
-					onChange={(val) => {
-						setAttributes({ activeNum: val });
-					}}
-					min={1}
-					max={maxStep}
-				/>
+				<div className='pb-rating-pointControls'>
+					<div className='components-base-control__label'>
+						{__('Position of active point', textDomain)}
+					</div>
+					<div className='__checks'>{pointControls}</div>
+				</div>
+				<FreePreview
+					description={__('you can set the number of steps in the graph.', textDomain)}
+				>
+					<BaseControl>
+						<BaseControl.VisualLabel>
+							{__('Number of steps in the graph', textDomain)}
+						</BaseControl.VisualLabel>
+						<ButtonGroup className='pb-btn-group'>
+							<Button
+								isPrimary={3 === maxStep}
+								onClick={() => {
+									setAttributes({ maxStep: 3 });
+								}}
+							>
+								{__('3 stages', textDomain)}
+							</Button>
+							<Button
+								isPrimary={5 === maxStep}
+								onClick={() => {
+									setAttributes({ maxStep: 5 });
+								}}
+							>
+								{__('5 stages', textDomain)}
+							</Button>
+						</ButtonGroup>
+					</BaseControl>
+				</FreePreview>
 				<FreePreview description={__('you can use icons and images.', textDomain)}>
 					<RadioControl
 						label={__('Active point shape', textDomain)}

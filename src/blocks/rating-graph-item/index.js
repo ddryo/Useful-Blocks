@@ -51,11 +51,10 @@ const blockName = 'pb-rating-graph';
 registerBlockType(name, {
 	apiVersion,
 	title: __('Graph', textDomain),
-	// icon: {
-	// 	foreground: iconColor,
-	// 	src: icon,
-	// },
-	icon: 'wordpress',
+	icon: {
+		foreground: iconColor,
+		src: icon,
+	},
 	// keywords: [],
 	category,
 	supports,
@@ -71,13 +70,15 @@ registerBlockType(name, {
 			label03,
 			label04,
 			label05,
-			activeNum,
+			activePoint,
 			maxStep,
 			markType,
 			iconClass,
 			mediaUrl,
 			// mediaId,
 		} = attributes;
+
+		const activePoints = activePoint.split(',');
 
 		const blockProps = useBlockProps({
 			className: `${blockName}__item`,
@@ -102,12 +103,12 @@ registerBlockType(name, {
 						onChange={(val) => setAttributes({ [`label0${num}`]: val })}
 					/>
 				);
-				if (activeNum === num) {
+				if (activePoints.includes(String(num))) {
 					return (
 						<div
 							className={`${blockName}__scale`}
 							data-step={num}
-							data-check={activeNum === num ? '1' : null}
+							data-check='1'
 							key={`scale_key_${num}`}
 						>
 							<div className={`__shape -${markType}`}>
@@ -123,12 +124,7 @@ registerBlockType(name, {
 					);
 				}
 				return (
-					<div
-						className={`${blockName}__scale`}
-						data-step={num}
-						data-check={activeNum === num ? '1' : null}
-						key={`scale_key_${num}`}
-					>
+					<div className={`${blockName}__scale`} data-step={num} key={`scale_key_${num}`}>
 						<div className={`__shape -dot`}></div>
 						{labelTextComp}
 					</div>
@@ -136,7 +132,7 @@ registerBlockType(name, {
 			});
 		}, [
 			maxStep,
-			activeNum,
+			activePoint,
 			markType,
 			iconClass,
 			mediaUrl,
@@ -198,13 +194,15 @@ registerBlockType(name, {
 			label03,
 			label04,
 			label05,
-			activeNum,
+			activePoint,
 			maxStep,
 			markType,
 			iconClass,
 			mediaUrl,
 			mediaId,
 		} = attributes;
+
+		const activePoints = activePoint.split(',');
 
 		const blockProps = useBlockProps.save({
 			className: `${blockName}__item`,
@@ -222,12 +220,13 @@ registerBlockType(name, {
 					<RichText.Content tagName='span' className='__label' value={theLabrel} />
 				);
 			}
-			if (activeNum === num) {
+
+			if (activePoints.includes(String(num))) {
 				return (
 					<div
 						className={`${blockName}__scale`}
 						data-step={num}
-						data-check={activeNum === num ? '1' : null}
+						data-check='1'
 						key={`scale_key_${num}`}
 					>
 						<div className={`__shape -${markType}`}>

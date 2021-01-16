@@ -6,7 +6,14 @@
     "themes": [
         ".",
         "~/DEV/Themes/SWELL/swell",
-        "~/DEV/Themes/Arkhe/arkhe"
+        "~/DEV/Themes/Arkhe/arkhe",
+        "~/Local Sites/themes/app/public/wp-content/themes/cocoon-master",
+        "~/Local Sites/themes/app/public/wp-content/themes/jin",
+        "~/Local Sites/themes/app/public/wp-content/themes/diver",
+        "~/Local Sites/themes/app/public/wp-content/themes/jstork",
+        "~/Local Sites/themes/app/public/wp-content/themes/the-thor",
+        "~/Local Sites/themes/app/public/wp-content/themes/sango-theme",
+        "~/Local Sites/themes/app/public/wp-content/themes/affinger5"
     ],
     "plugins": [
         ".",

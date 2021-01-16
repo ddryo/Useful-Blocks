@@ -37,6 +37,48 @@
 }
 
 
+// アクティブポイントのチェックボックスを横並びに。
+.pb-rating-pointControls {
+
+	margin-bottom: 24px;
+
+	.__checks {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		padding: 4px;
+
+		&::before {
+			position: absolute;
+			top: 51%;
+			left: 8px;
+			z-index: 0;
+			display: block;
+			width: calc(100% - 16px);
+			height: 3px;
+			background-color: #e0e3e4;
+			transform: translateY(-50%);
+			content: "";
+		}
+
+		label {
+			display: none;
+		}
+
+		.components-base-control__field {
+			position: relative;
+			z-index: 1;
+		}
+
+		div,
+		.components-checkbox-control__input-container,
+		.components-checkbox-control__input {
+			margin: 0 !important;
+		}
+	}
+}
+
+
 .pb-media-setting.-rating-graph {
 
 	.pb-media-setting__preview {

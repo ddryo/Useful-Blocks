@@ -112,6 +112,11 @@ class Style {
 			'colset_bar_02',
 			'colset_bar_03',
 			'colset_bar_04',
+
+			'colset_rating_01_bg',
+			'colset_rating_01_text',
+			'colset_rating_01_label',
+			'colset_rating_01_point',
 		];
 
 		foreach ( $root_colors as $key ) {

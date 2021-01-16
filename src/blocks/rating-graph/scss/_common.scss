@@ -2,8 +2,8 @@
 ** 評価グラフ
 ************************************/
 .pb-rating-graph {
-	max-width: 700px !important;
-	margin: 0 auto 2em !important;
+	max-width: 700px;
+	margin: 2em auto;
 	padding: 2.5em 2em !important;
 	color: var(--pb-rating-color_text, #707070);
 	background: var(--pb-rating-color_bg, #fafafa);
@@ -182,7 +182,7 @@
 		width: 100%;
 		height: 100%;
 		transform: scale(1.25, 1.25);
-		fill: var(--pb-rating-color_shape, #000);
+		fill: var(--pb-rating-color_point, #000);
 
 		path {
 			fill: inherit;
@@ -200,7 +200,7 @@
 
 
 	&[data-check] .__shape.-dot {
-		background: var(--pb-rating-color_shape, #000);
+		background: var(--pb-rating-color_point, #000);
 
 		// @include mobile {
 		// 	font-size: 20px;
@@ -225,19 +225,13 @@
 }
 
 
-// .pb-rating-graph
-// 'y', 'p', 'g', 'b'
-
-
 // カスタムカラー
 .pb-rating-graph[data-colset="1"] {
-	--pb-rating-color_bg: #fafafa;
-	--pb-rating-color_shape: #ee8f81;
-	--pb-rating-color_label: #71828a;
-	--pb-rating-color_text: #71828a;
-	--pb-rating-color_bar: #fafafa;
-	// --pb-rating-color_bar: #e3e6e7;
-	// color: #71828a;
+	--pb-rating-color_bg: var(--pb_colset_rating_01_bg);
+	--pb-rating-color_bar: var(--pb_colset_rating_01_bg);
+	--pb-rating-color_point: var(--pb_colset_rating_01_point);
+	--pb-rating-color_text: var(--pb_colset_rating_01_text);
+	--pb-rating-color_label: var(--pb_colset_rating_01_label);
 }
 
 
@@ -247,7 +241,7 @@
 .pb-rating-graph[data-colset="y"] {
 
 	--pb-rating-color_bg: var(--pb_colset_yellow_thin);
-	--pb-rating-color_shape: var(--pb_colset_yellow);
+	--pb-rating-color_point: var(--pb_colset_yellow);
 	--pb-rating-color_label: var(--pb_colset_yellow);
 	--pb-rating-color_bar: var(--pb_colset_yellow_thin);
 	// --pb-rating-color_bar: #fef0d2;
@@ -257,7 +251,7 @@
 .pb-rating-graph[data-colset="p"] {
 
 	--pb-rating-color_bg: var(--pb_colset_pink_thin);
-	--pb-rating-color_shape: var(--pb_colset_pink);
+	--pb-rating-color_point: var(--pb_colset_pink);
 	--pb-rating-color_label: var(--pb_colset_pink);
 	--pb-rating-color_bar: var(--pb_colset_pink_thin);
 	// --pb-rating-color_bar: #fedddc;
@@ -266,7 +260,7 @@
 
 .pb-rating-graph[data-colset="g"] {
 	--pb-rating-color_bg: var(--pb_colset_green_thin);
-	--pb-rating-color_shape: var(--pb_colset_green);
+	--pb-rating-color_point: var(--pb_colset_green);
 	--pb-rating-color_label: var(--pb_colset_green);
 	--pb-rating-color_bar: var(--pb_colset_green_thin);
 	// --pb-rating-color_bar: #dcebc1;
@@ -276,7 +270,7 @@
 .pb-rating-graph[data-colset="b"] {
 
 	--pb-rating-color_bg: var(--pb_colset_blue_thin);
-	--pb-rating-color_shape: var(--pb_colset_blue);
+	--pb-rating-color_point: var(--pb_colset_blue);
 	--pb-rating-color_label: var(--pb_colset_blue);
 	--pb-rating-color_bar: var(--pb_colset_blue_thin);
 	// --pb-rating-color_bar: #d1edf5;

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Useful Blocks\n"
-"POT-Creation-Date: 2021-01-15 18:24+0900\n"
-"PO-Revision-Date: 2021-01-15 18:24+0900\n"
+"POT-Creation-Date: 2021-01-16 15:48+0900\n"
+"PO-Revision-Date: 2021-01-16 15:48+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -42,7 +42,7 @@ msgid "Percentage of graph"
 msgstr "グラフの割合"
 
 #: src/blocks/bar-graph-item/index.js:33
-#: src/blocks/rating-graph-item/index.js:52 class/Menu/Tab_Colors.php:446
+#: src/blocks/rating-graph-item/index.js:53 class/Menu/Tab_Colors.php:425
 msgid "Graph"
 msgstr "グラフ"
 
@@ -110,7 +110,7 @@ msgstr "左側のラベルの位置"
 msgid "The position of the label on the right"
 msgstr "右側のラベルの位置"
 
-#: src/blocks/bar-graph/index.js:33 class/Menu/Tab_Colors.php:407
+#: src/blocks/bar-graph/index.js:33 class/Menu/Tab_Colors.php:389
 msgid "Bar Graph"
 msgstr "棒グラフ"
 
@@ -131,7 +131,7 @@ msgid "Text"
 msgstr "テキスト"
 
 #: src/blocks/button/_sidebar.js:134
-#: src/blocks/rating-graph-item/_sidebar.js:43 class/Menu/Tab_Colors.php:357
+#: src/blocks/rating-graph-item/_sidebar.js:32 class/Menu/Tab_Colors.php:341
 msgid "Icon"
 msgstr "アイコン"
 
@@ -212,7 +212,7 @@ msgstr "リスト以外にも自由なコンテンツを配置できるように
 msgid "Allow blocks to be placed freely."
 msgstr "ブロックを自由に配置できるようにする。"
 
-#: src/blocks/compare-box/index.js:26 class/Menu/Tab_Colors.php:222
+#: src/blocks/compare-box/index.js:26 class/Menu/Tab_Colors.php:214
 msgid "Comparison box"
 msgstr "比較ボックス"
 
@@ -249,7 +249,7 @@ msgstr "CV テキスト"
 msgid "Background style"
 msgstr "背景のスタイル"
 
-#: src/blocks/cv-box/index.js:32 class/Menu/Tab_Colors.php:130
+#: src/blocks/cv-box/index.js:32 class/Menu/Tab_Colors.php:127
 msgid "CV Box"
 msgstr "CV ボックス"
 
@@ -257,11 +257,11 @@ msgstr "CV ボックス"
 msgid "In the Pro version,"
 msgstr "Pro版では、"
 
-#: src/blocks/iconbox/_controls.js:41 class/Menu/Tab_Colors.php:262
+#: src/blocks/iconbox/_controls.js:41 class/Menu/Tab_Colors.php:251
 msgid "Left"
 msgstr "左"
 
-#: src/blocks/iconbox/_controls.js:42 class/Menu/Tab_Colors.php:264
+#: src/blocks/iconbox/_controls.js:42 class/Menu/Tab_Colors.php:253
 msgid "Right"
 msgstr "右"
 
@@ -309,7 +309,7 @@ msgstr "ふきだしスタイル"
 msgid "you can change the balloon style."
 msgstr "ふきだしスタイルを変更することができます。"
 
-#: src/blocks/iconbox/index.js:45 class/Menu/Tab_Colors.php:316
+#: src/blocks/iconbox/index.js:45 class/Menu/Tab_Colors.php:303
 msgid "Icon box"
 msgstr "アイコンボックス"
 
@@ -325,7 +325,7 @@ msgstr "画像設定"
 msgid "Image Size"
 msgstr "画像サイズ"
 
-#: src/blocks/image/_toolbar.js:34 class/Admin_Menu.php:113
+#: src/blocks/image/_toolbar.js:34 class/Admin_Menu.php:114
 msgid "Delete image"
 msgstr "画像を削除"
 
@@ -357,74 +357,78 @@ msgstr ""
 msgid "Useful List"
 msgstr "Usefulリスト"
 
-#: src/blocks/rating-graph-item/_sidebar.js:29
-msgid "3 stages"
-msgstr "3段階"
-
-#: src/blocks/rating-graph-item/_sidebar.js:33
-msgid "5 stages"
-msgstr "5段階"
-
-#: src/blocks/rating-graph-item/_sidebar.js:39
+#: src/blocks/rating-graph-item/_sidebar.js:28
 msgid "Dot"
 msgstr "ドット"
 
-#: src/blocks/rating-graph-item/_sidebar.js:47
+#: src/blocks/rating-graph-item/_sidebar.js:36
 msgid "Image"
 msgstr "画像"
 
-#: src/blocks/rating-graph-item/_sidebar.js:58
+#: src/blocks/rating-graph-item/_sidebar.js:49
 msgid ""
 "You can specify the class name of the \"solid\" type <a>Font Awesome icon</"
 "a>."
 msgstr "“solid”タイプの<a>Font Awesomeアイコン</a>のクラス名を指定できます。"
 
-#: src/blocks/rating-graph-item/_sidebar.js:87
+#: src/blocks/rating-graph-item/_sidebar.js:105
 msgid "Graph setting"
 msgstr "グラフ設定"
 
-#: src/blocks/rating-graph-item/_sidebar.js:89
-msgid "Number of steps in the graph"
-msgstr "グラフの段階数"
-
-#: src/blocks/rating-graph-item/_sidebar.js:101
+#: src/blocks/rating-graph-item/_sidebar.js:108
 msgid "Position of active point"
 msgstr "アクティブポイントの位置"
 
-#: src/blocks/rating-graph-item/_sidebar.js:109
+#: src/blocks/rating-graph-item/_sidebar.js:113
+msgid "you can set the number of steps in the graph."
+msgstr "グラフの段階数を設定できます。"
+
+#: src/blocks/rating-graph-item/_sidebar.js:117
+msgid "Number of steps in the graph"
+msgstr "グラフの段階数"
+
+#: src/blocks/rating-graph-item/_sidebar.js:126
+msgid "3 stages"
+msgstr "3段階"
+
+#: src/blocks/rating-graph-item/_sidebar.js:134
+msgid "5 stages"
+msgstr "5段階"
+
+#: src/blocks/rating-graph-item/_sidebar.js:139
 msgid "you can use icons and images."
 msgstr "アイコンや画像を利用することができます。"
 
-#: src/blocks/rating-graph-item/_sidebar.js:111
+#: src/blocks/rating-graph-item/_sidebar.js:141
 msgid "Active point shape"
 msgstr "アクティブポイントの形状"
 
-#: src/blocks/rating-graph-item/_sidebar.js:121
+#: src/blocks/rating-graph-item/_sidebar.js:151
 msgid "Icon class"
 msgstr "アイコンクラス"
 
-#: src/blocks/rating-graph-item/_sidebar.js:150
+#: src/blocks/rating-graph-item/_sidebar.js:180
 msgid "Change media"
 msgstr ""
 
-#: src/blocks/rating-graph-item/_sidebar.js:151
+#: src/blocks/rating-graph-item/_sidebar.js:181
 msgid "Select media"
 msgstr "画像を選択"
 
-#: src/blocks/rating-graph-item/_sidebar.js:164
+#: src/blocks/rating-graph-item/_sidebar.js:194
 msgid "Delete"
 msgstr "削除"
 
-#: src/blocks/rating-graph-item/index.js:130
+#: src/blocks/rating-graph-item/index.js:158
 msgid "Graph Label"
 msgstr "グラフのラベル"
 
-#: src/blocks/rating-graph-item/index.js:140
-#: src/blocks/rating-graph-item/index.js:150
+#: src/blocks/rating-graph-item/index.js:168
+#: src/blocks/rating-graph-item/index.js:178
 msgid "Label…"
 msgstr "ラベル…"
 
-#: src/blocks/rating-graph/index.js:39
+#: src/blocks/rating-graph/index.js:40 class/Menu/Tab_Colors.php:541
 msgid "Rating Graph"
 msgstr "評価グラフ"
 
@@ -449,7 +453,7 @@ msgstr "リセット"
 msgid "Useful Blocks"
 msgstr "Useful Blocks"
 
-#: class/Admin_Menu.php:112
+#: class/Admin_Menu.php:113
 msgid "Select image"
 msgstr "画像を選択"
 
@@ -490,35 +494,46 @@ msgctxt "color"
 msgid "Base"
 msgstr "基本"
 
-#: class/Menu/Tab_Colors.php:76 class/Menu/Tab_Colors.php:170
-#: class/Menu/Tab_Colors.php:356 class/Menu/Tab_Colors.php:447
+#: class/Menu/Tab_Colors.php:76 class/Menu/Tab_Colors.php:164
+#: class/Menu/Tab_Colors.php:340 class/Menu/Tab_Colors.php:426
+#: class/Menu/Tab_Colors.php:579
 msgctxt "color"
 msgid "Background"
 msgstr "背景"
 
-#: class/Menu/Tab_Colors.php:87 class/Menu/Tab_Colors.php:173
+#: class/Menu/Tab_Colors.php:87 class/Menu/Tab_Colors.php:167
 msgctxt "color"
 msgid "Shadow"
 msgstr "影"
 
-#: class/Menu/Tab_Colors.php:171
+#: class/Menu/Tab_Colors.php:165
 msgctxt "color"
 msgid "Icons"
 msgstr "アイコン"
 
-#: class/Menu/Tab_Colors.php:172
+#: class/Menu/Tab_Colors.php:166
 msgctxt "color"
 msgid "Button"
 msgstr "ボタン"
 
-#: class/Menu/Tab_Colors.php:174
+#: class/Menu/Tab_Colors.php:168
 msgctxt "color"
 msgid "Border"
 msgstr "線"
 
-#: class/Menu/Tab_Colors.php:355
+#: class/Menu/Tab_Colors.php:339
 msgid "Head"
 msgstr "ヘッド"
+
+#: class/Menu/Tab_Colors.php:580
+msgctxt "color"
+msgid "Label"
+msgstr "ラベル"
+
+#: class/Menu/Tab_Colors.php:581
+msgctxt "color"
+msgid "Point"
+msgstr "ポイント"
 
 #: class/Menu/Tab_Icons.php:19
 msgid "Icon image for \"Icon box\" block"

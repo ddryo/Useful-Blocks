@@ -102,8 +102,7 @@ class Tab_Colors {
 									<div class="pb-cv-box__inner">
 										<ul class="pb-list -icon-check"><li>List</li><li>List</li></ul>
 										<div class="pb-button">
-											<div class="pb-button__btn">
-												<span class="pb-button__text">Button</span>
+											<div class="pb-button__btn"><span class="pb-button__text">Button</span>
 											</div>
 										</div>
 									</div>
@@ -125,12 +124,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_cv_box';
 
 		// セクションの追加
-		add_settings_section(
-			$section_name,
-			__( 'CV Box', USFL_BLKS_DOMAIN ),
-			'',
-			$page_name
-		);
+		add_settings_section( $section_name, __( 'CV Box', USFL_BLKS_DOMAIN ), '', $page_name );
 
 		add_settings_field(
 			'pb_cvbox_color',
@@ -217,12 +211,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_compare';
 
 		// セクションの追加
-		add_settings_section(
-			$section_name,
-			__( 'Comparison box', USFL_BLKS_DOMAIN ),
-			'',
-			$page_name
-		);
+		add_settings_section( $section_name, __( 'Comparison box', USFL_BLKS_DOMAIN ), '', $page_name );
 
 		add_settings_field(
 			'pb_compare_color',
@@ -311,12 +300,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_iconbox';
 
 		// セクションの追加
-		add_settings_section(
-			$section_name,
-			__( 'Icon box', USFL_BLKS_DOMAIN ),
-			'',
-			$page_name
-		);
+		add_settings_section( $section_name, __( 'Icon box', USFL_BLKS_DOMAIN ), '', $page_name );
 
 		add_settings_field(
 			'pb_iconbox_color',
@@ -402,12 +386,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_bar_graph';
 
 		// セクションの追加
-		add_settings_section(
-			$section_name,
-			__( 'Bar Graph', USFL_BLKS_DOMAIN ),
-			'',
-			$page_name
-		);
+		add_settings_section( $section_name, __( 'Bar Graph', USFL_BLKS_DOMAIN ), '', $page_name );
 
 		add_settings_field(
 			'pb_bar_graph_color',
@@ -518,40 +497,138 @@ class Tab_Colors {
 				?>
 			</div>
 			<div class="__preview">
-				<!-- <div class='pb-bar-graph' data-colset="1"> -->
-					<div class='pb-bar-graph__dl' data-bg='1'>
-						<div class='pb-bar-graph__item'>
-							<div class='pb-bar-graph__dt'>
-								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_01);"></span>
-							</div>
-							<div class='pb-bar-graph__dd'></div>
+				<div class='pb-bar-graph__dl' data-bg='1'>
+					<div class='pb-bar-graph__item'>
+						<div class='pb-bar-graph__dt'>
+							<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_01);"></span>
 						</div>
-						<div class='pb-bar-graph__item'>
-							<div class='pb-bar-graph__dt'>
-								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_02);"></span>
-							</div>
-							<div class='pb-bar-graph__dd'></div>
-						</div>
-						<div class='pb-bar-graph__item'>
-							<div class='pb-bar-graph__dt'>
-								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_03);"></span>
-							</div>
-							<div class='pb-bar-graph__dd'></div>
-						</div>
-						<div class='pb-bar-graph__item'>
-							<div class='pb-bar-graph__dt'>
-								<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_04);"></span>
-							</div>
-							<div class='pb-bar-graph__dd'></div>
-						</div>
+						<div class='pb-bar-graph__dd'></div>
 					</div>
-				<!-- </div> -->
-
+					<div class='pb-bar-graph__item'>
+						<div class='pb-bar-graph__dt'>
+							<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_02);"></span>
+						</div>
+						<div class='pb-bar-graph__dd'></div>
+					</div>
+					<div class='pb-bar-graph__item'>
+						<div class='pb-bar-graph__dt'>
+							<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_03);"></span>
+						</div>
+						<div class='pb-bar-graph__dd'></div>
+					</div>
+					<div class='pb-bar-graph__item'>
+						<div class='pb-bar-graph__dt'>
+							<span class='pb-bar-graph__fill' style="background: var(--pb_colset_bar_04);"></span>
+						</div>
+						<div class='pb-bar-graph__dd'></div>
+					</div>
+				</div>
 				<div class="__preview_label">Preview</div>
 			</div>
 		</div>
 		<?php
 	}
 
+
+
+	/**
+	 * 評価グラフ
+	 */
+	public static function rating_graph( $page_name ) {
+		$section_name = 'pb_section_rating_graph';
+
+		// セクションの追加
+		add_settings_section( $section_name, __( 'Rating Graph', USFL_BLKS_DOMAIN ), '', $page_name );
+
+		add_settings_field(
+			'pb_rating_graph_color',
+			'',
+			['\Ponhiro_Blocks\Menu\Tab_Colors', 'callback_for_rating_graph'],
+			$page_name,
+			$section_name,
+			[
+				'class' => 'tr-rating_graph',
+				'keys' => [
+					'1' => 'セット01',
+				],
+			]
+		);
+	}
+
+
+
+	/**
+	 * 評価グラフ用コールバック
+	 */
+	public static function callback_for_rating_graph( $args ) {
+
+		$keys = $args['keys'];
+
+		// 使用するデータベース
+		$db = Data::DB_NAME['settings'];
+
+		foreach ( $keys as $set_num => $label ) :
+			?>
+				<div class="__field_title">
+					<?=$label?>
+				</div>
+				<div class="__field -flex -color -pb-colset">
+					<div class="__items">
+						<?php
+							$color_keys = [
+								'colset_rating_0' . $set_num . '_bg'    => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
+								'colset_rating_0' . $set_num . '_text'  => _x( 'Text', 'color', USFL_BLKS_DOMAIN ),
+								'colset_rating_0' . $set_num . '_label'  => _x( 'Label', 'color', USFL_BLKS_DOMAIN ),
+								'colset_rating_0' . $set_num . '_point' => _x( 'Point', 'color', USFL_BLKS_DOMAIN ),
+							];
+							foreach ( $color_keys as $key => $label ) :
+						?>
+								<div class="__item">
+									<span class="__label"><?=$label?></span>
+									<input type="text" class="pb-colorpicker"
+										id="<?=$key?>"
+										name="<?=$db .'['. $key .']'?>"
+										value="<?=Data::get_settings( $key )?>"
+										data-key="<?=$key?>"
+										data-default-color="<?=Data::get_default_settings( $key )?>"
+									/>
+								</div>
+						<?php
+							endforeach;
+						?>
+					</div>
+					<div class="__preview">
+						<div class="pb-rating-graph" data-colset="<?=$set_num?>">
+							<div class="pb-rating-graph__item" data-max-step="5">
+								<span class="pb-rating-graph__label">Label</span>
+								<div class="pb-rating-graph__wrap">
+									<div class="pb-rating-graph__basis -left">Low</div>
+									<div class="pb-rating-graph__axis">
+										<div class="pb-rating-graph__scale" data-step="1">
+											<div class="__shape -dot"></div>
+										</div>
+										<div class="pb-rating-graph__scale" data-step="2">
+											<div class="__shape -dot"></div>
+										</div>
+										<div class="pb-rating-graph__scale" data-step="3" data-check="1">
+											<div class="__shape -dot"></div>
+										</div>
+										<div class="pb-rating-graph__scale" data-step="4">
+											<div class="__shape -dot"></div>
+										</div>
+										<div class="pb-rating-graph__scale" data-step="5">
+											<div class="__shape -dot"></div>
+										</div>
+									</div>
+									<div class="pb-rating-graph__basis -right">High</div>
+								</div>
+							</div>
+						</div>
+						<div class="__preview_label">Preview</div>
+					</div>
+				</div>
+			<?php
+		endforeach;
+	}
 }
 

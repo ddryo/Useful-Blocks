@@ -17,8 +17,13 @@ class Register_Blocks {
 		$this->_register_block_type( 'image' );
 		$this->_register_block_type( 'bar-graph' );
 		$this->_register_block_type( 'bar-graph-item' );
-		$this->_register_block_type( 'rating-graph' );
-		$this->_register_block_type( 'rating-graph-item' );
+
+		// 5.6以降でのみ使用可能なブロック
+		global $wp_version;
+		if ( version_compare( $wp_version, '5.6.RC1' ) >= 0 ) {
+			$this->_register_block_type( 'rating-graph' );
+			$this->_register_block_type( 'rating-graph-item' );
+		}
 	}
 
 

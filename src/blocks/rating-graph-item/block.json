@@ -54,9 +54,9 @@
             "source": "html",
             "selector": "[data-step='5'] .__label"
         },
-        "activeNum": {
-            "type": "number",
-            "default": 3
+        "activePoint": {
+            "type": "string",
+            "default": "3"
         },
         "maxStep": {
             "type": "number",

@@ -92,6 +92,7 @@ class Admin_Menu {
 		Menu\Tab_Colors::compare( self::PAGE_NAMES['colors'] );
 		Menu\Tab_Colors::iconbox( self::PAGE_NAMES['colors'] );
 		Menu\Tab_Colors::bar_graph( self::PAGE_NAMES['colors'] );
+		Menu\Tab_Colors::rating_graph( self::PAGE_NAMES['colors'] );
 		Menu\Tab_Icons::iconbox( self::PAGE_NAMES['icons'] );
 
 	}
