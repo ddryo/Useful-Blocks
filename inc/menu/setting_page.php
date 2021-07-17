@@ -66,7 +66,7 @@ $plan = USFL_BLKS_IS_PRO ? 'pro' : 'free';
 					echo '<div id="' . $key . '" class="' . $tab_class . '">';
 
 						//タブコンテンツの読み込み（専用のファイルが有れば優先）
-						$file = __DIR__ . '/menu/tab/'. $key . '.php';
+						$file = __DIR__ . '/tab/'. $key . '.php';
 						$file = apply_filters( 'usfl_blks_setting_content_path', $file, $key );
 						if ( file_exists( $file ) ) {
 							include_once $file;

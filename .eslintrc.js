@@ -1,4 +1,4 @@
-const defaultConfig = require( '@wordpress/scripts/config/.eslintrc.js' );
+const defaultConfig = require('@wordpress/scripts/config/.eslintrc.js');
 
 module.exports = {
 	...defaultConfig, //@wordpress/scriptを引き継ぐ
@@ -6,10 +6,13 @@ module.exports = {
 	//     ...defaultConfig.extends,
 	//     "plugin:prettier/recommended"
 	// ],
+	env: {
+		browser: true,
+	},
 	rules: {
 		// 'prettier/prettier': 0,
 		// quotes: ['warn', 'single'],
-		'jsx-quotes': [ 'warn', 'prefer-single' ], // JSXでもシングルクォートを使う
+		'jsx-quotes': ['warn', 'prefer-single'], // JSXでもシングルクォートを使う
 		'array-callback-return': 0, //mapでreturnなくても怒らない
 		'@wordpress/i18n-text-domain': 0, //__()に変数使用しても怒らない
 		'react-hooks/rules-of-hooks': 0, // edit: で useSelect 使えるように

@@ -77,10 +77,14 @@ const { __ } = wp.i18n;
 
 		const tabNavs = document.querySelectorAll('.nav-tab');
 		const tabContents = document.querySelectorAll('.tab-contents');
+		const refererInput = document.querySelector('[name="_wp_http_referer"]');
 
-		if (location.hash) {
-			const hashTarget = document.querySelector(location.hash);
-			const hashTab = document.querySelector('[href="' + location.hash + '"]');
+		const locationHash = location.hash;
+		// console.log('locationHash', locationHash);
+
+		if (locationHash) {
+			const hashTarget = document.querySelector(locationHash);
+			const hashTab = document.querySelector('[href="' + locationHash + '"]');
 			const actTabNav = document.querySelector('.nav-tab.act_');
 			const actTabContent = document.querySelector('.tab-contents.act_');
 			if (hashTarget && hashTab && actTabNav && actTabContent) {
@@ -89,6 +93,9 @@ const { __ } = wp.i18n;
 				hashTarget.classList.add('act_');
 				hashTab.classList.add('act_');
 			}
+
+			//_wp_http_refererをセット
+			refererInput.value = '/wp-admin/admin.php?page=useful_blocks' + locationHash;
 		}
 
 		for (let i = 0; i < tabNavs.length; i++) {
@@ -96,7 +103,7 @@ const { __ } = wp.i18n;
 				e.preventDefault();
 				const targetHash = e.target.getAttribute('href');
 
-				// History APIでURLを書き換える（ location.hash でやると 移動してしまう)
+				// History APIでURLを書き換える
 				history.replaceState(null, null, targetHash);
 
 				if (!tabNavs[i].classList.contains('act_')) {
@@ -106,6 +113,9 @@ const { __ } = wp.i18n;
 					document.querySelector('.tab-contents.act_').classList.remove('act_');
 					tabContents[i].classList.add('act_');
 				}
+
+				//_wp_http_refererをセット
+				refererInput.value = '/wp-admin/admin.php?page=useful_blocks' + targetHash;
 			});
 		}
 	})();
