@@ -21,7 +21,6 @@ if ( ! function_exists( 'register_block_type' ) ) return;
 /**
  * 定数宣言
  */
-define( 'USFL_BLKS_DOMAIN', 'useful-blocks' ); // 後方互換維持用
 define( 'USFL_BLKS_URL', plugins_url( '/', __FILE__ ) );
 define( 'USFL_BLKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'USFL_BLKS_BASENAME', plugin_basename( __FILE__ ) );
@@ -47,7 +46,6 @@ spl_autoload_register( function( $classname ) {
  * Ponhiro_Blocks
  */
 class Ponhiro_Blocks extends \Ponhiro_Blocks\Data {
-	// use \Ponhiro_Blocks\Setting, \Ponhiro_Blocks\Helper;
 
 	public function __construct() {
 		if ( ! defined( 'USFL_BLKS_IS_PRO' ) ) define( 'USFL_BLKS_IS_PRO', false );
@@ -57,14 +55,14 @@ class Ponhiro_Blocks extends \Ponhiro_Blocks\Data {
 			add_action( 'init', [ __CLASS__, 'set_settings' ], 10 );
 
 			// ファイル読み込み
-			require_once USFL_BLKS_PATH . 'lib/register_blocks.php';
-			require_once USFL_BLKS_PATH . 'lib/enqueue.php';
-			require_once USFL_BLKS_PATH . 'lib/ajax.php';
-			require_once USFL_BLKS_PATH . 'lib/hooks.php';
+			require_once USFL_BLKS_PATH . 'inc/register_blocks.php';
+			require_once USFL_BLKS_PATH . 'inc/enqueue.php';
+			require_once USFL_BLKS_PATH . 'inc/ajax.php';
+			require_once USFL_BLKS_PATH . 'inc/hooks.php';
 
 			// 設定ページ
 			if ( is_admin() ) {
-				require_once USFL_BLKS_PATH . 'lib/admin_menu.php';
+				require_once USFL_BLKS_PATH . 'inc/admin_menu.php';
 			}
 	}
 }

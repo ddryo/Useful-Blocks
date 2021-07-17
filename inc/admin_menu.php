@@ -1,91 +1,57 @@
-<?php 
-use \Ponhiro_Blocks\Admin_Menu;
+<?php
+namespace Ponhiro_Blocks;
+
+use \Ponhiro_Blocks\Menu as Menu;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$menu_tabs = Admin_Menu::$menu_tabs;
+/**
+ * 管理画面に独自メニューを追加
+ */
+add_action( 'admin_menu', __NAMESPACE__ . '\hook__admin_menu');
+function hook__admin_menu() {
 
-// 翻訳用
-$green_message = __('Your settings have been saved.', 'useful-blocks' );
+	add_menu_page(
+		__( 'Useful Blocks', 'useful-blocks' ), // ページタイトルタグ
+		__( 'Useful Blocks', 'useful-blocks' ), // メニュータイトル
+		'manage_options', // 必要な権限
+		\Ponhiro_Blocks::PAGE_SLUG, // このメニューを参照するスラッグ名
+		function () {
+			global $is_IE;
+			if ( $is_IE ) {
+				echo '<div style="padding:2em;font-size:2em;">※ IE以外のブラウザをお使いください。</div>';
+				return;
+			}
 
-?>
-<div class="usfl_blks_page -is-free" data-lang=<?=get_locale()?>>
-	<div class="usfl_blks_page__head">
-		<div class="usfl_blks_page__inner">
-			<h1 class="usfl_blks_page__title">
-				<a href="https://ponhiro.com/useful-blocks/" target="_blank">
-					<img src="<?=USFL_BLKS_URL . 'assets/img/ub_logo.png'?>" alt="Useful Blocks">
-				</a>
-				<a href="https://ponhiro.com/useful-blocks/" target="_blank" class="usfl_blks_page__gopro">
-					<i class="pb-icon-chevron-circle-right"></i><span>Go Pro</span>
-				</a>
-			</h1>
-			<div class="usfl_blks_page__tabs">
-				<div class="nav-tab-wrapper">
-					<?php 
-						foreach ( $menu_tabs as $key => $val ) :
-							$nav_class = ( $val === reset( $menu_tabs ) ) ? 'nav-tab act_' : 'nav-tab';
-							echo '<a href="#' . $key . '" class="' . $nav_class . '">' . 
-								$val . ' <span>(DEMO)</span>'.
-							'</a>';
-						endforeach;
-					?>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="usfl_blks_page__body">
-		<div class="usfl_blks_page__inner">
-				<div class="usfl_blks_page__free_message">
-					<i class="pb-icon-lightbulb"></i>
-					<?php 
-						echo sprintf(
-							__( 'Only the %s can actually save the settings.', 'useful-blocks' ), 
-							'<a href="https://ponhiro.com/useful-blocks/" target="_blank">'. __( 'Pro version', 'useful-blocks' ).'</a>'
-						);
-						echo '<br>';
-						echo __( 'In the free version, you can check the usability of the setting page.', 'useful-blocks' );
-					?>
-				</div>
-			<?php
-				foreach ( $menu_tabs as $key => $val ) :
+			if ( has_action( 'usefl_blks_admin_menu' ) ) {
+				echo '<div style="padding:1.5em;font-size:1.5em;">※ Useful Blocks Pro-Addon を最新版へ更新してください。</div>';
+				return;
+			}
 
-					$tab_class = ( $val === reset( $menu_tabs ) ) ? "tab-contents act_" : "tab-contents";
-					echo '<div id="' . $key . '" class="' . $tab_class . '">';
-
-						//タブコンテンツの読み込み（専用のファイルが有れば優先）
-						if ( file_exists( USFL_BLKS_PATH . 'inc/admin_menu/'. $key . '.php' ) ) {
-
-							include_once USFL_BLKS_PATH . 'inc/admin_menu/'. $key . '.php';
-
-						} else {
-
-							// ファイルなければ単純に do_settings_sections
-							do_settings_sections( Admin_Menu::PAGE_NAMES[$key] );
-						}
-
-					echo '</div>';
-				endforeach;
-				
-				settings_fields( 'usfl_blks_setting_group' ); //settings_fieldsがnonceなどを出力するだけ
-			?>
-		</div>
-	</div>
-
-	<div class="usfl_blks_page__adarea">
-		<!-- <div class="__ad_item -ponhiro">
-			<a href="###">
-				<img src="<?=USFL_BLKS_URL?>assets/img/ponhiro_blog_banner.jpg" alt="SWELL">
-			</a>
-			<span>ぽんひろ.com</span>
-		</div> -->
-		<div class="__ad_item -swell">
-			<a href="https://swell-theme.com/" target="_blank">
-				<img src="<?=USFL_BLKS_URL?>assets/img/swell2_pr_banner.jpg" alt="SWELL">
-			</a>
-			<span>WordPressテーマ SWELL</span>
-		</div>
-	</div>
-
-</div>
+			require_once __DIR__ . '/menu/setting_page.php';
+		},
+		'dashicons-screenoptions', // アイコン
+		30 // 管理画面での表示位置
+	);
+}
 
 
+
+/**
+ * 設定の追加
+ */
+add_action( 'admin_init', __NAMESPACE__ . '\hook__admin_init');
+function hook__admin_init() {
+
+	// 同じオプションに配列で値を保存するので、register_setting() は１つだけ
+	register_setting( 'usfl_blks_setting_group', \Ponhiro_Blocks::DB_NAME['settings'] );
+
+	Menu\Tab_Colors::color_set( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Colors::cv_box( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Colors::compare( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Colors::iconbox( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Colors::bar_graph( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Colors::rating_graph( \Ponhiro_Blocks::PAGE_NAMES['colors'] );
+	Menu\Tab_Icons::iconbox( \Ponhiro_Blocks::PAGE_NAMES['icons'] );
+
+}

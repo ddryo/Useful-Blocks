@@ -36,7 +36,7 @@ class Data {
 	/**
 	 * メニューのタブ
 	 */
-	public static  $menu_tabs = [];
+	public static $menu_tabs = [];
 
 	/**
 	 * 外部からインスタンス化させない
@@ -55,8 +55,6 @@ class Data {
 			'reset'  => __( 'Reset', 'useful-blocks' ),
 		];
 
-		// 後方互換用
-		\Ponhiro_Blocks\Admin_Menu::$menu_tabs = self::$menu_tabs;
 
 		// 設定のデフォルト値をセット
 		self::$default_settings = [

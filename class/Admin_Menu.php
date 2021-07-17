@@ -1,22 +1,9 @@
 <?php
 namespace Ponhiro_Blocks;
 
-use \Ponhiro_Blocks\Menu as Menu;
-
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Admin_Menu {
-
-	// 後方互換維持用
-	const PAGE_NAMES = [
-		'colors' => 'usfl_blks_colors',
-		'icons'  => 'usfl_blks_iconss',
-		'reset'  => 'usfl_blks_reset',
-	];
-
-	// 後方互換維持用
-	public static $menu_tabs = [];
-
 
 	/**
 	 * メディアアップローダー
@@ -36,5 +23,4 @@ class Admin_Menu {
 		</div>
 	<?php
 	}
-
 }
