@@ -1,13 +1,9 @@
 <?php
 namespace Ponhiro_Blocks;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Data {
-
-	/**
-	 * インスタンス
-	 */
-	private static $instance;
 
 	/**
 	 * 設定値
@@ -22,49 +18,47 @@ class Data {
 		'settings' => 'useful_blocks_settings'
 	];
 
+	/**
+	 * 設定ページのスラッグ
+	 */
+	const PAGE_SLUG  = 'useful_blocks';
+
+	/**
+	 * settings_field() と settings_section() で使う $page
+	 */
+	const PAGE_NAMES = [
+		// basic
+		'colors'  => 'usfl_blks_colors',
+		'icons'  => 'usfl_blks_iconss',
+		'reset'   => 'usfl_blks_reset',
+	];
+
+	/**
+	 * メニューのタブ
+	 */
+	public static  $menu_tabs = [];
 
 	/**
 	 * 外部からインスタンス化させない
 	 */
 	private function __construct() {}
 
-
 	/**
-	 * インスタンスを取得または生成して返す
+	 * 変数セット（翻訳関数が使用できるようにメソッド内でセット）
 	 */
-	public static function get_instance() {
-		if ( empty( self::$instance ) ) {
-			self::$instance = new Data();
-		}
-		return self::$instance;
-	}
+	public static function set_variables() {
 
+		// $menu_tabsのセット
+		self::$menu_tabs = [
+			'colors' => __( 'Color set', 'useful-blocks' ),
+			'icons' => __( 'Icon image', 'useful-blocks' ),
+			'reset'  => __( 'Reset', 'useful-blocks' ),
+		];
 
-	/**
-	 * init
-	 */
-	public static function init() {
+		// 後方互換用
+		\Ponhiro_Blocks\Admin_Menu::$menu_tabs = self::$menu_tabs;
 
-		// 一度しか発火させない
-		if ( isset( self::$instance ) ) return;
-		self::$instance = self::get_instance();
-
-		// デフォルト値のセット
-		self::$instance->set_default();
-
-		// 設定をDBから取得してメンバー変数に保持
-		add_action( 'init', [ self::$instance, 'set_settings' ], 10 );
-	}
-
-
-	/**
-	 * デフォルト値をセット
-	 */
-	private function set_default() {
-
-		/**
-		 * 設定データ
-		 */
+		// 設定のデフォルト値をセット
 		self::$default_settings = [
 
 			// イエロー
@@ -126,11 +120,11 @@ class Data {
 		];
 	}
 
-
 	/**
 	 * 設定値を取得してメンバー変数にセット
 	 */
-	public function set_settings() {
+	public static function set_settings() {
+
 		$settings = get_option( self::DB_NAME['settings'] ) ?: [];
 		self::$settings = array_merge( self::$default_settings, $settings );
 	}

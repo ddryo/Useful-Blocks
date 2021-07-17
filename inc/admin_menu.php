@@ -5,10 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 $menu_tabs = Admin_Menu::$menu_tabs;
 
 // 翻訳用
-$green_message = __('Your settings have been saved.', USFL_BLKS_DOMAIN );
+$green_message = __('Your settings have been saved.', 'useful-blocks' );
 
 ?>
-<div class="usfl_blks_page -is-free" data-lang=<?=_x( 'en', 'lang_slug', USFL_BLKS_DOMAIN )?>>
+<div class="usfl_blks_page -is-free" data-lang=<?=get_locale()?>>
 	<div class="usfl_blks_page__head">
 		<div class="usfl_blks_page__inner">
 			<h1 class="usfl_blks_page__title">
@@ -39,11 +39,11 @@ $green_message = __('Your settings have been saved.', USFL_BLKS_DOMAIN );
 					<i class="pb-icon-lightbulb"></i>
 					<?php 
 						echo sprintf(
-							__( 'Only the %s can actually save the settings.', USFL_BLKS_DOMAIN ), 
-							'<a href="https://ponhiro.com/useful-blocks/" target="_blank">'. __( 'Pro version', USFL_BLKS_DOMAIN ).'</a>'
+							__( 'Only the %s can actually save the settings.', 'useful-blocks' ), 
+							'<a href="https://ponhiro.com/useful-blocks/" target="_blank">'. __( 'Pro version', 'useful-blocks' ).'</a>'
 						);
 						echo '<br>';
-						echo __( 'In the free version, you can check the usability of the setting page.', USFL_BLKS_DOMAIN );
+						echo __( 'In the free version, you can check the usability of the setting page.', 'useful-blocks' );
 					?>
 				</div>
 			<?php

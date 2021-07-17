@@ -17,22 +17,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // register_block_typeが未定義のバージョンではプラグインを読み込まない
 if ( ! function_exists( 'register_block_type' ) ) return;
 
-/**
- * バージョン情報
- */
-define( 'USFL_BLKS_VERSION', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date('mdGis') : '1.4.0');
-
-/**
- * 翻訳用のテキストドメインを定義
- */
-define( 'USFL_BLKS_DOMAIN', 'useful-blocks' );
 
 /**
  * 定数宣言
  */
+define( 'USFL_BLKS_DOMAIN', 'useful-blocks' ); // 後方互換維持用
 define( 'USFL_BLKS_URL', plugins_url( '/', __FILE__ ) );
 define( 'USFL_BLKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'USFL_BLKS_BASENAME', plugin_basename( __FILE__ ) );
+define( 'USFL_BLKS_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date('mdGis') : '1.4.0');
+
 
 /**
  * Autoload
@@ -48,17 +42,44 @@ spl_autoload_register( function( $classname ) {
 	if ( file_exists( $file ) ) require $file;
 });
 
+
+/**
+ * Ponhiro_Blocks
+ */
+class Ponhiro_Blocks extends \Ponhiro_Blocks\Data {
+	// use \Ponhiro_Blocks\Setting, \Ponhiro_Blocks\Helper;
+
+	public function __construct() {
+		if ( ! defined( 'USFL_BLKS_IS_PRO' ) ) define( 'USFL_BLKS_IS_PRO', false );
+	
+			// データセット
+			self::set_variables();
+			add_action( 'init', [ __CLASS__, 'set_settings' ], 10 );
+
+			// ファイル読み込み
+			require_once USFL_BLKS_PATH . 'lib/register_blocks.php';
+			require_once USFL_BLKS_PATH . 'lib/enqueue.php';
+			require_once USFL_BLKS_PATH . 'lib/ajax.php';
+			require_once USFL_BLKS_PATH . 'lib/hooks.php';
+
+			// 設定ページ
+			if ( is_admin() ) {
+				require_once USFL_BLKS_PATH . 'lib/admin_menu.php';
+			}
+	}
+}
+
+
 /**
  * プラグイン Init
  */
 add_action( 'plugins_loaded', function() {
 	// 翻訳
 	if ( 'ja' === determine_locale() ) {
-		load_textdomain( USFL_BLKS_DOMAIN, USFL_BLKS_PATH . 'languages/useful-blocks-ja.mo' );
+		load_textdomain( 'useful-blocks', USFL_BLKS_PATH . 'languages/useful-blocks-ja.mo' );
 	} else {
-		load_plugin_textdomain( USFL_BLKS_DOMAIN );
+		load_plugin_textdomain( 'useful-blocks' );
 	}
 
-	if ( ! defined( 'USFL_BLKS_IS_PRO' ) ) define( 'USFL_BLKS_IS_PRO', false );
-	new Ponhiro_Blocks\Init();
+	new Ponhiro_Blocks();
 });

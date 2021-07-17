@@ -348,20 +348,14 @@
 
 	}
 
+	.__label {
+		min-width: 6em;
 
-	[data-lang="en"] & {
-
-		.__label {
-			min-width: 6em;
-		}
-	}
-
-	[data-lang="ja"] & {
-
-		.__label {
+		[data-lang="ja"] & {
 			min-width: 4em;
 		}
 	}
+
 
 	.__preview > .pb-compare-box,
 	.__preview > .pb-cv-box,

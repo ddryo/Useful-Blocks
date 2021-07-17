@@ -1,7 +1,6 @@
 <?php
 namespace Ponhiro_Blocks\Menu;
-use \Ponhiro_Blocks\Data;
-use \Ponhiro_Blocks\Admin_Menu;
+
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -16,9 +15,9 @@ class Tab_Colors {
 		// セクションの追加
 		add_settings_section(
 			$section_name,
-			__( 'Common color set', USFL_BLKS_DOMAIN ),
+			__( 'Common color set', 'useful-blocks' ),
 			function() {
-				$desc = '※ : ' . __( 'Color set common to each block.', USFL_BLKS_DOMAIN );
+				$desc = '※ : ' . __( 'Color set common to each block.', 'useful-blocks' );
 				echo '<div class="__section_description">' . $desc . '</div>';
 			},
 			$page_name
@@ -32,10 +31,10 @@ class Tab_Colors {
 			$section_name,
 			[
 				'keys' => [
-					'yellow' => __( 'Yellow', USFL_BLKS_DOMAIN ),
-					'pink' => __( 'Pink', USFL_BLKS_DOMAIN ),
-					'green' => __( 'Green', USFL_BLKS_DOMAIN ),
-					'blue' => __( 'Blue', USFL_BLKS_DOMAIN ),
+					'yellow' => __( 'Yellow', 'useful-blocks' ),
+					'pink' => __( 'Pink', 'useful-blocks' ),
+					'green' => __( 'Green', 'useful-blocks' ),
+					'blue' => __( 'Blue', 'useful-blocks' ),
 				]
 			]
 		);
@@ -50,7 +49,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ($keys as $color_name => $label) :
 			$key = 'colset_'. $color_name;
@@ -62,35 +61,35 @@ class Tab_Colors {
 					<div class="__items">
 						<!-- 普通の色 -->
 						<div class="__item">
-							<span class="__label"><?=_x( 'Base', 'color', USFL_BLKS_DOMAIN )?></span>
+							<span class="__label"><?=_x( 'Base', 'color', 'useful-blocks' )?></span>
 							<input type="text" class="pb-colorpicker"
 								id="<?=$key?>"
 								name="<?=$db .'['. $key .']'?>"
-								value="<?=Data::get_settings( $key )?>"
+								value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 								data-key="<?=$key?>"
-								data-default-color="<?=Data::get_default_settings( $key )?>"
+								data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 							/>
 						</div>
 						<!-- 薄い色 -->
 						<div class="__item">
-							<span class="__label"><?=_x( 'Background', 'color', USFL_BLKS_DOMAIN )?></span>
+							<span class="__label"><?=_x( 'Background', 'color', 'useful-blocks' )?></span>
 							<input type="text" class="pb-colorpicker"
 								id="<?=$key . '_thin'?>"
 								name="<?=$db .'['. $key . '_thin]'?>"
-								value="<?=Data::get_settings( $key . '_thin' )?>"
+								value="<?=\Ponhiro_Blocks::get_settings( $key . '_thin' )?>"
 								data-key="<?=$key . '_thin'?>"
-								data-default-color="<?=Data::get_default_settings( $key . '_thin' )?>"
+								data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key . '_thin' )?>"
 							/>
 						</div>
 						<!-- 濃い色 -->
 						<div class="__item">
-							<span class="__label"><?=_x( 'Shadow', 'color', USFL_BLKS_DOMAIN )?></span>
+							<span class="__label"><?=_x( 'Shadow', 'color', 'useful-blocks' )?></span>
 							<input type="text" class="pb-colorpicker"
 								id="<?=$key . '_dark'?>"
 								name="<?=$db .'['. $key . '_dark]'?>"
-								value="<?=Data::get_settings( $key . '_dark' )?>"
+								value="<?=\Ponhiro_Blocks::get_settings( $key . '_dark' )?>"
 								data-key="<?=$key . '_dark'?>"
-								data-default-color="<?=Data::get_default_settings( $key . '_dark' )?>"
+								data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key . '_dark' )?>"
 							/>
 						</div>
 					</div>
@@ -124,7 +123,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_cv_box';
 
 		// セクションの追加
-		add_settings_section( $section_name, __( 'CV Box', USFL_BLKS_DOMAIN ), '', $page_name );
+		add_settings_section( $section_name, __( 'CV Box', 'useful-blocks' ), '', $page_name );
 
 		add_settings_field(
 			'pb_cvbox_color',
@@ -150,7 +149,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ( $keys as $set_num => $label ) :
 			?>
@@ -161,11 +160,11 @@ class Tab_Colors {
 					<div class="__items">
 						<?php
 							$color_keys = [
-								'0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_list' => _x( 'Icons', 'color', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_btn' => _x( 'Button', 'color', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_shadow' => _x( 'Shadow', 'color', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_note' => _x( 'Border', 'color', USFL_BLKS_DOMAIN ),
+								'0' . $set_num . '_bg' => _x( 'Background', 'color', 'useful-blocks' ),
+								'0' . $set_num . '_list' => _x( 'Icons', 'color', 'useful-blocks' ),
+								'0' . $set_num . '_btn' => _x( 'Button', 'color', 'useful-blocks' ),
+								'0' . $set_num . '_shadow' => _x( 'Shadow', 'color', 'useful-blocks' ),
+								'0' . $set_num . '_note' => _x( 'Border', 'color', 'useful-blocks' ),
 							];
 							foreach ( $color_keys as $key => $label ) :
 								$key = 'colset_cvbox_' . $key;
@@ -175,9 +174,9 @@ class Tab_Colors {
 									<input type="text" class="pb-colorpicker"
 										id="<?=$key?>"
 										name="<?=$db .'['. $key .']'?>"
-										value="<?=Data::get_settings( $key )?>"
+										value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 										data-key="<?=$key?>"
-										data-default-color="<?=Data::get_default_settings( $key )?>"
+										data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 									/>
 								</div>
 						<?php
@@ -211,7 +210,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_compare';
 
 		// セクションの追加
-		add_settings_section( $section_name, __( 'Comparison box', USFL_BLKS_DOMAIN ), '', $page_name );
+		add_settings_section( $section_name, __( 'Comparison box', 'useful-blocks' ), '', $page_name );
 
 		add_settings_field(
 			'pb_compare_color',
@@ -237,7 +236,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ( $keys as $set_num => $label ) :
 			?>
@@ -248,9 +247,9 @@ class Tab_Colors {
 					<div class="__items">
 						<?php
 							$color_keys = [
-								'0' . $set_num . '_l' => __( 'Left', USFL_BLKS_DOMAIN ),
+								'0' . $set_num . '_l' => __( 'Left', 'useful-blocks' ),
 								'0' . $set_num . '_l_bg' => '',
-								'0' . $set_num . '_r' => __( 'Right', USFL_BLKS_DOMAIN ),
+								'0' . $set_num . '_r' => __( 'Right', 'useful-blocks' ),
 								'0' . $set_num . '_r_bg' => '',
 							];
 							foreach ( $color_keys as $key => $label ) :
@@ -261,9 +260,9 @@ class Tab_Colors {
 									<input type="text" class="pb-colorpicker"
 										id="<?=$key?>"
 										name="<?=$db .'['. $key .']'?>"
-										value="<?=Data::get_settings( $key )?>"
+										value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 										data-key="<?=$key?>"
-										data-default-color="<?=Data::get_default_settings( $key )?>"
+										data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 									/>
 								</div>
 						<?php
@@ -300,7 +299,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_iconbox';
 
 		// セクションの追加
-		add_settings_section( $section_name, __( 'Icon box', USFL_BLKS_DOMAIN ), '', $page_name );
+		add_settings_section( $section_name, __( 'Icon box', 'useful-blocks' ), '', $page_name );
 
 		add_settings_field(
 			'pb_iconbox_color',
@@ -325,7 +324,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ( $keys as $set_num => $label ) :
 			?>
@@ -336,9 +335,9 @@ class Tab_Colors {
 					<div class="__items">
 						<?php
 							$color_keys = [
-								'0' . $set_num => __( 'Head', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
-								'0' . $set_num . '_icon' => __( 'Icon', USFL_BLKS_DOMAIN ),
+								'0' . $set_num => __( 'Head', 'useful-blocks' ),
+								'0' . $set_num . '_bg' => _x( 'Background', 'color', 'useful-blocks' ),
+								'0' . $set_num . '_icon' => __( 'Icon', 'useful-blocks' ),
 							];
 							foreach ( $color_keys as $key => $label ) :
 								$key = 'colset_iconbox_' . $key;
@@ -348,9 +347,9 @@ class Tab_Colors {
 									<input type="text" class="pb-colorpicker"
 										id="<?=$key?>"
 										name="<?=$db .'['. $key .']'?>"
-										value="<?=Data::get_settings( $key )?>"
+										value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 										data-key="<?=$key?>"
-										data-default-color="<?=Data::get_default_settings( $key )?>"
+										data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 									/>
 								</div>
 						<?php
@@ -386,7 +385,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_bar_graph';
 
 		// セクションの追加
-		add_settings_section( $section_name, __( 'Bar Graph', USFL_BLKS_DOMAIN ), '', $page_name );
+		add_settings_section( $section_name, __( 'Bar Graph', 'useful-blocks' ), '', $page_name );
 
 		add_settings_field(
 			'pb_bar_graph_color',
@@ -411,7 +410,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ( $keys as $set_num => $label ) :
 			?>
@@ -422,8 +421,8 @@ class Tab_Colors {
 					<div class="__items">
 						<?php
 							$color_keys = [
-								'colset_bargraph_0' . $set_num => __( 'Graph', USFL_BLKS_DOMAIN ),
-								'colset_bargraph_0' . $set_num . '_bg' => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
+								'colset_bargraph_0' . $set_num => __( 'Graph', 'useful-blocks' ),
+								'colset_bargraph_0' . $set_num . '_bg' => _x( 'Background', 'color', 'useful-blocks' ),
 							];
 							foreach ( $color_keys as $key => $label ) :
 						?>
@@ -432,9 +431,9 @@ class Tab_Colors {
 									<input type="text" class="pb-colorpicker"
 										id="<?=$key?>"
 										name="<?=$db .'['. $key .']'?>"
-										value="<?=Data::get_settings( $key )?>"
+										value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 										data-key="<?=$key?>"
-										data-default-color="<?=Data::get_default_settings( $key )?>"
+										data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 									/>
 								</div>
 						<?php
@@ -487,9 +486,9 @@ class Tab_Colors {
 							<input type="text" class="pb-colorpicker"
 								id="<?=$key?>"
 								name="<?=$db .'['. $key .']'?>"
-								value="<?=Data::get_settings( $key )?>"
+								value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 								data-key="<?=$key?>"
-								data-default-color="<?=Data::get_default_settings( $key )?>"
+								data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 							/>
 						</div>
 				<?php
@@ -538,7 +537,7 @@ class Tab_Colors {
 		$section_name = 'pb_section_rating_graph';
 
 		// セクションの追加
-		add_settings_section( $section_name, __( 'Rating Graph', USFL_BLKS_DOMAIN ), '', $page_name );
+		add_settings_section( $section_name, __( 'Rating Graph', 'useful-blocks' ), '', $page_name );
 
 		add_settings_field(
 			'pb_rating_graph_color',
@@ -565,7 +564,7 @@ class Tab_Colors {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ( $keys as $set_num => $label ) :
 			?>
@@ -576,10 +575,10 @@ class Tab_Colors {
 					<div class="__items">
 						<?php
 							$color_keys = [
-								'colset_rating_0' . $set_num . '_bg'    => _x( 'Background', 'color', USFL_BLKS_DOMAIN ),
-								'colset_rating_0' . $set_num . '_text'  => _x( 'Text', 'color', USFL_BLKS_DOMAIN ),
-								'colset_rating_0' . $set_num . '_label'  => _x( 'Label', 'color', USFL_BLKS_DOMAIN ),
-								'colset_rating_0' . $set_num . '_point' => _x( 'Point', 'color', USFL_BLKS_DOMAIN ),
+								'colset_rating_0' . $set_num . '_bg'    => _x( 'Background', 'color', 'useful-blocks' ),
+								'colset_rating_0' . $set_num . '_text'  => _x( 'Text', 'color', 'useful-blocks' ),
+								'colset_rating_0' . $set_num . '_label'  => _x( 'Label', 'color', 'useful-blocks' ),
+								'colset_rating_0' . $set_num . '_point' => _x( 'Point', 'color', 'useful-blocks' ),
 							];
 							foreach ( $color_keys as $key => $label ) :
 						?>
@@ -588,9 +587,9 @@ class Tab_Colors {
 									<input type="text" class="pb-colorpicker"
 										id="<?=$key?>"
 										name="<?=$db .'['. $key .']'?>"
-										value="<?=Data::get_settings( $key )?>"
+										value="<?=\Ponhiro_Blocks::get_settings( $key )?>"
 										data-key="<?=$key?>"
-										data-default-color="<?=Data::get_default_settings( $key )?>"
+										data-default-color="<?=\Ponhiro_Blocks::get_default_settings( $key )?>"
 									/>
 								</div>
 						<?php

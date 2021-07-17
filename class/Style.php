@@ -65,7 +65,7 @@ class Style {
 	 * @return void
 	 */
 	public static function front_style() {
-		// $settings = Data::get_settings();
+		// $settings = \Ponhiro_Blocks::get_settings();
 	}
 
 
@@ -75,7 +75,7 @@ class Style {
 	 */
 	public static function post_style() {
 
-		$settings = Data::get_settings();
+		$settings = \Ponhiro_Blocks::get_settings();
 
 		$root_colors = [
 			'colset_yellow',

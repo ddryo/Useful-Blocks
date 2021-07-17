@@ -1,12 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-<h2><?=__( 'Reset settings', USFL_BLKS_DOMAIN )?></h2>
+<h2><?=__( 'Reset settings', 'useful-blocks' )?></h2>
 <div class="swell_reset_btn">
 	<button id="pb-btn--reset" type="button" name="submit" class="button button-primary">
-		<?=__( 'Reset', USFL_BLKS_DOMAIN )?>
+		<?=__( 'Reset', 'useful-blocks' )?>
 	</button>
 </div>
-
-<!-- <br>
-<hr>
-<br> -->

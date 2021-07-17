@@ -1,6 +1,5 @@
 <?php
 namespace Ponhiro_Blocks\Menu;
-use \Ponhiro_Blocks\Data;
 use \Ponhiro_Blocks\Admin_Menu;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -16,7 +15,7 @@ class Tab_Icons {
 		// セクションの追加
 		add_settings_section(
 			$section_name,
-			__( 'Icon image for "Icon box" block', USFL_BLKS_DOMAIN ),
+			__( 'Icon image for "Icon box" block', 'useful-blocks' ),
 			'',
 			$page_name
 		);
@@ -47,11 +46,11 @@ class Tab_Icons {
 		$keys = $args['keys'];
 
 		// 使用するデータベース
-		$db = Data::DB_NAME['settings'];
+		$db = \Ponhiro_Blocks::DB_NAME['settings'];
 
 		foreach ($keys as $num) :
 			$key = 'iconbox_img_'. $num;
-			$src = Data::get_settings( $key );
+			$src = \Ponhiro_Blocks::get_settings( $key );
 			?>
 				<div class="__field_title">
 					画像<?=$num?>
